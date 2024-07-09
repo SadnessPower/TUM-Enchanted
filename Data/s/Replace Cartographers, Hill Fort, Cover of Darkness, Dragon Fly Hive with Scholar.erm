@@ -1,0 +1,45 @@
+ZVSE2
+; Author:   SadnessPower (robertomaest1@gmail.com)
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+
+
+; Replace all: Cartographer, Covers of Darkness, Dragon Fly Hive Bank and Hill Fort with Scholar
+
+; function for passing through all map objects
+!?FU(WOG_OnIterateAllMapObjects);
+!#VA(x:x) (y:x) (z:x);
+!#VA(objType:x);
+!#VA(objSubtype:x);
+!#VA(isYellowSquare:x); boolean.
+!#VA(isPassable:x);     boolean.
+
+; check: is entry to the object
+!!FU&(isYellowSquare)<>(TRUE):E;
+
+; check: object type
+!!FU&(objType)<>(OBJ_CARTOGRAPHER)/(objType)<>(OBJ_COVER_OF_DARKNESS)/(objType)<>(OBJ_HILL_FORT)/(objType)<>(OBJ_CREATURE_BANK):E;
+!!FU&(objType)=(OBJ_CREATURE_BANK)/(objSubtype)<>6:E;
+
+; set a new object type
+!!VR(objType):S(OBJ_SCHOLAR);
+
+; delete current and create a new object
+!!UN:O(x)/(y)/(z)/1/(ERM_REPLACE_NO_REDRAW); 
+!!UN:I(x)/(y)/(z)/(objType)/0/(ERM_REPLACE_NO_REDRAW);
+
+; setup Scholar with primary or secondary skill gains
+!!VR(randomRoll:y):R0/0/99;
+
+!!if&(randomRoll)<70;              [setup primary skill]
+   !!VR(randomSkill:y):R0/0/3;
+   !!SC(x)/(y)/(z):T0;
+   !!SC(x)/(y)/(z):P(randomSkill);
+!!en;
+
+!!if&(randomRoll)>=70;             [setup secondary skill]
+   !!VR(randomSkill):R0/0/27;     
+   !!SC(x)/(y)/(z):T1;
+   !!SC(x)/(y)/(z):S(randomSkill);
+!!en;   
+
+** End of Script **

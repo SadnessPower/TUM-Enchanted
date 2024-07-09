@@ -1,0 +1,50 @@
+ZVSE2
+; Author:   SadnessPower
+; Engine:   ERM 2.0+
+; Requires: ERA 3.9+, Era Erm Framework
+;
+; Doesn't work with Amethyst, if you have it, use it to remove WOG Abilities
+
+; Disable WOG Imposed abilities
+!?FU(OnGameEnter);
+!!UN:C7734969/4/9999;  ; 007606B9 Disable Air Shield on 152 (Lord of Thunder)  
+!!UN:C7727184/4/9999;  ; 0075E850
+
+!!UN:C7735023/4/9999;  ; 007606EF Disable Fire Shield and Slayer on 158 (Sacred Phoenix)  
+!!UN:C7727238/4/9999;  ; 0075E886
+
+!!UN:C7735078/4/9999;  ; 00760726 Disable Fire Shield on 195 (Hell Steed) 
+!!UN:C7727293/4/9999;  ; 0075E8BD
+
+; this one crashes with Amethyst enabled because it hooks the pointed address
+!!UN:C7735220/4/9999;  ; 007607B4 Disable Protection from Fire on 164 (Fire Messenger)  
+!!UN:C7727356/4/9999;  ; 0075E8FC
+
+!!UN:C7735252/4/9999;  ; 007607D4 Disable Protection from Earth on 165 (Earth Messenger)  
+!!UN:C7727388/4/9999;  ; 0075E91C
+
+!!UN:C7735284/4/9999;  ; 007607F4 Disable Protection from Air on 166 (Air Messenger)  
+!!UN:C7727420/4/9999;  ; 0075E93C
+
+!!UN:C7735316/4/9999;  ; 00760814 Disable Protection from Water on 167 (Water Messenger)  
+!!UN:C7727452/4/9999;  ; 0075E95C
+
+!!UN:C7735348/4/9999;  ; 00760834 Disable Magic Mirror on 169 (War Zealot)  
+!!UN:C7727484/4/9999;  ; 0075E97C
+
+!!UN:C7735380/4/9999;  ; 00760854 Disable Air Shield on 170 (Arctic Sharpshooter)  
+!!UN:C7727516/4/9999;  ; 0075E99C
+
+!!UN:C7735412/4/9999;  ; 00760874 Disable Fire Shield on 171 (Lava Sharpshooter)  
+!!UN:C7727548/4/9999;  ; 0075E9BC
+
+!!UN:C7735444/4/9999;  ; 00760894 Disable Myrth on 192 (Sylvan Centaur) 
+!!UN:C7727580/4/9999;  ; 0075E9DC
+
+; for launching amethyst commands in ERM:
+!*MA195:W^ImposedSpell1Number=0^;
+!*MA195:W^ImposedSpell1Level=0^;
+
+
+
+

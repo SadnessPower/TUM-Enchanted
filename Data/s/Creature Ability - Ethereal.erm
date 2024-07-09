@@ -1,0 +1,54 @@
+ZVSE2
+; Author:   SadnessPower
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+
+** start of pre-damage trigger
+
+** ethereal
+!?FU(OnMonsterPhysicalDamage);
+
+!!BG:N?(attackerStack:y) E?(retaliatorStack:y) A?(action:y);                      [get current stack # and action type]
+
+!!if|(action)=6/(action)=7;
+  !!MF:N?(targetStack:y) D?(originalDamageAmount:y);                                 [get target stack, damage]
+
+  !!BM(targetStack):T?(targetMonsterType:y) N?(monsterHealth:y) H?(monsterQuantity:y) L?(monsterHealthLoss:y);      [get target's type, health, quantity, health lost]
+  !!VR(monsterHealth):*(monsterQuantity) -(monsterHealthLoss);                                                      [calculate total health]
+
+  !!BM(attackerStack)&(attackerStack)>-1/(attackerStack)<>(targetStack):T?(currentMonsterType:y);                   [get attacker type]
+  !!BM(retaliatorStack)&(retaliatorStack)>-1/(retaliatorStack)<>(targetStack):T?(currentMonsterType:y);             [get retaliator type]
+  
+  !!FU(CheckEtherealCreature):P(currentMonsterType)/?(result:y);
+  !!VRy-6&(result)=(TRUE):S1;                                                [set if attacker is ethereal]
+
+  !!FU(CheckEtherealCreature):P(targetMonsterType)/?(result:y);
+  !!VRy-5&(result)=(TRUE):S1;                                                [set if target is ethereal]
+  
+  **!VRz1:S^targetMonsterType = %(targetMonsterType) - currentMonsterType = %(currentMonsterType) - y-5 = %Y-5 - y-6 = %Y-6^;
+  **!MMSz1;
+
+  !!if&(originalDamageAmount)>0/y-5=1/y-6=0;
+
+    !!VR(random:y):R0/0/15;
+
+    !!VR(random):+15;
+    !!VR(damageReduction:y):S100 -(random:y);
+    !!VR(damageAmount:y):S(originalDamageAmount) *(damageReduction) :100;                                                                 [calculate damage reduction]
+    !!MF:F(damageAmount);                                                                                                               [apply damage reduction]
+    !!VRz1:S^{Ethereal - %(random)% of damage is reduced!}^;   [set combat message]
+    !!MM:Sz1;                                                                                                                           [display combat message]
+  !!en;
+ 
+ !!en;
+
+ !?FU(CheckEtherealCreature);
+ !#VA(mon:x) (result:x);
+
+ !!VR(result):S(FALSE);
+ !!VR(result)|(mon)=(MON_WIGHT)/(mon)=(MON_WRAITH)/(mon)=223:S(TRUE);                       Wight/Wraith/Specter
+ !!VR(result)|(mon)=(MON_GHOST_DRAGON)/(mon)=(MON_BLOOD_DRAGON):S(TRUE);                    Ghost/Blood Dragon
+ !!VR(result)|(mon)=159:S(TRUE);                                                            Ghost
+ 
+** end of pre-damage trigger

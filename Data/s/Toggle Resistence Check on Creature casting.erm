@@ -1,0 +1,9 @@
+ZVSE2
+
+!?FU(SetCheckResistenceForCreatureCast);
+
+!!SN:L^amethyst2_4.dll^/?(file:y);
+!!SN:A(file)/^set_check_resistence_for_creature_cast^/?(address:y);
+
+!!SN:E(address)/1/x1;
+

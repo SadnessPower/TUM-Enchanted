@@ -1,0 +1,19 @@
+ZVSE2
+; Author:   Archer30, SadnessPower
+; Engine:   ERM 2.0+
+; Requires: ERA 3.9+, Era Erm Framework
+
+
+!?FU(OnGameEnter);
+; Disable extra retaliations for 156 (Ghost Behemoths)
+!!UN:C7735001/1/1000;
+!!UN:C7727216/1/1000;
+
+; Chance of Blood Dragons' Drain Life
+!!UN:C7695726/1/100;
+
+; Disable Illithids' Hypnotize attack (from Difficulty Mod)
+!?FU(tum_CheckIfMonCanHypnotize);
+!!VRx2:S(FALSE);
+
+

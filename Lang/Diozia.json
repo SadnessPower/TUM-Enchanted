@@ -1,0 +1,152 @@
+{
+    "es": {
+        "762": {
+            "singName": "Flesheater",
+            "plurName": "Flesheaters",
+            "desc": " Flesheater.",
+            "battleLog0": "{~939393}@flesheater@ eats the remains of their enemies and restore @hp@ hp (@resNum@ revived)!{~}",
+            "battleLog1": "{~939393}@flesheater@ eat the remains of their enemies and restore @hp@ hp (@resNum@ revived)!{~}"
+        }
+    }
+  "dio": 
+  {
+    "autocast": 
+    {
+      "198AutocastA0": "{~33CCCC}The @mon@ cast on itself BLESSED SHOOTER!{~}"
+      "198AutocastA1": "{~33CCCC}The @mon@ cast on themselfves BLESSED SHOOTER!{~}"
+      "199AutocastA0": "{~33CCCC}The @mon@ boosts allies with EXPERT MIRTH!{~}"
+      "199AutocastA1": "{~33CCCC}The @mon@ boosts allies with EXPERT MIRTH!{~}"
+      "200AutocastA0": "{~33CCCC}The @mon@ cast on itself SHIELD OF THE EMPIRE!{~}"
+      "200AutocastA1": "{~33CCCC}The @mon@ cast on themselfves SHIELD OF THE EMPIRE!{~}"
+      "201AutocastA0": "{~33CCCC}The @mon@ cast on itself BLESS OF FAITH!{~}"
+      "201AutocastA1": "{~33CCCC}The @mon@ cast on themselfves BLESS OF FAITH!{~}"
+      "202AutocastA0": "{~33CCCC}The @mon@ cast on itself GLORY OF THE KNIGHT!{~}"
+      "202AutocastA1": "{~33CCCC}The @mon@ cast on themselfves GLORY OF THE KNIGHT!{~}"
+      "203AutocastA0": "{~33CCCC}The @mon@ cast on itself BATTLE CRY OF THE WARLORD!{~}"
+      "203AutocastA1": "{~33CCCC}The @mon@ cast on themselfves BATTLE CRY OF THE WARLORD!{~}"
+      "150AutocastA0": "{~33CCCC}The @mon@ cast on itself PRAYER!{~}"
+      "150AutocastA1": "{~33CCCC}The @mon@ cast on themselfves PRAYER!{~}"
+      "206AutocastA0": "{~33CCCC}The @mon@ cast on itself MAGIC MIRROR!{~}"
+      "206AutocastA1": "{~33CCCC}The @mon@ cast on themselfves MAGIC MIRROR!{~}"
+      "25AutocastA0": "{~33CCCC}The @mon@ cast on itself FORTUNE!{~}"
+      "25AutocastA1": "{~33CCCC}The @mon@ cast on themselfves FORTUNE!{~}"
+      "205AutocastA0": "{~33CCCC}The @mon@ cast on itself PRECISION!{~}"
+      "205AutocastA1": "{~33CCCC}The @mon@ cast on themselfves PRECISION!{~}"
+      "208AutocastA0": "{~33CCCC}The @mon@ boosts allies with EXPERT FORTUNE!{~}"
+      "208AutocastA1": "{~33CCCC}The @mon@ boosts allies with EXPERT FORTUNE!{~}"
+      "27AutocastA0": "{~33CCCC}The @mon@ cast on itself STONE SKIN!{~}"
+      "27AutocastA1": "{~33CCCC}The @mon@ cast on themselfves STONE SKIN!{~}"
+      "151AutocastA0": "{~33CCCC}The @mon@ boosts allies with EXPERT STONE SKIN!{~}"
+      "151AutocastA1": "{~33CCCC}The @mon@ boosts allies with EXPERT STONE SKIN!{~}"
+      "34AutocastA0": "{~33CCCC}The @mon@ cast on itself AIR SHIELD!{~}"
+      "34AutocastA1": "{~33CCCC}The @mon@ cast on themselfves AIR SHIELD!{~}"
+      "35AutocastA0": "{~33CCCC}The @mon@ cast on itself PROTECTION OF THE MASTER!{~}"
+      "35AutocastA1": "{~33CCCC}The @mon@ cast on themselfves PROTECTION OF THE MASTER!{~}"
+      "212AutocastA0": "{~33CCCC}The @mon@ cast on itself PROTECTION OF THE MASTER!{~}"
+      "212AutocastA1": "{~33CCCC}The @mon@ cast on themselfves PROTECTION OF THE MASTER!{~}"
+      "212AutocastB0": "{~33CCCC}The @mon@ cast on itself MAGICAL SHIELDS!{~}"
+      "212AutocastB1": "{~33CCCC}The @mon@ cast on themselfves MAGICAL SHIELDS!{~}"
+      "212AutocastC0": "{~33CCCC}The @mon@ cast on itself CLONE!{~}"
+      "212AutocastC1": "{~33CCCC}The @mon@ cast on themselfves CLONE!{~}"
+      "216AutocastA0": "{~33CCCC}The @mon@ cast on itself EXPERT FIRE SHIELD!{~}"
+      "216AutocastA1": "{~33CCCC}The @mon@ cast on themselfves EXPERT FIRE SHIELD!{~}"
+      "219AutocastA0": "{~33CCCC}The @mon@ cast on itself FRENZY!{~}"
+      "219AutocastA1": "{~33CCCC}The @mon@ cast on themselfves FRENZY!{~}"
+      "220AutocastA0": "{~33CCCC}The @mon@ boosts allies with EXPERT BLOODLUST!{~}"
+      "220AutocastA1": "{~33CCCC}The @mon@ boosts allies with EXPERT BLOODLUST!{~}"
+      "227AutocastA0": "{~33CCCC}The @mon@ cast on itself FUNGAL WAR POTION!{~}"
+      "227AutocastA1": "{~33CCCC}The @mon@ cast on themselfves FUNGAL WAR POTION!{~}"
+      "236AutocastA0": "{~33CCCC}The @mon@ cast on itself ELEMENTAL PROTECTION!{~}"
+      "236AutocastA1": "{~33CCCC}The @mon@ cast on themselfves ELEMENTAL PROTECTION!{~}"
+      "237AutocastA0": "{~33CCCC}The @mon@ cast on itself AIR ENCHANTMENT!{~}"
+      "237AutocastA1": "{~33CCCC}The @mon@ cast on themselfves AIR ENCHANTMENT!{~}"
+      "239AutocastA0": "{~33CCCC}The @mon@ cast on itself FIGHTING RITUAL!{~}"
+      "239AutocastA1": "{~33CCCC}The @mon@ cast on themselfves FIGHTING RITUAL!{~}"
+      "246AutocastA0": "{~33CCCC}The @mon@ cast on itself HASTE!{~}"
+      "246AutocastA1": "{~33CCCC}The @mon@ cast on themselfves HASTE!{~}"
+      "247AutocastA0": "{~33CCCC}The @mon@ cast on itself BLESS!{~}"
+      "247AutocastA1": "{~33CCCC}The @mon@ cast on themselfves BLESS!{~}"
+      "248AutocastA0": "{~33CCCC}The @mon@ cast on itself EXPERT SLAYER!{~}"
+      "248AutocastA1": "{~33CCCC}The @mon@ cast on themselfves EXPERT SLAYER!{~}"
+      "249AutocastA0": "{~33CCCC}The @mon@ cast on itself SHIELD!{~}"
+      "249AutocastA1": "{~33CCCC}The @mon@ cast on themselfves SHIELD!{~}"
+      "250AutocastA0": "{~33CCCC}The @mon@ cast on itself CLONE!{~}"
+      "250AutocastA1": "{~33CCCC}The @mon@ cast on themselfves CLONE!{~}"
+      "131AutocastA0": "{~33CCCC}The @mon@ cast on itself FIRE POWER!{~}"
+      "131AutocastA1": "{~33CCCC}The @mon@ cast on themselfves FIRE POWER!{~}"
+      "158AutocastA0": "{~33CCCC}The @mon@ cast on itself KILLER INSTINCT!{~}"
+      "158AutocastA1": "{~33CCCC}The @mon@ cast on themselfves KILLER INSTINCT!{~}"
+      "136AutocastA0": "{~33CCCC}The @mon@ cast on itself ENCHANTER PROTECTION!{~}"
+      "136AutocastA1": "{~33CCCC}The @mon@ cast on themselfves ENCHANTER PROTECTION!{~}"
+      "169AutocastA0": "{~33CCCC}The @mon@ cast on itself BLESSING OF THE TRUE BELIEVER!{~}"
+      "169AutocastA1": "{~33CCCC}The @mon@ cast on themselfves BLESSING OF THE TRUE BELIEVER!{~}"
+      "169AutocastA0": "{~33CCCC}The @mon@ cast on enemies CURSE OF THE SORCERESS!{~}"
+      "169AutocastA1": "{~33CCCC}The @mon@ cast on enemies CURSE OF THE SORCERESS!{~}"
+    }
+
+    "cancelRetal0": "{~f536bc}@mon@ loses the chance to retaliate!{~}",
+    "cancelRetal1": "{~f536bc}@mon@ lose the chance to retaliate!{~}",
+    "block": "{@mon@ managed to BLOCK the next attack.}",
+    "parry": "{@mon@ managed to PARRY 50% of damage of the next attack.}",
+    "cutthroat": "{~939393}@cutthroat@ is in KILL FRENZY!{~}",
+    "stun": "{~9746e3}@mon@ STUNNED the enemy!{~}",
+    "specialPoison": {
+      "26a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with his BREATH!{~}",
+      "26a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with his BREATH!{~}",
+      "49a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with INFERNAL FEVER!{~}",
+      "49a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with INFERNAL FEVER!{~}",
+      "218a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with INFERNAL FEVER!{~}",
+      "218a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with INFERNAL FEVER!{~}",
+      "222a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with BLACK PLAGUE!{~}",
+      "222a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with BLACK PLAGUE!{~}",
+      "223a0": "{~9746e3}@atkMon@ has DAZED @defMon@ with SCREAM OF THE BANSHEE!{~}",
+      "223a1": "{~9746e3}@atkMon@ have DAZED @defMon@ with SCREAM OF THE BANSHEE!{~}",
+      "224a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with BITE OF THE NOSFERATU!{~}",
+      "224a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with BITE OF THE NOSFERATU!{~}",
+      "226a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with UNDEAD FEVER!{~}",
+      "226a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with UNDEAD FEVER!{~}",
+      "154a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with BITE OF THE DEATH!{~}",
+      "154a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with BITE OF THE DEATH!{~}",
+      "71a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with ENFEEBLING POISON!{~}",
+      "71a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with ENFEEBLING POISON!{~}",
+      "227a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with POWERFUL ENFEEBLING POISON!{~}",
+      "227a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with POWERFUL ENFEEBLING POISON!{~}",
+      "228a0": "{~9746e3}@atkMon@ has DAZED @defMon@ with MADNESS OF THE HARPIES!{~}",
+      "228a1": "{~9746e3}@atkMon@ have DAZED @defMon@ with MADNESS OF THE HARPIES!{~}",
+      "81a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with MANTICORE POISON!{~}",
+      "81a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with MANTICORE POISON!{~}",
+      "232a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with CHAOTIC POISON!{~}",
+      "232a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with CHAOTIC POISON!{~}",
+      "105a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with YELLOW FEVER!{~}",
+      "105a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with YELLOW FEVER!{~}",
+      "241a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with YELLOW FEVER!{~}",
+      "241a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with YELLOW FEVER!{~}",
+      "241b0": "{~3faa11}@atkMon@ has POISONED @defMon@ with POISON OF THE MARSHES!{~}",
+      "241b1": "{~3faa11}@atkMon@ have POISONED @defMon@ with POISON OF THE MARSHES!{~}",
+      "241c0": "{~9746e3}@atkMon@ has INFECTED @defMon@ with VENOM OF THE CHAOS!{~}",
+      "241c1": "{~9746e3}@atkMon@ have INFECTED @defMon@ with VENOM OF THE CHAOS!{~}",
+      "242a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with PLAGUE OF THE BLACK MARSHES!{~}",
+      "242a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with PLAGUE OF THE BLACK MARSHES!{~}",
+      "108a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with POISON OF THE WYVERN!{~}",
+      "108a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with POISON OF THE WYVERN!{~}",
+      "109a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with POISON OF THE WYVERN MONARCH!{~}",
+      "109a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with POISON OF THE WYVERN MONARCH!{~}",
+      "243a0": "{~3faa11}@atkMon@ has INFECTED @defMon@ with BLACK SWAMP PLAGUE!{~}",
+      "243a1": "{~3faa11}@atkMon@ have INFECTED @defMon@ with BLACK SWAMP PLAGUE!{~}",
+      "77a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with AGONY SHOOT!{~}",
+      "77a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with AGONY SHOOT!{~}",
+      "230a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with AGONY SHOOT!{~}",
+      "230a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with AGONY SHOOT!{~}",
+      "101a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with ENFEEBLING POISON!{~}",
+      "101a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with ENFEEBLING POISON!{~}",
+      "240a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with HUNTER'S VENOM!{~}",
+      "240a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with HUNTER'S VENOM!{~}",
+      "65a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with MALEFICENT SHOOT!{~}",
+      "65a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with MALEFICENT SHOOT!{~}",
+      "225a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with LICH SHOOT!{~}",
+      "225a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with LICH SHOOT!{~}",
+      "196a0": "{~3faa11}@atkMon@ has POISONED @defMon@ with UTTER END SHOOT!{~}",
+      "196a1": "{~3faa11}@atkMon@ have POISONED @defMon@ with UTTER END SHOOT!{~}",
+    }
+  }
+}

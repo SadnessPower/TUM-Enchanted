@@ -1,0 +1,261 @@
+**********CHANGELOG TUM ENCHANTED 2.0**********
+Now TUM ENCHANTED is downloadable via Mod Browser :)
+
+BUG FIXES:
+- (Regression) Fixed clicking on small portraits on Town Screen doesn't show TUM creatures
+- Unupgraded Level 1 creature growth on Fort is now correctly reported (Thanks to Trebuchet)
+
+IMPROVEMENTS:
+- TUM Upgraded creature are now displayed on Fort screen (Thanks to Trebuchet)
+
+BALANCE:
+- Removed ignoring Hypnotize HP cast requirements.
+
+KNOWN ISSUES
+- (WOG Bug) TUM Upgraded Liches and Vampires cannot be resurrected by Commander.
+- Rare bug causing a siege attack having Citadel defense even though Castle was built (need to narrow down the problem, please report savegame if it occurs to you)
+
+**********CHANGELOG TUM ENCHANTED 1.5**********
+Now TUM Lite and TUM Lite Enchanted are merged in a single mod called TUM ENCHANTED. Please delete or disable TUM Lite and TUM Lite Enchanted before running this.
+
+BUG FIXES:
+- Fixed non-flying creature with Strike&Return ability mistakenly returning back after hitting a Quicksand square
+- Fixed click on small creature portraits on bottom left on town screen showing sometimes wrong or missing creatures to recruit.
+- Removed magic resistance chance to trigger on Lord of Elementals when autocasting Clone on himself.
+- Fixed Santa Gremlin's attack.
+- Fix some special poison ability which cause to partially activated with against immune creatures.
+- Fix Fire Wall attack which can't be cast against immune creatures.
+
+BALANCE:
+- DIAMOND DRAGONS Stunning Attack removed. 
+- CERBERUS and BANE OF SOULS now have 7 speed instead of 8. Maximum damage is now 6, down from 7.
+- MAGE, ARCHMAGE, SUPREME ARCHMAGE and ENCHANTER now have 100% of casting after shooting.
+- SUPREME ARCHMAGE minimum damage is now 9, up from 7.
+- MASTER GENIE now have 50 hp, up from of 45.
+- BATTLEMAGE OF THE CITY OF ICE AND STEEL now have 60 hp up from 50. Attack skill is now 19, up from 16.
+- ENCHANTER now have 18 ATK and 16 DEF skill, up from 15 and 14.
+
+BUILDINGS REQUIREMENTS CHANGES:
+- UPGRADED MAGE TOWER and ALTAR OF WISHES now require Mage Guild Level 2.
+- SECOND UPGRADED VAMPIRE MANSION now require Spectral Tomb.
+- UPGRADED PILLAR OF EYES and CHAPEL OF STILLED VOICES now require Mage Guild Level 1.
+- SECOND UPGRADED WARREN PIT now require Mushuroom Rings and Mage Guild Level 1.
+- SECOND UPGRADED PILLAR OF EYES and CHAPEL OF STILLED VOICES now require Mage Guild Level 2.
+- SECOND UPGRADED LABYRINTH AND MANTICORE LAIR now require Dragon Cave, but price are lowered.
+- SECOND UPGRADED ORC FORTIFIED TOWER now require Hall of Valhalla.
+- SECOND UPGRADED GNOLL HUT AND LIZARD DEN now require Mage Guild Level 1.
+- UPGRADED GORGON LAIR now require Upgraded Gnoll Hunt.
+- UPGRADED WYVERN NEST now require Upgraded Lizard Den.
+- SECOND UPGRADED GORGON LAIR now require Second Upgraded Gnoll Hunt.
+- SECOND UPGRADED WYVERN NEST now require Second Upgraded Lizard Den.
+- CONFLUX Altars now require Mage Guild Level 1.
+- UPGRADED ALTAR OF THOUGHT now require Mage Guild Level 2 and all of the elemental altars.
+- SECOND UPGRADED ALTAR OF THOUGHT now requires Mage Guild Level 3 and all of the elemental altars upgraded.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+OLDER CHANGELOGS 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**********CHANGELOG TUM LITE ENCHANTED EDITION 1.4**********
+BUG FIXES:
+- Fixed Lords of Elements resisting the spell when autocasting Clone on himself.
+- Removed ability to cast Clone from already cloned monsters.
+- Fixed abilities with 20% trigger chance mistakenly triggering every time.
+- Removed forced disabling of "Skeletons with Artifacts" WOG Option (thanks to TheInvisible1966).
+
+IMPROVEMENTS:
+- BUILDING DEPENDENCIES ON TUM BUILDINGS has been implemented! (thanks to Yuji Sakai).
+  Additionally, original building dependences will have the following changes:
+  
+  Rampart:
+  Unicorn Glade (lvl 6) now requires only Homestead (lvl 3). Formerly it required also Enchanted Spring (lvl 4) and Dendroid Arches (lvl 5).
+  
+  Tower:
+  Golden Pavillion (lvl 6) now requires Altar of Wishes (lvl 5).
+  
+  Conflux:
+  Air/Water/Fire/Earth Elementals building requirements removed.
+  Altar of Thought (lvl 6) now requires all elementals dwelling buildings.
+
+- Removed WOG Imposed Abilities. For a complete list, refer to "Data\s\Creature Ability - WOG Ability Elimination without Amethyst.erm.off".
+- Now the majority of poison attacks cannot be magic resisted by attacked creature.
+- Neutral town defense accumulation script will now recognize customized defense towns and it will skip them, to improve compatibility in custom scenarios.
+
+BALANCE:
+- Neutral town defense accumulation changes (colored in green in the respective Excel file):
+   - Town defense at game start is slightly increased, and added a small chance for a surprise :)
+   - Dwelling growth at Month 3 reduced to 1*Week growth from 2*Week growth
+   - Level 7 TUM Upgrade delayed to Month 4 Week 1, from Month 3 Week 3
+
+- BANSHEE Scream doesn't inflict paralyze anymore. Enemies can retaliate after the scream.
+- NOSFERATU loses the ability to poison his enemy with Bite of the Nosferatu
+- BLACK KNIGHT now have 20% change to curse his enemies, down from 25%.
+- DREAD KNIGHT now have 30% change to curse his enemies, up from 25%.
+- DEATH KNIGHT cost is increased to 2600, up from 2500.
+- BONE DRAGON, GHOST DRAGON AND BLOOD DRAGON chance to Sorrow his enemies are lowered to 30% instead of 50%.
+- BLOOD DRAGON Bite of the Death doesn't inflict Slow anymore.
+
+**********CHANGELOG TUM LITE ENCHANTED EDITION 1.3**********
+
+BUG FIXES:
+- Fix a small bug which prevent Fairie and Sprites to autocast spells at first round of the battle.
+- Now Holy Champion have Jousting Bonus as reported in the description
+
+IMPROVEMENTS:
+*Neutral town strong defense script improvements:
+ - Now disabled for campaign games.
+ - When there are more than 1 slot having same dwelling level creatures with same or different level of upgrades, the units will be merged into a single stack with the higher upgrade.
+ - Removed pop-up message on the end of the week when there are no empty slots to add a creature.
+
+BALANCE:
+- GRIFFIN Basic Growth is 5 instead of 6.
+- GHOST DRAGON now have 12 speed instead of 13
+- BLOOD DRAGON now have 19 atk and 17 def instead of 24 and 22 respectly. Speed is reduced to 13 instead of 14. Hp is now 250 instead of 300.
+- BARBARIANS OF THE WILDLANDS now cost 85 gold instead of 90.
+- MEN HUNTER now cost 85 gold instead of 90.
+- ORC BERSEKER now cost 310 gold instead of 320.
+- OGRE MAGI now cost 310 gold instead of 330.
+- OGRE BATTLE SHAMAN now cost 520 gold instead of 550. Attack skill is now 16 instead of 14.
+- GIANT EAGLE now cost 470 gold instead of 480.
+- THUNDERBIRDS now cost 555 gold instead of 560.
+- CYCLOPS BLOOD EYE now cost 2000 gold instead of 2200. Damage is now 18-24 instead of 16-20.
+- FURY OF THE WILDLANDS attack and defence skill are now 24 and 21 respectly, instead of 21. Damage is now 50-80 instead of 40-70. Cost of gold are lowered, now is 7400 gold instead of 7600.
+- GNOLL MARAUDER now cost 70 gold instead of 90.
+- GNOLL BATTLE SHAMAN now cost 110 gold instead of 130.
+- LORD OF THE SWAMP attack skill are now 20 instead of 22. Cost of gold are lowered, now is 8000 gold instead of 8100.
+- MAGIC ELEMENTAL speed now is 8 instead of 9.
+- LORD OF THE ELEMENTALS speed now is 9 insted of 10.
+- PHOENIX speed now is 18 instead of 19.
+- SACRED PHOENIX attack and defence skill are now 21 and 18 respectly, instead of 24 and 22. Speed is reduced to 19 instead of 21. Damage is now 30-40 instead of 40-60. Hp is now 250 instead of 300.
+- BLOODY VAULT cost is now 20000 instead of 25000 gold.
+- SPIRIT PYRE cost is now 23000 instead of 21000 gold.
+
+
+**********CHANGELOG TUM LITE ENCHANTED EDITION 1.2**********
+
+BUG FIXES:
+*DIAMOND DRAGON Hero spell point regeneration ability removed (Dling Dlong Sound) thanks to SadnessPower.
+*Ogre Magi can now cast Haste correctly.
+*Might of the Catoblepas Bonus is now show correclty (+4 def).
+*Mummy description show 100% cursed attack.
+
+BALANCE:
+*GENERAL: All active buff/debuff caster units now are more useful with a basic +3 Spell Power, then if you decide to invest 1 creature turn to cast, your buff/debuff duration is at least 4 turns.
+
+*PREATORIANS "Wall of Shield Formation" bonus now grants -1 Atk +6 Def instead of -1 Atk +4 Def.
+*GOLD DRAGON "Dragon Defence" bonus now grants +4 Def instead of -1 Atk +4 Def, but chance are lowered to 20% instead of 30.
+*DIAMOND DRAGON "Ultimate Defence" bonus now grants +8 Def
+instead of +6 Def, but chance are lowered to 30% instead of 40%.
+*BATTLEMAGE OF THE CITY OF ICE AND STEEL "Parry" chance is increased to 30% instead of 20% and have +1 Defence skill.
+*ASSASSIN OF THE GOLDEN CITY defence skill is increased to 16 instead of 15.
+*MASTER OF THE SIX BLADES defence skill is increased to 18 instead of 16.
+*IMP now can actively cast Expert Misfortune instead of Misfortune.
+*HELL BARON "Strong Diabolic Fury" chance are lowered to 30% instead of 40%.
+*BLOOD DRAGON damage is lowered to 30-60 instead of 35-65. Attack and Defence skills are now -1.
+*LORD OF THE SWAMP defence skill is lowered to 22 instead of 24. Price is lowered by -100 gold.
+*SACRED PHOENIX defence and attack skill is lowered by -2 either.
+
+KNOWN ISSUES
+*Neutral town strong defense script will pop-up a message if there are no empty slots to add a creature
+
+
+**********CHANGELOG TUM LITE ENCHANTED EDITION 1.1**********
+
+BUG FIXES:
+*Small bug with Tavern calculation income is now fixed.
+*Fixed Town Building seldom allowing to build more than 1 building per turn.
+
+BALANCE:
+*Preator have +3 atk and def. 
+*Hell Hound now have 4-5 damage instead of 4-6.
+*Mage, Archmage and Supreme Archmage have +5 hp but damage is slightly lower.
+*Supreme Archmage now can autocast Clone with 10% chance.
+*Ogre Battle Shaman now have 6-12 damage instead of 5-12.
+*Sacred Phoenix AI and Fight Value are increased from 11000 to 11500
+*Gold Golem Upgrade in Diamond Golem is no longer possible, they are 2 separate creatures 
+*Neutral towns guard accumulation: Reduced growth on Pikemem and Centaur.
+*Cripling Attack and Shoot are same effect of ACM Ballista Perk (-4 atk and def -1 Speed)
+
+IMPROVEMENTS:
+*Added animation and sound for abilities which apply an effect on an enemy after attacking him (like Destroy Armor).
+
+MISCELLANEOUS:
+*Added force disabling for conflicting wog options. 
+*Neutral towns guard accumulation: added an Excel file to show growth progression.
+*Creatures Cost: added an Excel file to show cost progression.
+*Now Crippling Attack and Shooting have same ACM animation and sound
+
+
+**********CHANGELOG TUM LITE ENCHANTED EDITION 1.0**********
+
+BUG FIXES:
+*Fixed Commander Crash when try to cast
+
+BALANCE:
+*War Zealot now have +10hp for compensate the loss of casting ability (which had cause crash)
+*Mage, Archmage and Supreme Archmage do slightly more basic damage
+*Lord of Thunder now can cast Lighting Bolt instead of Chain Lightning
+*Berseker Dwarf have 30 hp now instead of 25. 
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+********************CHANGELOG TUM LITE 2.3*****************
+IMPROVEMENTS
+- You can now Ctrl+Click on any creature or artifact on the map to show description and attributes (thanks to Yuji Sakai).
+- Building dependencies support on TUM buildings has been implemented (thanks to Yuji Sakai).
+
+BUG FIX
+Town Building menu fixes:
+- Mage Guild built at maximum level now correctly reports guild level.
+- Fixed Gold barred icon not shown sometimes in Town Building menu when you can't afford a building.
+- Fixed yellow mark incorrectly shown in dwelling buildings when you can build the TUM Upgrade for that building
+
+KNOWN ISSUES
+- (WOG Bug) TUM Upgraded Liches and Vampires cannot be resurrected by Commander.
+
+- Rare bug causing a siege attack having Citadel defense even though Castle was built (need to narrow down the problem, please report savegame if it occurs to you)
+
+- Pikemen growth on Fort is mistakenly reported as 0
+
+
+********************CHANGELOG TUM LITE 2.2b****************
+BUG FIX
+- Fixed bug which sometimes doesn't allow to buy buildings (regression from 2.2)
+
+COMPATIBILITY
+- Universal Creature Upgrades wog option is now compatible with TUM Lite. 
+
+
+********************CHANGELOG TUM LITE 2.2*****************
+
+BUG FIX
+- Fixed crash on left click on Pikemen small portrait 
+- Fixed horrible bug which under certain circumstances allowed AI to build both upgraded and TUM upgraded creatures while leaving the number of hiring creatures in town untouched 
+- Fixed Refugee Camps offering creatures while showing Pikemen image and crash afterwards 
+- Fixed Hero Creature Specialist bonus not given to upgraded and TUM Upgraded creatures
+- Fixed check for building resource requirement which sometimes allowed to build without having enough resources
+- Fixed being able to quick upgrade a creature (by pressing 'A' in towns) to TUM without having the corresponding TUM Upgrade Building
+- Fixed Difficulty Mod option "Creature Banks" not working if wog option "Neutral Town and Creature Growth" is disabled
+- Fixed ERM error occurring when an AI creature resurrects a dead stack
+
+********************CHANGELOG TUM LITE 2.1*****************
+
+BUG FIX
+- Fixed "Building twice a turn" wog option for TUM Upgrades.
+- Fixed Flesheater for Ghoul, now triggers only one time instead of two.
+- Fixed creature icons on the left in towns not properly showing sometimes.
+- Fixed creature icons on the left in towns now correctly shows TUM Upgrade portraits when built.
+- Fixed clicking on creature icons on the left in towns sometimes didn't work.
+- Fixed horrible bug which caused sometimes an AI stack to trasform into another owned stack (like 20 marksmen becoming 20 Supreme Archangel)
+
+IMPROVEMENTS
+- Tweaks to AI Building Priority: 
+
+     Fixed AI often not building Citadel/Castle until month 2, by introducing these rules:
+  
+     Only applies on day_of_week >=6
+       if AI has dwelling level 5 or 6 or 7 and can build Citadel, he must build it
+       if AI has dwelling level 6 or 7 and can build Castle, he must build it
+
+- TUM Upgrades priority adjustment: Standard TUM Building priority was 30000 (very high), now it is decreased of 10000 for each dwelling 5-6-7 level AI doesn't have

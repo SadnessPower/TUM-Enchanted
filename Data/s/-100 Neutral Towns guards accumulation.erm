@@ -1,0 +1,405 @@
+ZVSE2
+; Author:   Roberto La Maestra (Sadnesspower) - robertomaest1@gmail.com
+; Engine:   ERM 2.0+
+; Requires: ERA 3.4+, Era Erm Framework, WoG Scripts (80 base), Third Upgrade Mod Lite
+
+; Set guards in neutral towns according to town types. Guards will grow increasingly each week
+; Suited and balanced for random maps
+
+!#VRi^logNTGA^:S(FALSE);
+
+!?FU(OnGameEnter);
+!#VRi^wog_235_increaseTownGuards_enabled^:S(FALSE);
+
+!?FU(OnEveryDay)&i^timerWeekDay^=1/i^timerOnce^=1;
+!#VA(x:y) (y:y) (z:y);
+
+!!SN:F^IsCampaign^;                     [result returned in v1]
+!!FU&v1:E;                              [disable script for campaign mode]
+
+!!IF&i^logNTGA^=(TRUE):M^timerDay = %i(timerDay), timerWeekDay = %i(timerWeekDay), timerOnce = %i(timerOnce), lastDay = %i(lastDay)^;
+
+!!VR(x):S-1;
+
+!!re i;                                 [loop through all towns]
+  !!UN:U(OBJ_TOWN)/(ANY_OBJ)/-1/(x)/(y)/(z);
+  !!br&(x)<0;
+
+  !!CA(x)/(y)/(z):O?(owner:y);
+  !!CA(x)/(y)/(z):H0/?(garrisonHero:y) H1/?(visitingHero:y); [check for garrison / visiting hero]  
+  
+  !!if&(owner)=(NO_PLAYER)/(garrisonHero)=(NO_HERO)/(visitingHero)=(NO_HERO);  
+     !!if&i^timerDay^=1;                                              [setup phase]
+         !!FU(IsCustomizedDefenseTown):P(x)/(y)/(z)/?(isCustomizedDefenseTown:y);
+         !!PO(x)/(y)/(z):V3/(isCustomizedDefenseTown);                [save isCustomizedDefenseTown status]       
+     !!en;     
+
+     !!PO(x)/(y)/(z):V3/?(isCustomizedDefenseTown);
+     !!IF&i^logNTGA^=(TRUE)/(isCustomizedDefenseTown)=(TRUE):M^Skipping town customized at %(x)/%(y)/%(z)^;
+     !!FU(townguards_Accumulation)&(isCustomizedDefenseTown)=(FALSE):P(x)/(y)/(z);  [grow defense only if town is marked as not Customized
+  !!en;
+!!en;
+
+!?FU(townguards_Accumulation);
+!#VA(x:x) (y:x) (z:x);
+
+!!IF&i^logNTGA^=(TRUE):M^townguards_accumulation: timerDay = %i(timerDay)^;
+
+!!if&i^timerDay^=1;
+   !!VR(fivePercent:y):R0/1/20;
+   !!FU(execute_randomRollsForGrowth)&(fivePercent)<20:P(x)/(y)/(z)/3/3;
+   !!FU(FixedStartingDefense)&(fivePercent)=20:P(x)/(y)/(z);
+!!en;
+
+!!if&i^timerDay^=8;
+   !!VR(numRolls:y):R0/2/4;
+   !!FU(execute_randomRollsForGrowth):P(x)/(y)/(z)/(numRolls)/4;
+
+   !!VR(numRolls):R0/0/1;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/5;
+!!en;
+
+!!if&i^timerDay^=15;
+   !!VR(numRolls):R0/3/5;
+   !!FU(execute_randomRollsForGrowth):P(x)/(y)/(z)/(numRolls)/6;
+
+   !!VR(numRolls):R0/0/2;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/6;
+!!en;
+
+!!if&i^timerDay^=22;
+   !!FU(execute_allLevelsGrowth):P(x)/(y)/(z);
+
+   !!VR(numRolls):R0/0/2;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/6;
+!!en;
+
+!!if&i^timerDay^=29;
+   !!VR(fiftyPercent:y):R0/0/1;
+   !!VR(numRolls):R0/3/5;
+   !!FU(execute_randomRollsForGrowth)&(fiftyPercent)=1:P(x)/(y)/(z)/(numRolls)/7;
+   !!FU(execute_allLevelsGrowth):P(x)/(y)/(z);
+
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/1/5;
+!!en;
+
+!!if&i^timerDay^=36;
+   !!VR(numRolls):R0/2/4;
+   !!FU(execute_randomRollsForGrowth):P(x)/(y)/(z)/(numRolls)/7;
+   !!FU(execute_allLevelsGrowth):P(x)/(y)/(z);
+
+   !!VR(numRolls):R0/0/1;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/5;
+
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/1/6;
+!!en;
+
+!!if&i^timerDay^=43;
+   !!VR(numRolls:y):R0/1/6;
+   !!FU(execute_randomRollsForGrowth):P(x)/(y)/(z)/(numRolls)/7;
+   !!FU(execute_allLevelsGrowth):P(x)/(y)/(z);
+
+   !!VR(numRolls):R0/0/1;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/6;
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/1/7;
+!!en;
+
+!!if&i^timerDay^=50;
+   !!VR(numRolls):R0/5/8;
+   !!FU(execute_randomRollsForGrowth):P(x)/(y)/(z)/(numRolls)/7;
+   !!FU(execute_allLevelsGrowth):P(x)/(y)/(z);
+
+   !!VR(numRolls):R0/0/1;
+   !!FU(execute_randomRollsForUpgrade):P(x)/(y)/(z)/(numRolls)/6;
+!!en;
+
+!!if&i^timerDay^=57;
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/2/5;
+!!en;
+
+!!if&i^timerDay^=64;
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/2/6;
+!!en;
+
+!!if&i^timerDay^=85;
+   !!FU(execute_allMonsterUpgradesToLevel):P(x)/(y)/(z)/2/7;
+!!en;
+
+!!FU(execute_allLevelsGrowth)&i^timerDay^>=57:P(x)/(y)/(z);   ; from month 3 onwards: 1 full monsters growth 
+!!FU(execute_allLevelsGrowth)&i^timerDay^>=85:P(x)/(y)/(z);   ; from month 4 onwards: an additional full monsters growth 
+                                    
+
+
+!?FU(execute_randomRollsForGrowth);                           [execute # random rolls for monster level to increase]
+!#VA(x:x) (y:x) (z:x) (numRolls:x) (maxMonsterLevel:x);
+
+!!FU&(numRolls)=0:E;
+
+!!IF&i^logNTGA^=(TRUE):M^execute_randomRollsForGrowth: numRolls = %(numRolls), maxMonsterLevel = %(maxMonsterLevel)^;
+!!re i/1/(numRolls); 
+  !!VR(maxMonsterLevel):-1;       [decrease level by 1 because first level is zero]
+  !!VR(monsterLevel:y):R0/0/(maxMonsterLevel);
+  !!FU(singleStack_Growth):P(x)/(y)/(z)/(monsterLevel);
+!!en;
+
+!?FU(execute_allLevelsGrowth);                                [increase all monsters levels']
+!#VA(x:x) (y:x) (z:x);
+
+!!IF&i^logNTGA^=(TRUE):M^execute_allLevelsGrowth^;
+
+!!re i/0/6; 
+  !!FU(singleStack_Growth):P(x)/(y)/(z)/i;
+!!en;
+
+!?FU(singleStack_Growth);
+!#VA(x:x) (y:x) (z:x) (monsterLevel:x);
+
+!#VA(growth[8]:y);
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+; setting growth according to current Month
+!!if|(townType)=(TOWN_CASTLE)/(townType)=(TOWN_RAMPART);
+   !!VR(growth)&i^timerDay^>56:C45/20/10/7/5/3/2;
+   !!VR(growth)&i^timerDay^<=56/i^timerDay^>28:C45/20/10/7/5/3/2;
+   !!VR(growth)&i^timerDay^<=28:C15/10/4/3/3/2/1;
+   *!IF:M^Castle/Rampart %(x)/%(y)/%(z)^;
+!!el;
+   !!VR(growth)&i^timerDay^>56:C65/20/10/7/5/3/2;
+   !!VR(growth)&i^timerDay^<=56/i^timerDay^>28:C65/20/10/7/5/3/2;
+   !!VR(growth)&i^timerDay^<=28:C20/10/4/3/3/2/1;
+   *!IF:M^other castles %(x)/%(y)/%(z)^;
+!!en;
+
+
+!!IF&i^logNTGA^=(TRUE):M^singleStack_Growth: Calling tum_GetMonstersInTown: townType = %(townType), monsterLevel = %(monsterLevel)^;
+
+!!FU(MergeSameDwelling):P(x)/(y)/(z);       [if there are unupgraded and upgraded or TUM upgraded monsters of same dwellings]
+;                                           [merge them in a single stack with the most grade]
+
+!!FU(tum_GetMonstersInTown):P(townType)/(monsterLevel)/?(mon:y)/?(upgMon:y)/?(tumMon:y);      [get unupgraded, upgraded, and tum monster ids]
+
+!!re i/0/6;                          [check if monster is already in town]
+   !!CA(x)/(y)/(z):M2/i/?(monsterType:y)/?(creatureQuantity:y);
+   !!if&(creatureQuantity)>0;
+      !!if|(monsterType)=(mon)/(monsterType)=(upgMon)/(monsterType)=(tumMon);      [if monster is already in town...]      
+         !!VR(creatureQuantity):+(growth[monsterLevel]);                        [...add quantity]
+         !!CA(x)/(y)/(z):M2/i/(monsterType)/(creatureQuantity);                    [...to town]
+      !!FU:E;    
+      !!en;
+   !!en;
+!!en;
+
+; no monster already found. Add new stack to first empty slot
+
+!!FU(GetFirstEmptyTownSlot):P(x)/(y)/(z)/?(firstEmptySlot:y);
+
+!!if&(firstEmptySlot)=-1;
+   !!VR(monsterLevel):+1;
+   !!IF|i^logNTGA^=(TRUE)/i^SadnessPowerDebug^=(TRUE):M^No empty slot found on castle %(x)/%(y)/%(z) - skipping add level %(monsterLevel) monster^;
+   !!FU:E;
+!!en;
+
+!!VR(monsterTypeToAdd:y)&i^timerDay^>56:S(tumMon);                     [if month>=3 add tum monster]
+  !!VR(monsterTypeToAdd)&i^timerDay^<=56/i^timerDay^>28:S(upgMon);    [if month =2 add upgraded monster]
+  !!VR(monsterTypeToAdd)&i^timerDay^<=28:S(mon);                       [if month =1 add unupgraded monster]
+
+!!CA(x)/(y)/(z):M2/(firstEmptySlot)/(monsterTypeToAdd)/(growth[monsterLevel]);     
+
+
+!?FU(execute_randomRollsForUpgrade);                           [execute # random rolls for monster upgrade]
+!#VA(x:x) (y:x) (z:x) (numRolls:x) (maxMonsterLevelToUpgrade:x);
+
+!!IF&i^logNTGA^=(TRUE):M^execute_randomRollsForUpgrade: numRolls = %(numRolls), maxMonsterLevelToUpgrade = %(maxMonsterLevelToUpgrade)^;
+
+!!VR(maxMonsterLevelToUpgrade):-1;       [decrease level by 1 because first level is zero]
+
+!!FU&(numRolls)=0:E;
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+!!re i/1/(numRolls); 
+
+  !!re j/1/200;                            [trying 200 maximum times to get an eligible slot]
+     !!VR(randomStackSlot:y):R0/0/6;      
+     !!CA(x)/(y)/(z):M2/(randomStackSlot)/?(monsterType:y)/?(creatureQuantity:y);
+
+     !!if&(creatureQuantity)>0;
+        !!MA:L(monsterType)/?(monsterLevel:y);
+        !!if&(monsterLevel)<=(maxMonsterLevelToUpgrade);     [found eligible monster. If it's already at TUM upgrade, the upgrade roll is wasted]
+           !!FU(UpgradeStack):P(x)/(y)/(z)/(randomStackSlot)/2;
+           !!br;
+        !!en;
+     !!en;
+  !!en;
+!!en;
+
+!?FU(execute_allMonsterUpgradesToLevel);                                [set all monsters to maxUpgradeLevel]
+!#VA(x:x) (y:x) (z:x) (maxUpgradeLevel:x) (maxMonsterLevelToUpgrade:x);
+
+!!IF&i^logNTGA^=(TRUE):M^execute_allMonsterUpgradesToLevel: maxUpgradeLevel = %(maxUpgradeLevel), maxMonsterLevelToUpgrade = %(maxMonsterLevelToUpgrade)^;
+
+!!VR(maxMonsterLevelToUpgrade):-1;       [decrease level by 1 because first level is zero]
+
+!!re i/0/6; 
+   !!CA(x)/(y)/(z):M2/i/?(monsterType:y)/?(creatureQuantity:y);
+
+   !!if&(creatureQuantity)>0;
+      !!MA:L(monsterType)/?(monsterLevel:y);
+      !!FU(UpgradeStack)&(monsterLevel)<=(maxMonsterLevelToUpgrade):P(x)/(y)/(z)/i/(maxUpgradeLevel);   [found eligible monster for upgrade]
+   !!en;
+!!en;
+
+!?FU(UpgradeStack);
+!#VA(x:x) (y:x) (z:x) (stackSlot:x) (maxUpgradeLevel:x);        [maxUpgradeLevel: Unupgraded(0), upgraded(1), tum(2)]
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+!!IF&i^logNTGA^=(TRUE):M^UpgradeStack: Calling tum_GetMonstersInTown: stackSlot = %(stackSlot), maxUpgradeLevel = %(maxUpgradeLevel)^;
+
+
+!!CA(x)/(y)/(z):M2/(stackSlot)/?(monsterType:y)/?(creatureQuantity:y);
+
+!!if&(creatureQuantity)>0;   
+   !!MA:L(monsterType)/?(monsterLevel:y);
+
+   !!FU(tum_GetMonstersInTown):P(townType)/(monsterLevel)/?(mon:y)/?(upgMon:y)/?(tumMon:y);      [get unupgraded, upgraded, and tum monster ids]
+
+   !!VR(newMonsterType:y):S-1;
+      
+   !!VR(newMonsterType)&(monsterType)=(mon)/(maxUpgradeLevel)>0:S(upgMon);   
+   !!VR(newMonsterType)&(monsterType)=(upgMon)/(maxUpgradeLevel)>1:S(tumMon);
+      
+   !!CA(x)/(y)/(z)&(newMonsterType)<>-1:M2/(stackSlot)/(newMonsterType)/(creatureQuantity);                  
+
+!!en;
+
+
+!?FU(GetFirstEmptyTownSlot);
+
+!#VA(x:x) (y:x) (z:x) (result:x);
+
+!!re i/0/6;                          [check for first empty slot]
+   !!CA(x)/(y)/(z):M2/i/?(monsterType:y)/?(creatureQuantity:y);
+   !!if&(creatureQuantity)=0;
+      !!VR(result):Si;
+      !!FU:E;    
+   !!en;
+!!en;
+
+!!VR(result):S-1;
+
+!?FU(FixedStartingDefense);
+!#VA(x:x) (y:x) (z:x);
+
+!!re i/0/6;                          [check for first empty slot]
+   !!CA(x)/(y)/(z):M2/i/-1/0;
+!!en;
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+!!FU(tum_GetMonstersInTown):P(townType)/5/?(level6Monster:y)/?(levelU6Monster:y)/?(levelTUM6Monster:y);      [get unupgraded, upgraded, and tum monster ids]
+
+!!VR(thirtyThreePercent:y):R0/1/3;
+
+!!CA(x)/(y)/(z)&(thirtyThreePercent)<3:M2/4/(level6Monster)/3;
+
+!!CA(x)/(y)/(z)&(thirtyThreePercent)=3:M2/3/(levelU6Monster)/1;
+!!CA(x)/(y)/(z)&(thirtyThreePercent)=3:M2/4/(level6Monster)/2;
+
+
+!?FU(GetFirstCreatureTownSlot);
+!#VA(x:x) (y:x) (z:x) (result:x);
+
+!!re i/0/6;                          [check for first creature slot]
+   !!CA(x)/(y)/(z):M2/i/?(monsterType:y)/?(creatureQuantity:y);
+   !!if&(creatureQuantity)>0;
+      !!VR(result):Si;
+      !!FU:E;    
+   !!en;
+!!en;
+
+!!VR(result):S-1;
+
+!?FU(IsCustomizedDefenseTown);
+!#VA(x:x) (y:x) (z:x) (result:x);
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+!#VA(maxNumber[4]:y);
+!!VR(maxNumber):C25/15/10/5;         [setting max number of creature per level for non-customized town]
+
+!!re i/0/6;                          
+   !!CA(x)/(y)/(z):M2/i/?(monsterType:y)/?(creatureQuantity:y);
+
+   !!if&(creatureQuantity)>0;
+      !!MA:L(monsterType)/?(monsterLevel:y);
+      !!MA:O(monsterType)/?(monsterTown:y);
+     
+      !!if|(monsterLevel)>=4/(creatureQuantity)>(maxNumber[monsterLevel])/(monsterTown)<>(townType);
+         !!IF&i^logNTGA^=(TRUE):M^Town customized at %(x)/%(y)/%(z): slot = %i 
+monsterLevel = %(monsterLevel), creatureQuantity = %(creatureQuantity), maxNumber[monsterLevel] = %(maxNumber[monsterLevel]), monsterTown = %(monsterTown), townType = %(townType)^;
+
+         !!VR(result):S(TRUE);
+         !!FU:E;    
+      !!en;
+
+      !!VR(maxNumber[monsterLevel]):S0; [max one stack per level for customized town]
+   !!en;
+!!en;
+
+!!VR(result):S(FALSE);
+
+
+!?FU(MergeSameDwelling);
+!#VA(x:x) (y:x) (z:x);
+
+!!CA(x)/(y)/(z):T?(townType:y);
+
+!!re i/0/6;                          [check if monster is already in town]
+   !!CA(x)/(y)/(z):M2/i/?(monsterType1:y)/?(creatureQuantity1:y);
+
+   !!if&(creatureQuantity1)>0;
+
+      !!MA:L(monsterType1)/?(monsterLevel:y);
+   
+      !!FU(tum_GetMonstersInTown):P(townType)/(monsterLevel)/?(mon1:y)/?(upgMon1:y)/?(tumMon1:y);      [get unupgraded, upgraded, and tum monster ids]
+
+      !!VR(grade:y):S0;
+      !!VR(grade)&(monsterType1)=(mon1):S1;
+      !!VR(grade)&(monsterType1)=(upgMon1):S2;
+      !!VR(grade)&(monsterType1)=(tumMon1):S3;
+
+      !!re j/0/6;                          [check if monster is already in town]
+    
+         !!if&i<>j;
+
+            !!CA(x)/(y)/(z):M2/j/?(monsterType2:y)/?(creatureQuantity2:y);
+
+            !!if&(creatureQuantity2)>0;
+
+               !!if|(monsterType2)=(mon1)/(monsterType2)=(upgMon1)/(monsterType2)=(tumMon1);
+                     
+                  !!IF&i^logNTGA^=(TRUE):M^monsterType1 = %(monsterType1), monsterType2 = %(monsterType2), mon1 = %(mon1), upgMon1 = %(upgMon1), tumMon1 = %(tumMon1)^;
+
+                  !!MA:L(monsterType2)/?(monsterLevel:y);
+   
+                  !!FU(tum_GetMonstersInTown):P(townType)/(monsterLevel)/?(mon2:y)/?(upgMon2:y)/?(tumMon2:y);      [get unupgraded, upgraded, and tum monster ids]
+
+                  !!VR(grade)&(monsterType2)=(upgMon2)/(grade)<2:S2;
+                  !!VR(grade)&(monsterType2)=(tumMon2):S3;  
+                  
+                  !!VR(creatureQuantity1):+(creatureQuantity2);           [monster quantity sum]
+
+                  !!CA(x)/(y)/(z)&(grade)=1:M2/i/(mon1)/(creatureQuantity1);     [allocating merged monster with new quantity]
+                  !!CA(x)/(y)/(z)&(grade)=2:M2/i/(upgMon1)/(creatureQuantity1);     
+                  !!CA(x)/(y)/(z)&(grade)=3:M2/i/(tumMon1)/(creatureQuantity1);     
+
+                  !!CA(x)/(y)/(z):M2/j/(NO_MON)/0;                        [remove old monster]
+
+               !!en;
+            !!en;
+         !!en;
+      !!en;
+   !!en;
+!!en;

@@ -1,0 +1,82 @@
+ZVSE2
+; Author:   Archer30
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+; Kill a stack to act again (with morale mechanism)
+
+
+// Funciton to check if the targeted monster is eligible for cutting throat
+!?FU(cutthroat_CheckIfMonIsEligible);
+!#VA(mon:x) (result:x);
+
+!!VR(result):S(FALSE);
+!!VR(result)&(mon)=218:S(TRUE); Infernal Slayer
+!!VR(result)&(mon)=226:S(TRUE); Death Knight
+!!VR(result)&(mon)=234:S(TRUE); Men Hunter
+!!VR(result)&(mon)=235:S(TRUE); Orc Berserker
+!!VR(result)&(mon)=156:S(TRUE); Fury of the Wildlands
+
+!?FU(OnSetupBattlefield);
+; Initialise variable - This must to be executed regardless of the option
+!!VRi^cutthroat_defStack^:S(NO_STACK);
+
+// Store defending stack ID if it is Rogue attacking another stack
+; Skipping Assassin stack (option 795) and stack that has granted morale once this turn
+!?FU(OnBeforeBattleAction);
+!!BG:A?(action:y);
+
+!!if|(action)=(BATTLE_ACTION_WALK_AND_ATTACK)/(action)=(BATTLE_ACTION_SHOOT);
+  !!BMi^battle_acting_stack^:T?(type:y);
+  !!FU(cutthroat_CheckIfMonIsEligible):P(type)/?(result:y);
+
+  !!if&(result);
+    !!BMi^battle_acting_stack^:F?(flags:y);
+    !!VR(moraled:y):S(flags) &(MON_FLAG_MORALE);
+
+    !!if&(moraled)=(FALSE);
+      !!BG:E?(defStack:y);
+
+      !!if&(defStack)>(NO_STACK);
+        ; the victim is living creature only
+        !!BM(defStack):F?(flags:y);
+        !!VR(isAlive:y):S(flags) &(MON_FLAG_ALIVE);
+
+        !!VRi^cutthroat_defStack^&(isAlive):S(defStack);
+      !!en;
+    !!en;
+  !!en;
+!!en;
+
+// Check if Rogue is eligible to attack again
+!?FU(OnBattleActionEnd)&i^cutthroat_defStack^>(NO_STACK);
+; Check if the defending stack is dead
+!!BMi^cutthroat_defStack^:N?(defNum:y);
+
+!!if&(defNum)<=0;
+  ; Remove the acted flag so cutthroat can act again
+  !!BMi^battle_acting_stack^:Fd~(MON_FLAG_ACTED) Fd|(MON_FLAG_MORALE);
+
+  ; Show battle log and play animation/sound
+  !!if&i^battle_isVisible^;
+    !!SN:P^MIRTH^;                      Mirth Sound
+    !!BMi^battle_acting_stack^:V20;     Mirth Animation
+    
+    !!BMi^battle_acting_stack^:N?(cutthroatNum:y) T?(type:y);
+    !!VR(isPlural:y):S(cutthroatNum) -1 B;
+    !!SN:H^monname^/(type)/(isPlural)/?(cutthroatName:z);
+    !!SN:T^dio.cutthroat^?(battleLog:z)/^cutthroat^/(cutthroatName);
+    !!MM:S(battleLog);
+  !!en;
+!!el;
+  !!VRi^cutthroat_defStack^:S(NO_STACK);
+!!en;
+
+// Restore the turn to Rogue's turn
+!?FU(OnBeforeBattleStackTurn)&i^cutthroat_defStack^>(NO_STACK);
+!#VA(stack:x);
+
+!!VR(stack):Si^battle_acting_stack^;
+!!VRi^cutthroat_defStack^:S(NO_STACK);
+
+** end

@@ -1,0 +1,55 @@
+ZVSE2
+; Author:   Archer30
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+; Stun abilities for creatures
+
+
+// Function to get the chance of stunning attack
+!?FU(stun_GetMonStunChance);
+!#VA(mon:x) (result:x);
+
+!!VR(result):S0;
+!!VR(result)&(mon)=(MON_TROLL):S20;
+!!VR(result)&(mon)=(MON_GNOLL):S20; 
+!!VR(result)&(mon)=(MON_GNOLL_MARAUDER):S20; 
+!!VR(result)&(mon)=239:S20; Gnoll Battle Shaman
+
+!?FU(ES_OnAfterMelee)&i^shieldBlockTriggered^<>(TRUE);
+!#VA(atkStack:x) (defStack:x);
+
+; Exit if it is a retaliation
+*!BG:N?(currStack:y);
+*!FU&(currStack)<>(atkStack):E;
+
+!!BM(atkStack):T?(type:y) N?(atkNum:y) H?(atkHp:y) L?(atkLostHp:y) R?(retals:y); [тип/численность/макс./потерянное здоровье активного отряда]
+!!FU(stun_GetMonStunChance):P(type)/?(chance:y);
+!!FU&(chance)=0:E;
+
+!!BM(defStack):F?(monFlags:y) N?(defNum:y) H?(defHp:y) L?(defLostHp:y); [флаги/численность/макс./потерянное здоровье целевого отряда]
+!!FU&(defNum)<=0:E;
+
+; Exit the function if the defending monster has acted this turn + has no retaliation or is not a living creature
+!!VR(isAlive:y):S(monFlags) &(MON_FLAG_ALIVE);
+!!FU&(isAlive)=(FALSE):E;
+
+!!VR(hasActed:y):S(monFlags) &(MON_FLAG_ACTED);
+!!FU&(hasActed)/(retals)=0:E;
+
+!!VR(random:y):R0/0/99;                 [случайное число (1..100)]
+!!FU&(random)>=(chance):E;              [выход, если оглушение не сработало]
+
+!!VR(monFlags):|(MON_FLAG_ACTED);       [+флаг отряд уже ходил в этом раунде]
+!!BM(defStack):R0 F(monFlags);          [цель теряет возможность контратаковать и ходить в текущем раунде]
+
+; Show msg in the battle log and animation
+!!if&i^battle_isVisible^;
+  !!SN:P^FORGET^;                       Sound
+  !!BM(defStack):V42;                   Animation
+  
+  !!VR(isPlural:y):S(defNum) -1 B;
+  !!SN:H^monname^/(type)/(isPlural)/?(monName:z);
+  !!SN:T^dio.stun^?(battleLog:z)/^mon^/(monName);
+  !!MM:S(battleLog);
+!!en;

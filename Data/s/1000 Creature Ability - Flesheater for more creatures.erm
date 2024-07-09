@@ -1,0 +1,24 @@
+ZVSE2
+; Author:   SadnessPower
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+; Adding Flasheater to more creatures
+
+!?FU(OnGameEnter);
+!!UN:P762/1; [Force enabling Zombie-Fleasheater ERA Script because it is used by TUM Enchanted]
+
+
+; Function to check if the targeted monster is eligible for flesh eating
+!?FU(ES_762_CheckIfMonIsEligible);
+!#VA(mon:x) (result:x);
+
+!!VR(result):S(FALSE);
+
+!!VR(result)&(mon)=221:S(TRUE); Skeleton Soldier
+!!VR(result)&(mon)=(MON_WALKING_DEAD):S(TRUE);
+!!VR(result)&(mon)=(MON_ZOMBIE):S(TRUE);
+!!VR(result)&(mon)=222:S(TRUE); Plague Zombie (it have in TUM Lite)
+!!VR(result)&(mon)=(MON_BLOOD_DRAGON):S(TRUE);
+
+!!SN:Q;

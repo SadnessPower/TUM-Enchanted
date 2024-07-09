@@ -1,0 +1,288 @@
+ZVSE2
+; Author:   SadnessPower (robertomaest1@gmail.com)
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+; Creature Enchantments: Spell autocast at stack turn
+
+!?FU(OnAfterTacticsPhase);
+
+!!re i/0/41; loop all battle stacks
+  !!VRi^autocastAlreadyDone_%i^:S-1;
+!!en;
+
+
+!?FU(OnAfterBattleAction);
+!!FU(Autocast):P;
+
+!?FU(OnCombatRound)&i^battle_round^=0;
+!!FU(Autocast):P;
+
+!?FU(Autocast);
+
+!!BG:N?(currentStack:y);                                         [get current stack #]
+
+!!FU&i^autocastAlreadyDone_%(currentStack)^=i^battle_round^:E;  [exit if already triggered for current stack in current turn]
+
+!!VRi^autocastAlreadyDone_%(currentStack)^:Si^battle_round^;    [autocast already tried for this combat round for current stack]
+
+!!VR(randomRoll1:y):S0T99;
+!*VR(randomRoll1):S0;
+!!VR(randomRoll2:y):S0T99; 
+!!VR(randomRoll3:y):S0T99;
+!!VR(randomRoll4:y):S0T99;
+
+!!BM(currentStack):T?(monsterType:y) P?(monsterPosition:y);      [get monster type, position]
+ 
+!!if&(randomRoll1)<10; 10% Autocast
+  !!FU(SetCheckResistenceForCreatureCast):P(FALSE);
+  !!FU(SpellCast)&(monsterType)=212:P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastC^; Supreme Archmage Expert Clone
+  !!FU(SetCheckResistenceForCreatureCast):P(TRUE);
+!!en;
+
+ !!if&(randomRoll1)<20; 20% Autocast
+    !!FU(SpellCast)&(monsterType)=198:P(SPELL_BLESS)/(monsterPosition)/2/3/^AutocastA^; Crossbowman Advanced Bless 
+    !!FU(SpellCast)&(monsterType)=198:P(SPELL_PRECISION)/(monsterPosition)/2/3/^^; Crossbowman Advanced Precision 
+    !!FU(SpellCast)&(monsterType)=199:P(SPELL_MIRTH)/(monsterPosition)/3/3/^AutocastA^; Imperial Griffin Expert Mirth
+    !!FU(SpellCast)&(monsterType)=200:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Praetorian Advanced Shield 
+    !!FU(SpellCast)&(monsterType)=200:P(SPELL_COUNTERSTRIKE)/(monsterPosition)/2/3/^^; Praetorian Advanced Counterstrike
+    !!FU(SpellCast)&(monsterType)=202:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Holy Champion Advanced Shield 
+    !!FU(SpellCast)&(monsterType)=202:P(SPELL_BLESS)/(monsterPosition)/2/3/^^; Holy Champion Advanced Bless 
+    !!FU(SpellCast)&(monsterType)=202:P(SPELL_MIRTH)/(monsterPosition)/2/3/^^; Holy Champion Advanced Mirth
+    !!FU(SpellCast)&(monsterType)=(MON_SUPREME_ARCHANGEL):P(SPELL_PRAYER)/(monsterPosition)/2/3/^AutocastA^; Supreme Archangel Advanced Prayer
+    !!FU(SpellCast)&(monsterType)=206:P(SPELL_MAGIC_MIRROR)/(monsterPosition)/2/3/^AutocastA^; Golden Pegasus Advanced Magic Mirror
+    !!FU(SpellCast)&(monsterType)=(MON_WAR_UNICORN):P(SPELL_FORTUNE)/(monsterPosition)/2/3/^AutocastA^; Golden Unicorn Advanced Fortune
+    !!FU(SpellCast)&(monsterType)=208:P(SPELL_FORTUNE)/(monsterPosition)/3/3/^AutocastA^; Celestial Unicorn Expert Fortune
+    !!FU(SpellCast)&(monsterType)=(MON_GOLD_DRAGON):P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^AutocastA^; Gold Dragon Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=(MON_DIAMOND_DRAGON):P(SPELL_STONE_SKIN)/(monsterPosition)/3/3/^AutocastA^; Diamond Dragon Expert Stone Skin
+    !!FU(SpellCast)&(monsterType)=216:P(SPELL_FIRE_SHIELD)/(monsterPosition)/3/3/^AutocastA^; Infernal Battle Mage Expert Fire Shield
+    !!FU(SpellCast)&(monsterType)=219:P(SPELL_FRENZY)/(monsterPosition)/2/3/^AutocastA^; Pit Master Advanced Frenzy
+    !!FU(SpellCast)&(monsterType)=220:P(SPELL_BLOODLUST)/(monsterPosition)/3/3/^AutocastA^; Efreet Rajah Expert Bloodlust
+    !!FU(SpellCast)&(monsterType)=227:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Mushroom Battle Shaman Advanced Bloodlust
+    !!FU(SpellCast)&(monsterType)=227:P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Mushroom Battle Shaman Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=227:P(SPELL_HASTE)/(monsterPosition)/2/3/^^; Mushroom Battle Shaman Advanced Haste
+    !!FU(SpellCast)&(monsterType)=236:P(SPELL_PROTECTION_FROM_AIR)/(monsterPosition)/2/3/^AutocastA^; Ogre Battle Shaman Advanced Protection from Air
+    !!FU(SpellCast)&(monsterType)=236:P(SPELL_PROTECTION_FROM_EARTH)/(monsterPosition)/2/3/^^; Ogre Battle Shaman Advanced Protection from Earth
+    !!FU(SpellCast)&(monsterType)=236:P(SPELL_PROTECTION_FROM_FIRE)/(monsterPosition)/2/3/^^; Ogre Battle Shaman Advanced Protection from Fire
+    !!FU(SpellCast)&(monsterType)=236:P(SPELL_PROTECTION_FROM_WATER)/(monsterPosition)/2/3/^^; Ogre Battle Shaman Advanced Protection from Water
+    !!FU(SpellCast)&(monsterType)=237:P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Thunderbird Advanced Air Shield
+    !!FU(SpellCast)&(monsterType)=237:P(SPELL_COUNTERSTRIKE)/(monsterPosition)/2/3/^^; Thunderbird Advanced Counterstrike
+    !!FU(SpellCast)&(monsterType)=239:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Gnoll Battle Shaman Advanced Bloodlust
+    !!FU(SpellCast)&(monsterType)=239:P(SPELL_SHIELD)/(monsterPosition)/2/3/^^; Gnoll Battle Shaman Advanced Shield
+    !!FU(SpellCast)&(monsterType)=239:P(SPELL_COUNTERSTRIKE)/(monsterPosition)/2/3/^^; Gnoll Battle Shaman Advanced Counterstrike
+    !!FU(SpellCast)&(monsterType)=246:P(SPELL_HASTE)/(monsterPosition)/2/3/^AutocastA^; Hurricane Elemental Advanced Haste
+    !!FU(SpellCast)&(monsterType)=247:P(SPELL_BLESS)/(monsterPosition)/2/3/^AutocastA^; Life Elemental Advanced Bless
+    !!FU(SpellCast)&(monsterType)=248:P(SPELL_SLAYER)/(monsterPosition)/3/3/^AutocastA^; Plasma Elemental Expert Slayer
+    !!FU(SpellCast)&(monsterType)=249:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Meteor Elemental Advanced Shield
+        
+    !!if&(monsterType)=250; Lords of the Elements
+      !!FU(SetCheckResistenceForCreatureCast):P(FALSE);
+      !!FU(SpellCast):P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastA^; Cast Expert Clone
+      !!FU(SetCheckResistenceForCreatureCast):P(TRUE);
+    !!en;
+
+    !!FU(SpellCast)&(monsterType)=(MON_PHOENIX):P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Phoenix Advanced Boodlust
+    !!FU(SpellCast)&(monsterType)=(MON_PHOENIX):P(SPELL_SLAYER)/(monsterPosition)/3/3/^^; Phoenix Expert Slayer
+    !!FU(SpellCast)&(monsterType)=158:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Sacred Phoenix Advanced Bloodlust
+    !!FU(SpellCast)&(monsterType)=158:P(SPELL_BLESS)/(monsterPosition)/2/3/^^; Sacred Phoenix Advanced Bless
+    !!FU(SpellCast)&(monsterType)=158:P(SPELL_SLAYER)/(monsterPosition)/3/3/^^; Sacred Phoenix Expert Slayer
+    !!FU(SpellCast)&(monsterType)=158:P(SPELL_FRENZY)/(monsterPosition)/2/3/^^; Sacred Phoenix Advanced Frenzy
+    !!FU(SpellCast)&(monsterType)=(MON_WAR_ZEALOT):P(SPELL_CURE)/(monsterPosition)/3/3/^AutocastA^; War Zealot Expert Cure
+    !!FU(SpellCast)&(monsterType)=(MON_WAR_ZEALOT):P(SPELL_STONE_SKIN)/(monsterPosition)/3/3/^^; War Zealot Expert Stone Skin
+    !!FU(SpellCast)&(monsterType)=(MON_SORCERESS):P(SPELL_MISFORTUNE)/(monsterPosition)/3/3/^AutocastA^; Sorceress Expert Misfortune
+    !!FU(SpellCast)&(monsterType)=(MON_SORCERESS):P(SPELL_WEAKNESS)/(monsterPosition)/3/3/^^; Sorceress Expert Weakness
+ !!en;
+
+ !!if&(randomRoll1)<30; 30% Autocast
+    !!FU(SpellCast)&(monsterType)=201:P(SPELL_PRAYER)/(monsterPosition)/2/3/^AutocastA^; High Priest Advanced Prayer
+    !!FU(SpellCast)&(monsterType)=201:P(SPELL_BLESS)/(monsterPosition)/2/3/^^; High Priest Advanced Bless
+    !!FU(SpellCast)&(monsterType)=203:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Centaur Warlord Advanced Bloodlust
+    !!FU(SpellCast)&(monsterType)=203:P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Centaur Warlord Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=205:P(SPELL_PRECISION)/(monsterPosition)/2/3/^AutocastA^; Elf Sharpshooter Advanced Precision
+    !!FU(SpellCast)&(monsterType)=(MON_MAGE):P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Mage Advanced Air Shield
+    !!FU(SpellCast)&(monsterType)=(MON_ARCH_MAGE):P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Archmage Advanced Air Shield
+    !!FU(SpellCast)&(monsterType)=(MON_ARCH_MAGE):P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Archmage Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=(MON_ARCH_MAGE):P(SPELL_MAGIC_MIRROR)/(monsterPosition)/2/3/^^; Archmage Advanced Magic Mirror
+    !!FU(SpellCast)&(monsterType)=212:P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Supreme Archmage Advanced Air Shield
+    !!FU(SpellCast)&(monsterType)=212:P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Archmage Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=212:P(SPELL_MAGIC_MIRROR)/(monsterPosition)/2/3/^^; Archmage Advanced Magic Mirror
+    !!FU(SpellCast)&(monsterType)=(MON_ENCHANTER):P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Enchanter Advanced Air Shield
+    !!FU(SpellCast)&(monsterType)=(MON_ENCHANTER):P(SPELL_FIRE_SHIELD)/(monsterPosition)/3/3/^^; Enchanter Expert Fire Shield
+    !!FU(SpellCast)&(monsterType)=(MON_ENCHANTER):P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Enchanter Advanced Stone Skin
+    !!FU(SpellCast)&(monsterType)=(MON_ENCHANTER):P(SPELL_MAGIC_MIRROR)/(monsterPosition)/3/3/^^; Enchanter Expert Magic Mirror
+ !!en;       
+
+ !!if&(randomRoll2)<30; 30% Autocast
+    !!FU(SpellCast)&(monsterType)=212:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastB^; Supreme Archmage Advanced Shield
+    !!FU(SpellCast)&(monsterType)=212:P(SPELL_FIRE_SHIELD)/(monsterPosition)/3/3/^^; Enchanter Expert Fire Shield
+ !!en;
+******************************************RANDOM BUFF GENIE*****************************************
+
+!!if&(randomRoll1)<5; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_SHIELD)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Shield
+
+!!el&(randomRoll1)>=5/(randomRoll1)<10; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Air Shield
+ 
+!!el&(randomRoll1)>=10/(randomRoll1)<15; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_FIRE_SHIELD)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Fire Shield
+
+!!el&(randomRoll1)>=15/(randomRoll1)<20; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_PROTECTION_FROM_AIR)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Air Protection
+
+!!el&(randomRoll1)>=20/(randomRoll1)<25; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_PROTECTION_FROM_FIRE)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Fire Protection
+
+!!el&(randomRoll1)>=25/(randomRoll1)<30; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_PROTECTION_FROM_WATER)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Water Protection
+
+!!el&(randomRoll1)>=30/(randomRoll1)<35; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_PROTECTION_FROM_EARTH)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Earth Protection
+
+!!el&(randomRoll1)>=35/(randomRoll1)<40; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_ANTI_MAGIC)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Antimagic
+
+!!el&(randomRoll1)>=40/(randomRoll1)<45; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_MAGIC_MIRROR)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Magic Mirror
+
+!!el&(randomRoll1)>=45/(randomRoll1)<50; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_CURE)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Cure
+
+!!el&(randomRoll1)>=50/(randomRoll1)<55; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_BLESS)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Bless
+
+!!el&(randomRoll1)>=55/(randomRoll1)<60; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Bloodlust
+
+!!el&(randomRoll1)>=60/(randomRoll1)<65; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Stoneskin
+
+!!el&(randomRoll1)>=65/(randomRoll1)<70; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_PRAYER)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Prayer
+
+!!el&(randomRoll1)>=70/(randomRoll1)<75; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_MIRTH)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Mirth
+
+!!el&(randomRoll1)>=75/(randomRoll1)<80; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_FORTUNE)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Fortune
+
+!!el&(randomRoll1)>=80/(randomRoll1)<85; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_HASTE)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Haste
+
+!!el&(randomRoll1)>=85/(randomRoll1)<90; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_COUNTERSTRIKE)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Counterstrike
+
+!!el&(randomRoll1)>=90/(randomRoll1)<95; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_FRENZY)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Frenzy
+
+!!el&(randomRoll1)>=95/(randomRoll1)<100; 5% Autocast
+  !!FU(SpellCast)&(monsterType)=213:P(SPELL_SLAYER)/(monsterPosition)/2/3/^^; Battlemage of the City of Ice and Steel Advanced Slayer
+!!en;
+
+***************************************BLESSING OF THE SPRITE***************************************
+
+ !!if&(randomRoll1)<25; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=(MON_SPRITE):P(SPELL_BLESS)/(monsterPosition)/2/3/^^; 
+
+ !!el&(randomRoll1)>=25/(randomRoll1)<50; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=(MON_SPRITE):P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^;
+ 
+ !!el&(randomRoll1)>=50/(randomRoll1)<75; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=(MON_SPRITE):P(SPELL_MIRTH)/(monsterPosition)/2/3/^^;
+
+ !!el&(randomRoll1)>=75/(randomRoll1)<100; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=(MON_SPRITE):P(SPELL_FORTUNE)/(monsterPosition)/2/3/^^;
+ !!en;
+ 
+****************************************BLESSING OF THE FAIRY***************************************
+
+ !!if&(randomRoll1)<25; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_BLESS)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll1)>=25/(randomRoll1)<50; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_STONE_SKIN)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll1)>=50/(randomRoll1)<75; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_MIRTH)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll1)>=75/(randomRoll1)<100; 25% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_FORTUNE)/(monsterPosition)/2/3/^^; Fairy
+ !!en;
+
+ !!if&(randomRoll2)<20; 20% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_AIR_SHIELD)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll2)>=20/(randomRoll2)<40; 20% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_MAGIC_MIRROR)/(monsterPosition)/2/3/^^; Fairy
+ 
+ !!el&(randomRoll2)>=40/(randomRoll2)<60; 20% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_SHIELD)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll2)>=60/(randomRoll2)<80; 20% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll2)>=80/(randomRoll2)<90; 10% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_PRAYER)/(monsterPosition)/2/3/^^; Fairy
+
+ !!el&(randomRoll2)>=90/(randomRoll2)<100; 10% Autocast
+    !!FU(SpellCast)&(monsterType)=245:P(SPELL_ANTI_MAGIC)/(monsterPosition)/3/3/^^; Fairy
+ !!en;
+
+** function to cast spell    x1=spell x2=position x3=rank x4=power 
+
+!?FU(SpellCast)&x2>=0/x2<=186;
+!#VA(spell:x) (pos:x) (level:x) (power:x) (battleTag:x);
+
+!!VR(power):F1/(INT_MAX);
+
+!!BG:N?(currentStack:y);                                [get current stack #]
+!!BU:E(pos)/?y2;                             [check for living stack]
+!!IF&y2=-1:V77/1;                         [if dead stack set flag 77 to true]
+
+!!if&(spell)=(SPELL_CLONE);               [avoid casting clone on cloned stack]
+   !!BM(currentStack):F?i;                [read flags] 
+   !!VRi:&8388608;                        [get value of clone bit] 
+   !!FU&i>0:E;                         
+!!en;
+
+; Check if the spell is a damaging spell
+!!SS(spell):F?(flags:y);
+!!VR(isDmgSpell:y):S(flags) &512;
+
+; Store the original data of the spell and change
+!!if&(isDmgSpell);
+  !!SS(spell):E(level)/?(origEffect:y) E(level)/0;
+  !!SS(spell):P?(origPower:y) P10;
+!!en;
+
+
+; Battle tag
+!!if&i^battle_isVisible^/z(battleTag)<>^^;
+  !!VR(battleTagStr:z):Sz(battleTag);
+  !!BM(currentStack):T?(atkType:y) N?(atkNum:y);
+  !!VR(atkIsPlural:y):S(atkNum) -1 B;
+  !!SN:H^monname^/(atkType)/(atkIsPlural)/?(atkMonName:z);
+  !!SN:T^dio.autocast.%(atkType)%(battleTagStr)%(atkIsPlural)^/?(msg:z)/^mon^/(atkMonName);
+  !!MM:S(msg);
+!!en;
+
+; Disable vanilla battle log
+!!if&i^battle_isVisible^;
+  !!UN:C5903268/2/?(patch1:y) C5903268/2/3819; 
+  !!UN:C5903270/1/?(patch2:y) C5903270/1/(OPCODE_NOP_1);
+!!en;
+      
+; Cast the spell
+!!BM(currentStack):C(spell)/(pos)/(level)/(power)/1;               [have current stack cast spell]
+
+; restore vanilla battle log
+!!if&i^battle_isVisible^;
+  !!UN:C5903268/2/(patch1);
+  !!UN:C5903270/1/(patch2);
+!!en;
+
+; Restore the data of the spell
+!!if&(isDmgSpell);
+  !!SS(spell):E(level)/(origEffect) P(origPower);
+!!en;
+

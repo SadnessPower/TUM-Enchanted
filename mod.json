@@ -1,0 +1,32 @@
+{
+	"caption": {
+		"en_US": "TUM Enchanted",
+		"ru_RU": ""
+	},
+	"description": {
+		"full": {
+			"en_US": "Readme.txt",
+			"ru_RU": ""
+		},
+		"short": {
+			"en_US": "",
+			"ru_RU": ""
+		}
+	},
+	"author": "Diozia, SadnessPower",
+	"homepage": "",
+	"icon": {
+		"file": "TUM Enchanted.ico",
+		"index": 0
+	},
+	"mod_version": "2.0",
+	"priority": 5,
+	"compatibility": {
+		"class": "default",
+		"entries": {}
+	},
+	"platform": "era",
+	"info_version": "2.0",
+	"plugins": {},
+	"category": "gameplay"
+}

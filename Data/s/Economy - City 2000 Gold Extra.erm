@@ -1,0 +1,88 @@
+ZVSE2
+; Author:   Archer30
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Era Erm Framework
+
+; Bonus income for Artifact Merchant builder, Blacksmith, Marketplace, Resource Silo, Tavern, compatible with town income display
+; Resource Silos now provide 1 wood/1 ore and 1 special resource accoding to types of towns.
+
+
+; ============== SETTINGS ==============
+!#VRi^artMerch_bonusIncome^:S500;
+; ============ END SETTINGS ============
+
+
+!?FU(OnCalculateTownIncome);
+!#VA(townId:x) (income:x) (silo:x);
+
+!!CA0/(townId):T?(townType:y) B3/17;
+
+!!if|(townType)=(TOWN_TOWER)/(townType)=(TOWN_DUNGEON)/(townType)=(TOWN_CONFLUX);
+  !!VR(income)&1:+i^artMerch_bonusIncome^;
+!!en;
+
+***BLACKSMITH +300 GOLD***
+!!CA0/(townId):O?(townOwner:y) B3/16;
+!!if&(TRUE)/(townOwner)<>(NO_OWNER);
+  !!VR(income):+300;
+!!en;
+
+***MARKETPLACE +500 GOLD***
+!!CA0/(townId):O?(townOwner:y) B3/14;
+!!if&(TRUE)/(townOwner)<>(NO_OWNER);
+  !!VR(income):+500;
+!!en;
+
+***RESOURCE SILO +1000 GOLD***
+!!CA0/(townId):O?(townOwner:y) B3/15;
+!!if&(TRUE)/(townOwner)<>(NO_OWNER);
+  !!VR(income):+1000;
+!!en;
+    
+***TAVERN +200 GOLD***
+!!CA0/(townId):O?(townOwner:y) B3/5;
+!!if&(TRUE)/(townOwner)<>(NO_OWNER);
+  !!VR(income):+200;
+!!en;
+
+
+!?FU(OnEveryDay)&i^timerOnce^/i^timerDay^>1;
+!!VR(x:y):S-1;
+
+; Loop through all towns
+!!re i;
+  !!UN:U(OBJ_TOWN)/(ANY_OBJ)/-1/(x)/(y:y)/(z:y);
+  !!br&(x)<0;
+
+  ; Next town if silos is not built/town belongs to no player
+  !!CA(x)/(y)/(z):O?(owner:y) B3/15;
+  !!co|-1/(owner)=(NO_OWNER);
+
+  ; Check for type of town and add in additional res
+  !!CA(x)/(y)/(z):T?(townType:y);
+
+  !!if&(townType)=(TOWN_CASTLE);
+    !!OW:R(owner)/(RES_GEMS)/d1;
+  !!el|(townType)=(TOWN_RAMPART);
+    !!OW:R(owner)/(RES_WOOD)/d1;
+    !!OW:R(owner)/(RES_ORE)/d1;
+  !!el&(townType)=(TOWN_TOWER);
+    !!OW:R(owner)/(RES_GEMS)/d1;
+  !!el&(townType)=(TOWN_INFERNO);
+    !!OW:R(owner)/(RES_SULFUR)/d1;
+  !!el&(townType)=(TOWN_NECROPOLIS);
+    !!OW:R(owner)/(RES_MERCURY)/d1;
+  !!el&(townType)=(TOWN_DUNGEON);
+    !!OW:R(owner)/(RES_SULFUR)/d1;
+  !!el&(townType)=(TOWN_STRONGHOLD);
+    !!OW:R(owner)/(RES_ORE)/d2;
+    !!OW:R(owner)/(RES_CRYSTAL)/d1;
+  !!el&(townType)=(TOWN_FORTRESS);
+    !!OW:R(owner)/(RES_WOOD)/d2;
+    !!OW:R(owner)/(RES_SULFUR)/d1;
+  !!el&(townType)=(TOWN_CONFLUX);
+    !!OW:R(owner)/(RES_CRYSTAL)/d1;
+  !!en;
+!!en;
+
+!!UN&(ERM_FLAG_IS_HUMAN):R2;            [refresh resouces bar]

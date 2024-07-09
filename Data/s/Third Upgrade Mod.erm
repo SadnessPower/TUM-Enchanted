@@ -1,0 +1,397 @@
+ZVSE2
+****************************************************************************************************
+Third Upgrade Mod for ERA 3
+A Mod by VMaiko
+created 2020
+
+Scripts by Perry, Archer30 and Berseker 
+visit www.heroescommunity.com for updates and news
+****************************************************************************************************
+
+// Store original monster IDs at the start of the game
+// by daemon_n
+!?FU(OnAfterErmInited);
+  !!VR(monNum:y):S9*2*7;
+  !!SN:M(M_AUTO_ID)/(monNum)/(M_INT)/(M_STORED)/?i^tum_NativeTownCreaturesIds^; // create array
+  !!SN:Mi^tum_NativeTownCreaturesIds^/?(dstArrayAddr:y)/0; get its address
+  !!VR(size:y):S(monNum:y) Sd<<2; get size in bytes
+  !!SN:K(size)/6768564/(dstArrayAddr)/0; memcopy from table
+
+****************************************************************
+************************ Upgrading Part ************************
+****************************************************************
+
+!?FU(tum_GetMonstersInTown);
+!#VA(townType:x) (level:x) (basicMon:x) (upgMon:x) (thirdUpgMon:x);
+
+!*IF|(level)<0/(level)>6:M^level = %(level), townType = %(townType), basicMon = %(basicMon)^;  ; maybe need to test (level), when used with other mods could lead to level <0 || >6
+; Get non-upgrade
+!!UN:T(townType)/(level)/0/?(basicMon);
+
+; Get upgraded monster
+!!VR(counter:y):S14 *(townType) +7 +(level);
+!!SN:Mi^tum_NativeTownCreaturesIds^/(counter:y)/?(upgMon);
+
+; Get third upgrade
+!!FU(GetUpgradedMonster):P(upgMon)/?(thirdUpgMon);
+
+************************* set new upgrades ***********************************
+!?FU(tum_SetUpNewUpgrades);
+!!MA:U01/197;                           [Halberdiers to Templar] *Castle*]
+!!MA:U03/198;
+!!MA:U05/199;
+!!MA:U07/200;
+!!MA:U09/201;                           [Zealots to High Priest] *Castle*]
+!!MA:U13/150;                           [Archangels to Supreme Archangels] *Castle Level 8*]
+!!MA:U11/202;
+!!MA:U15/203;
+!!MA:U17/204;
+!!MA:U19/205;                           [Grand Elves to Sharpshooter] *Rampart*]
+!!MA:U21/206;                           [Silver Pegasi to Elves Sacred] *Rampart*]
+!!MA:U23/207;
+!!MA:U25/208;
+!!MA:U27/151;                           [Gold Dragons to Diamond Dragons] *Rampart Level 8*]
+!!MA:U29/209;                           [Master Gremlins to Santa Gremlins] *Tower*]
+!!MA:U31/210;
+!!MA:U33/211;                           [Iron Golems to Steel Golem] *Tower*]
+!!MA:U35/212;
+!!MA:U37/213;
+!!MA:U39/214;
+!!MA:U41/152;                           [Titans to Lords of Thunder] *Tower Level 8*]
+!!MA:U43/215;
+!!MA:U45/216;
+!!MA:U47/217;
+!!MA:U49/218;
+!!MA:U51/219;
+!!MA:U53/220;                           [Efreet Sultans to Efreet Rajah] *Inferno*]
+!!MA:U55/153;                           [Arch Devils to Hell Baron] *Inferno Level 8*]
+!!MA:U57/221;
+!!MA:U59/222;                           [Zombies to Mummies] *Necropolis*]
+!!MA:U61/223;                           [Wraiths to Ghosts] *Necropolis*]
+!!MA:U63/224;
+!!MA:U65/225;
+!!MA:U67/226;
+!!MA:U69/154;                           [Ghost Dragons to Blood Dragons] *Necropolis Level 8*]
+!!MA:U71/227;
+!!MA:U73/228;
+!!MA:U75/229;
+!!MA:U77/230;                           [Medusa Queens to Medusa Empress] *Dungeon*]
+!!MA:U79/231;                           [Minotaur Kings to Black Minotaur] *Dungeon*]
+!!MA:U81/232;
+!!MA:U83/155;                           [Black Dragons to Darkness Dragons] *Dungeon Level 8*]
+!!MA:U85/233;                           [Hobgoblins to Hobgoblins Overlord] *Stronghold*]
+!!MA:U87/234;
+!!MA:U89/235;
+!!MA:U91/236;                           [Ogre Magi to Elder Ogre] *Stronghold*]
+!!MA:U93/237;
+!!MA:U95/238;
+!!MA:U97/156;                           [Ancient Behemoths to Ghost Behemoths] *Stronghold Level 8*]
+!!MA:U99/239;                           [Upg. Gnolls to Centagnoll] *Fortress*]
+!!MA:U101/240;
+!!MA:U103/244;
+!!MA:U105/241;
+!!MA:U107/242;                          [Greater Basilisks to Lava Basilisks] *Fortress*]
+!!MA:U109/243;
+!!MA:U111/157;                          [Chaos Hydras to Hell Hydras] *Fortress Level 8*]
+!!MA:U119/245;
+!!MA:U121/250;
+!!MA:U123/247;
+!!MA:U125/249;                          [Magma Elementals to Mineral Elementals] *Conflux*]
+!!MA:U127/246;
+!!MA:U129/248;                          [Energy Elementals to Flux Elementals] *Conflux*]
+!!MA:U131/158;                          [Phoenixes to Sacred Phoenixes] *Conflux Level 8*]
+
+ [The following can only be upgraded at Hill Forts]
+!!MA:U(MON_GOLD_GOLEM)/(MON_DIAMOND_GOLEM);
+
+!#FU(tum_SetUpNewUpgrades):P;
+
+****************************************************************************
+TUM Necromancy 
+script by Archer30 and daemon_n
+!?FU(tum_OnNecromancyAddCreatures);
+!#VA(hook:x);
+
+!!UN:C(hook)/(STRUCT_HOOK_CONTEXT_EAX)/(UNC_INT8)/?(canAddSkeletonWarriors:y);
+
+!!if&(canAddSkeletonWarriors)=(FALSE);
+  !!UN:C(hook)/(STRUCT_HOOK_CONTEXT_ESI)/(UNC_INT)/?(esi:y) C(esi)/81232/(UNC_INT)/?(monType:y) C(esi)/81228/(UNC_INT)/?(monNum:y);
+  !!FU(GetUpgradedMonster):P(monType)/?(upgMon:y);
+
+  !!if&(upgMon)>(NO_MON);
+    !!VR(monNum):*2 +2 :3 F1/(INT_MAX);
+    !!UN:C(esi)/81232/(UNC_INT)/(upgMon);
+    !!UN:C(esi)/81228/(UNC_INT)/(monNum);
+
+    !!UN:C(hook:x)/(STRUCT_HOOK_CONTEXT_EBP)/4/?(ebp:y) C(ebp)/8/4/?(side:y);
+
+    !!VR(armyPtrOffs:y):S(side) *(UNC_INT) +21700;
+    !!UN:C(esi)/(armyPtrOffs)/4/?(armyPtr:y);
+    !!SN:E4499888/(CALLCONV_FASTCALL)/(armyPtr:y)/(monNum)/(upgMon)/(monNum)/-1;
+    !!VR(result:y):Sv1;
+    !!UN:C(hook)/(STRUCT_HOOK_CONTEXT_EAX)/(UNC_INT8)/(result:y);
+  !!en;
+!!en;
+
+****************************************************************************************************
+*Creature_Specialist Third Upgrade Mod* A Mod for ERA 2.9
+*Author PerryR, updated by Archer30
+*Sets new description for all creature Specialists and gives them a scaling, script taken from Advanced Classes Mod
+
+!?FU(OnAfterErmInstructions);
+!!SN:W^Advanced_Classes_Mod_Active^/?y1; !!FU&y1=1:E; [Exit if ACM mod active]
+
+!!re i/(HERO_FIRST)/(HERO_LAST_WOG);
+  !!HEi:X?(specType:y)/?(specSubtype:y);
+  !!HEi&(specType)=4:X1/?(specSubtype);
+!!en;
+
+!?CM2&1000;                             [Show Correct Info for Creature Specialists]
+!!SN:W^Advanced_Classes_Mod_Active^/?y1; !!FU&y1=1:E; [Exit if ACM mod active]
+
+!!CM:F?v3 I?v4 S?v5 T?v6;               [where we click and click subtype]
+!!FU|v4<>118/v6<>512/v5=13:E;           [If not Specialty Icon Clicked Exit]
+
+!!if|v3=512/v3=0;                       [if right or left click]
+  !!HE(CURRENT_HERO):N?y6;                [Get current hero #]
+  *!FU&y6>=(HERO_SIR_MULLICH):E;          [Exit for Extension Heroes]
+
+  !!HEy6:X?y11/?y12/?y13/?y14/?y15/?y16/?y17; [Check Hero Speciality]
+  !!FU&y11<>1:E;                          [Exit if no Creature_Specialist]
+
+  !!CM:R0;                                [disable standard reaction]
+  !!HEy6:R2/?y70;
+  !!HEy6:B0/?z1;
+  !!HEy6:E?y47/?y48/1;                    [Check hero Level]
+  !!SN&y70=0:T^Third_Upgrade_Mod.his^/?z5;
+  !!SN&y70=1:T^Third_Upgrade_Mod.her^/?z5;
+
+  !!FU(Set_Creature_Upgrades_1):Py12/y6/?y16/?y17;
+
+  !!UN:N3/z3/y12/1;                      [Normal Creature]
+  !!UN:N3/z4/y16/1;                      [First Upgrade]
+  !!UN:N3/z6/y17/1;                      [Second Upgrade]
+
+  !!MA:Ly12/?y14;                         [Get creature level]
+  !!VRy60&y14=0:S16; !!VRy60&y14=1:S15; !!VRy60&y14=2:S13; !!VRy60&y14=3:S12; !!VRy60&y14=4:S10; !!VRy60&y14=5:S7; !!VRy60&y14=6:S5;
+  !!VRy14:+1;
+  !!VRy50:Sy48:7+1;                       [7 Attack and Defense per Level]
+  !!VRy51:Sy48:y60;                       [Damage per Level based on creature level]
+  !!VRy52:Sy48+9;                         [+1% per Health per Level +9%]
+
+  !!SN:T^Third_Upgrade_Mod.Creature_Specialist_Title^/?z7;
+  !!SN:T^Third_Upgrade_Mod.Creature_Specialist_Body^/?z8/^level^/y14/^attack^/y50/^damage^/y51/^health^/y52/^Crea1^/z3/^Crea2^/z4/^Crea3^/z6/^Hero^/z1/^sex^/z5;
+  !!VRz7:+z8;
+
+  !!IF&i^mouse_action^=(MOUSE_LMB_PRESSED):M1/1/^%z7^;
+  !!IF&i^mouse_action^=(MOUSE_RMB_PRESSED):M1/4/^%z7^;
+!!en;
+
+!?BF;
+!!SN:W^Advanced_Classes_Mod_Active^/?y1;
+!!FU&y1=1:E; [Exit if ACM mod active]
+
+!!BH0:N?y1;                             [Attacker]
+!!FU(Third_Upgrade_1)&y1>=0/y1<=155:Py1/1;
+
+!!BH1:N?y1;                             [Defender]
+!!FU(Third_Upgrade_1)&y1>=0/y1<=155:Py1/2;
+
+!?FU(Third_Upgrade_1);
+!!HEx1:X?y11/?y12/?y13/?y14/?y15/?y16/?y17; [Check Hero Speciality]
+!!FU&y11<>1:E;                          [Exit if no Creature Specialist]
+
+!!HEx1:E?y47/?y48/1;                    [Check hero Level]
+!!MA:Ly12/?y14;
+!!VRy60&y14=0:S16; !!VRy60&y14=1:S15; !!VRy60&y14=2:S13; !!VRy60&y14=3:S12; !!VRy60&y14=4:S10; !!VRy60&y14=5:S7; !!VRy60&y14=6:S5;
+
+!!FU(Set_Creature_Upgrades_1):Py12/x1/?y13/?y14;
+
+!!VRy50:Sy48:7+1;                       [Attack and Defense per 7 Level]
+!!VRy51:Sy48:y60;                       [Damage per Level]
+!!VRy52:Sy48+9 +100;                    [+1% per Health per Level +9%]
+!!DO(Third_Upgrade_0)/0/20/1&x2=1:Py12/y13/y50/y52/y51/y14; [Pass Creature, Upgraded Creature, Att/Def, Health and Damage]
+!!DO(Third_Upgrade_0)/21/41/1&x2=2:Py12/y13/y50/y52/y51/y14; [Pass Creature, Upgraded Creature, Att/Def, Health and Damage]
+
+!?FU(Third_Upgrade_0);
+
+!!BMx16:T?y1;
+
+!!if|y1=x1/y1=x2/y1=x6;                 [If Special Creature or Upgraded Creature is found increase stats]
+  !!BMx16&y1<>(MON_FIRST_AID_TENT)/y1<>(MON_AMMO_CART):Adx3; [Attack]
+  !!BMx16:Ddx3;                         [Defense]
+  !!BMx16:H?y2; !!VRy2:*x4:100;         [Get Health]
+  !!BMx16:Hy2;
+  !!BMx16:U1/dx5 U2/dx5;                [Min+Max Damage]
+!!en;
+
+!?FU(Set_Creature_Upgrades_1);
+!#VA(mon:x) (hero:x) (upgMon:x) (thirdUpgMon:x);
+
+!!if&(mon)<>(MON_BALLISTA);
+  !!MA:O(mon)/?(townType:y) L(mon)/?(level:y);
+  !!FU(tum_GetMonstersInTown):P(townType)/(level)/?(basicMon:y)/?(upgMon)/?(thirdUpgMon);
+!!el;
+  !!VR(upgMon):S(MON_FIRST_AID_TENT);
+  !!VR(thirdUpgMon):S(MON_AMMO_CART);
+!!en;
+
+!?FU(Third_Upgrade_2);
+132 Monere    !!HE132:X1/120;
+133 Erdamon   !!HE133:X1/113;
+134 Fiur      !!HE134:X1/114;
+135 Kalt      !!HE135:X1/115;
+
+128 Pasis     !!HE128:X1/120;
+129 Thunar    !!HE129:X1/113;
+131 Lacus     !!HE131:X1/115;
+130 Ignissa   !!HE130:X1/114;
+
+!#FU(Third_Upgrade_2)&i^Advanced_Classes_Mod_Active^<>(TRUE):P;           [Set Conflux Heroes to normal Creature_Specialist]
+
+****************************************************************************************************************
+
+**********************************************************************
+**** Aura of Bravery for Centaure Leaders (or any other creature) ****
+**********************************************************************
+// Author Perry R, Script for ERA 3
+*all creatures standing next to the aura gain certain bonuses*
+
+The script loops through all battlefield positions (after every battle action) and checks if the monsters standing at that positions are next to a centaur.
+If yes bonus is given. After that the script loops after every battle action trough all monsters on the battlefield and checks if they are still standing next to the centaur,
+if no the bonus is removed.
+
+!#SN:W^Aura_Bravery_Creature_ID^/(MON_CENTAUR_GENERAL); Set here the creature ID that should get the Aura
+
+
+!?FU(OnCombatRound)&v997=0; Before every battle resets variables
+!!re y1/0/41:;
+    !!SN:W^Aura_Bravery_Stack_%Y1^/0;
+!!en:;
+
+!?FU(OnBeforeBattleAction);
+!!FU(Check_Aura_Bravery):P;
+
+!?FU(OnAfterBattleAction);
+!!FU(Check_Aura_Bravery):P;
+
+
+!?FU(Check_Aura_Bravery);
+!!BG:Q?f;                               [Quick Combat flag]
+!!FU&f=1:E;                             [Exit in quick combat]
+
+!!SN:W^Aura_Bravery_Creature_ID^/?y50;[Get creature ID that should emit Aura]
+
+!!re y1/0/41:;                          [Reset the speed and flag every combat action]
+    !!SN:W^Aura_Bravery_Stack_%Y1^/?y2;
+    !!BMy1&y2=1:Sd-1;
+    !!SN&y2=1:W^Aura_Bravery_Stack_%Y1^/0;
+!!en:;
+
+
+!!re y1/0/186:;                         [Loop all battlefield positions]
+!!BU:Ey1/?y4;                           [Check if create stands on this hex]
+    !!if&y4>=0:;                        [if a monster is at a given position]
+    !!BMy4:T?y10 P?y11 I?y12 B?y13 N?y14 H?y15 F?y16; [Get Creature Type and Position]
+        !!if&y13>=1/y14>=1/y15>=1/y10<>145/y10<>146/y10<>147/y10<>148/y10<>149/y10<>y50:; [If any valid creature, execlude Warmachines]
+            !!re i/0/5:;                [loop around the creatures in cirlce 0-6 positions]
+            !!FU(Calc_neighbouring_hex_2):Py1/i/?y3; [Pass position and return first neighbouring hex field]
+            !!BU&y3>=0/y3<=186:Ey3/?y5; [Check if create stands on this hex]
+            !!BMy5&y5>=0/y5<=41:I?y6 T?y20 S?y7; [Get the creatures side and speed and type]
+            !!SN&y5>=0/y5<=41:W^Aura_Bravery_Stack_%Y4^/?y8; [Check creature bravery flag]
+               !!if&y5>=0/y5<=41/y6=y12/y7>=1/y20=y50/y8=0:; [If creature is Centaure, belongs to same hero and has speel >1 and does not have bonus]
+                    !!BMy4:Sd1;         [increase speed by +1]
+                    !!SN:W^Aura_Bravery_Stack_%Y4^/1; [Set flag to true for creature to remember that bonus was given]
+                !!en:;
+            !!en:;
+        !!en:;
+    !!en:;
+!!en:;
+
+!!re y1/0/41:;
+    !!SN:W^Aura_Bravery_Stack_%Y1^/?y2;
+    !!BMy1&y2=1:F?y3;
+    !!VRy3&y2=1:&131072;                [just look at no morlae bit]
+    !!BMy1&y3=0/y2=1:G212/d1/d;         [Increase +1 Morale]
+!!en:;
+
+
+!?FU(Calc_neighbouring_hex_2);          [Funktion to calculate neighbouring Hex cells]
+!!UN:C6919200/4/?y1;                    [Y1 = combatManager]
+!!VRx2:*2;
+!!VRx1:*12+ y1+ 78952+ x2;
+!!UN:Cx1/2/?x3;
+
+---------------------------------------------------------------------------------------------
+!?FU(OnGameEnter);
+!!UN:T0/0/2/197; (Castle)
+!!UN:T0/1/2/198;
+!!UN:T0/2/2/199;
+!!UN:T0/3/2/200;
+!!UN:T0/4/2/201;
+!!UN:T0/5/2/202;
+!!UN:T0/6/2/150;
+
+!!UN:T1/0/2/203; (Rampart)
+!!UN:T1/1/2/204;
+!!UN:T1/2/2/205;
+!!UN:T1/3/2/206;
+!!UN:T1/4/2/207;
+!!UN:T1/5/2/208;
+!!UN:T1/6/2/151;
+
+!!UN:T2/0/2/209; (Tower)
+!!UN:T2/1/2/210;
+!!UN:T2/2/2/211;
+!!UN:T2/3/2/212;
+!!UN:T2/4/2/213;
+!!UN:T2/5/2/214;
+!!UN:T2/6/2/152;
+
+!!UN:T3/0/2/215; (Inferno)
+!!UN:T3/1/2/216;
+!!UN:T3/2/2/217;
+!!UN:T3/3/2/218;
+!!UN:T3/4/2/219;
+!!UN:T3/5/2/220;
+!!UN:T3/6/2/153;
+
+!!UN:T4/0/2/221; (Necropolis)
+!!UN:T4/1/2/222;
+!!UN:T4/2/2/223;
+!!UN:T4/3/2/224;
+!!UN:T4/4/2/225;
+!!UN:T4/5/2/226;
+!!UN:T4/6/2/154;
+
+!!UN:T5/0/2/227; (Dungeon)
+!!UN:T5/1/2/228;
+!!UN:T5/2/2/229;
+!!UN:T5/3/2/230;
+!!UN:T5/4/2/231;
+!!UN:T5/5/2/232;
+!!UN:T5/6/2/155;
+
+!!UN:T6/0/2/233; (Stronghold)
+!!UN:T6/1/2/234;
+!!UN:T6/2/2/235;
+!!UN:T6/3/2/236;
+!!UN:T6/4/2/237;
+!!UN:T6/5/2/238;
+!!UN:T6/6/2/156;
+
+!!UN:T7/0/2/239; (Fortress)
+!!UN:T7/1/2/240;
+!!UN:T7/2/2/241;
+!!UN:T7/3/2/242;
+!!UN:T7/4/2/(MON_CATOBLEPAS);
+!!UN:T7/5/2/(MON_ACID_WYVERN);
+!!UN:T7/6/2/157;
+
+!!UN:T8/0/2/245; (Conflux)
+!!UN:T8/1/2/246;
+!!UN:T8/2/2/247;
+!!UN:T8/3/2/248;
+!!UN:T8/4/2/249;
+!!UN:T8/5/2/250;
+!!UN:T8/6/2/158;

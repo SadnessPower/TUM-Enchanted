@@ -1,0 +1,32 @@
+ZVSE2
+
+; Author:   Roberto La Maestra (Sadnesspower) - robertomaest1@gmail.com
+; Engine:   ERM 2.0+
+; Requires: ERA 3.4+, Era Erm Framework, WoG Scripts (80 base)
+
+!?FU(OnAfterErmInstructions);
+!!UN:P228/?i^buildTwice^;                       [Check if Build Twice a Day option is enabled]
+
+!!FU(BuildPerTurnSetup):P;
+
+
+!?FU(OnEveryDay)&i^timerDay^>1&i^timerOnce^=1; [Fix TUM building twice not activating on first turn by enabling wog option for first turn then disabling it afterwards]
+
+!!UN:P228/0;                                    [Disable wog option behaviour]
+
+
+!?FU(OnAfterLoadGame);
+
+!!FU(BuildPerTurnSetup):P;
+
+
+!?FU(BuildPerTurnSetup);
+
+!!SN:L^new_towns.era^/?(file:y);
+!!SN:A(file)/^set_buildings_daily^/?(address:y);
+
+!!VR(buildingPerTurn:y)&i^buildTwice^=(FALSE):S1;
+!!VR(buildingPerTurn)&i^buildTwice^=(TRUE):S2;
+
+!!SN:E(address)/1/(buildingPerTurn);
+

@@ -1,0 +1,1250 @@
+ZVSE2
+; Author:   SadnessPower
+; Engine:   ERM 2.0+
+; Requires: ERA 3.3+, Third Upgrade Mod
+
+!?FU(OnAfterTacticsPhase);
+
+  !!VRi^logRWE^:S(FALSE);
+
+  !!VRi^combatRound^:S0;
+  
+  *!VR(battleLog:z):S^Triggerato AfterBattleSetup^;
+  *!MM&i^logRWE^=(TRUE):S(battleLog);                 
+  !!VRi^redrawBattleFieldOnNextBattleAction^:S(FALSE);
+
+!?FU(OnCombatRound);
+
+  !!VRy1:Si^combatRound^;
+  !!VR(battleLog:z):S^Triggerato combat Round #%y1^;
+  !!MM&i^logRWE^=(TRUE):S(battleLog);                
+
+  !!if&i^combatRound^=0;
+
+     !#VRi^duration^:S0;                                                     
+
+     !#VRi^enemyStack^:S-1;
+     !#VRi^originalEnemyDefence^:S0;
+
+     !!re i/0/41; loop all battle stacks
+        !!VRi^BarbarianRage_%i^:S-1;
+     !!en;
+
+  !!el;
+    !!re i/0/41; loop all battle stacks
+      !!VRi^BarbarianRage_%i^&i^BarbarianRage_%i^>-1:Sd-1;    
+      !!FU(Remove_RageOnItself)&i^BarbarianRage_%i^=0:Pi;
+    !!en;
+  !!en;
+
+  !!VRi^combatRound^:+1;
+
+
+!?FU(OnBeforeBattleAction);
+
+!!BG:N?(stack:y) E?i^enemyStack^ A?(action:y);
+!!BM(stack):T?(monsterType:y) N?(num:y);
+
+!!VRi^castRageAfterBattleAction^:S-1;
+!!VRi^castRageOnEnemyAfterBattleAction_castingStack^:S-1;
+!!VRi^castRageOnEnemyAfterBattleAction_targetStack^:S-1;
+
+!!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(FALSE);
+
+!!VRi^actionMatched^:S(FALSE);
+!!VRi^actionMatched^&i^activationAction1^=(action):S(TRUE);
+!!VRi^actionMatched^&i^activationAction2^=(action):S(TRUE);
+!!VRi^actionMatched^&i^activationAction3^=(action):S(TRUE);
+
+!!FU(Apply_RageOnItself)&i^actionMatched^=(TRUE)/i^OnAttackToItself^=1:P(monsterType)/(stack);
+
+!?FU(OnMonsterPhysicalDamage);
+
+!!BG:N?(attackerStack:y) E?(retaliatorStack:y) A?(action:y);                      [get current stack # and action type]
+
+
+!!MF:N?(targetStack:y) D?(damageAmount:y);                                 [get target stack, damage]
+
+!!if&(damageAmount)>0;
+   !!if&(attackerStack)=(targetStack);                          [on Retaliation]
+
+      ;[Cast on Enemy: OnAttack]
+      !!if&i^OnAttackToEnemy^=1/i^castRageOnEnemyAfterBattleAction_castingStack^>-1;                                                                     
+         !!BMi^castRageOnEnemyAfterBattleAction_castingStack^:T?(casterMonsterType:y) N?(casterNum:y);
+         !!FU(SelectAndSetupMonsterRage):P(casterMonsterType)/(casterNum)/(TRUE);
+         !!FU(Apply_RageOnEnemy):Pi^castRageOnEnemyAfterBattleAction_targetStack^;
+      !!en;
+
+      !!BM(retaliatorStack)&(retaliatorStack)>=0/(retaliatorStack)<=41:T?(monsterType:y) N?(num:y);
+      !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(FALSE);
+
+      !!VRi^actionMatched^:S(FALSE);
+      !!VRi^actionMatched^&i^activationAction1^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction2^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction3^=(action):S(TRUE);
+
+      !!if&i^actionMatched^=(TRUE);
+         !!if|i^OnRetaliateToItself^=1/i^castRageAfterBattleAction^<>-1;  [cast on retaliator]
+            !!FU(Apply_RageOnItself):P(monsterType)/(retaliatorStack);
+         !!en;
+         !!if|i^OnRetaliateToEnemy^=1;  
+            !!VRi^castRageOnEnemyAfterBattleAction_castingStack^:S(retaliatorStack);
+            !!VRi^castRageOnEnemyAfterBattleAction_targetStack^:S(targetStack);
+
+            !!VR(battleLog:z):S^OnRetaliateToEnemy=1 castingStack=%i(castRageOnEnemyAfterBattleAction_castingStack) targetStack=%i(castRageOnEnemyAfterBattleAction_targetStack)^;
+            !!MM&i^logRWE^=(TRUE):S(battleLog); 
+         !!en;
+      !!en;
+
+      !!BM(attackerStack)&(attackerStack)>=0/(attackerStack)<=41:T?(monsterType:y) N?(num:y);
+      !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(FALSE);
+
+      !!VRi^actionMatched^:S(FALSE);
+      !!VRi^actionMatched^&i^activationAction1^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction2^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction3^=(action):S(TRUE);
+
+      !!if&i^actionMatched^=(TRUE);
+         !!VRi^castRageAfterBattleAction^&i^OnBeingRetaliatedToItself^=1:S(attackerStack);    
+         !*FU(Apply_RageOnEnemy)&i^OnBeingRetaliatedToEnemy^=1:P(retaliatorStack);
+      !!en;
+   !!en;
+
+   !!if&(retaliatorStack)=(targetStack);                          [on Attack]
+       
+      ;[Cast on Itself: OnBeingAttackedToItself]
+      !!BM(retaliatorStack):T?(monsterType) N?(num);             
+      !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(FALSE);
+
+      !!VRi^actionMatched^:S(FALSE);
+      !!VRi^actionMatched^&i^activationAction1^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction2^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction3^=(action):S(TRUE);
+
+      !!if&i^actionMatched^=(TRUE);
+         !!if&i^OnBeingAttackedToItself^=1;
+            !!VR(battleLog:z):S^OnBeingAttackedToItself=1 stack=%i(castRageAfterBattleAction)^;
+            !!MM&i^logRWE^=(TRUE):S(battleLog); 
+            !!VRi^castRageAfterBattleAction^:S(retaliatorStack);
+         !!en;
+      !!en;
+
+      ;[Cast on Enemy: OnAttack]
+      !!BM(attackerStack):T?(monsterType) N?(num);             
+      !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(FALSE);
+
+      !!VRi^actionMatched^:S(FALSE);
+      !!VRi^actionMatched^&i^activationAction1^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction2^=(action):S(TRUE);
+      !!VRi^actionMatched^&i^activationAction3^=(action):S(TRUE);
+
+      !*VR(battleLog:z):S^monsterType=%(monsterType) num=%(num)  OnAttackToEnemy=%i(OnAttackToEnemy)^;
+      !*MM&i^logRWE^=(TRUE):S(battleLog); 
+
+      !!if&i^actionMatched^=(TRUE);   
+         !!if&i^OnAttackToEnemy^=1;
+            !!VRi^castRageOnEnemyAfterBattleAction_castingStack^:S(attackerStack);
+            !!VRi^castRageOnEnemyAfterBattleAction_targetStack^:S(targetStack);
+
+            !!VR(battleLog:z):S^OnAttackToEnemy=1 castingStack=%i(castRageOnEnemyAfterBattleAction_castingStack) targetStack=%i(castRageOnEnemyAfterBattleAction_targetStack)^;
+            !!MM&i^logRWE^=(TRUE):S(battleLog); 
+         !!en;
+
+         *!FU(Apply_RageOnEnemy)&i^OnBeingAttackedToEnemy^=1:P(attackerStack);
+      !!en;  
+   !!en; 
+!!en;
+
+!*FU(OnBattleStackObtainsTurn);
+
+ !*BU&i^redrawBattleFieldOnNextBattleAction^=(TRUE):R; 
+ !*SN&i^redrawBattleFieldOnNextBattleAction^=(TRUE):D; 
+
+ !*VRi^redrawBattleFieldOnNextBattleAction^:S(FALSE);
+
+
+!?FU(OnAfterBattleAction);                                           [rage delayed activation (for correct animation display)]
+
+  !!VR(battleLog:z):S^Triggerato OnAfterBattleAction - castRageAfterBattleAction = %i(castRageAfterBattleAction), castingStack=%i(castRageOnEnemyAfterBattleAction_castingStack) targetStack=%i(castRageOnEnemyAfterBattleAction_targetStack)^;^;
+  !!MM&i^logRWE^=(TRUE):S(battleLog);                  
+
+ !!if&i^castRageAfterBattleAction^>-1;                                              
+    !!BMi^castRageAfterBattleAction^:T?(monsterType:y) N?(num:y);
+ 
+    !!if&(num)>0;
+       !!VR(battleLog:z):S^Applying rage on stack on OnAfterBattleAction #=%i(castRageAfterBattleAction)^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog); 
+      
+       !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(TRUE);
+       !!FU(Apply_RageOnItself):P(monsterType)/i^castRageAfterBattleAction^;
+    !!en;
+ !!en;
+
+ !!if&i^castRageOnEnemyAfterBattleAction_castingStack^>-1;                                              
+    !!BMi^castRageOnEnemyAfterBattleAction_castingStack^:T?(monsterType:y) N?(num:y);
+ 
+    !!if&(num)>0;
+       !!VR(battleLog:z):S^Applying rageOnEnemy on OnAfterBattleAction castingStack=%i(castRageOnEnemyAfterBattleAction_castingStack) targetStack=%i(castRageOnEnemyAfterBattleAction_targetStack)^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog); 
+      
+       !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(TRUE);
+       !!FU(Apply_RageOnEnemy):Pi^castRageOnEnemyAfterBattleAction_targetStack^;
+    !!en;
+ !!en;
+ 
+ !?FU(Apply_RageOnItself);
+
+   !#VA(monsterType:x) (stack:x);
+
+   !!FU|i^duration^=0/(stack)<0:E;
+
+   !!if|i^BarbarianRage_%(stack)^<1/i^stackable^=(TRUE);                          [se non ha la rage(=-1) o se non gli è scaduta questo turno (=0)] 
+
+      !*VRy2:Si^defenceModOnItself^;
+      !*BM(stack):D?y1;
+      !*VR(battleLog:z):S^Applico la rage: Difesa del mostro = %y1. Aggiungo %y2^;
+      !*MM&i^logRWE^=(TRUE):S(battleLog);                
+
+      !!BM(stack):Adi^attackModOnItself^ Ddi^defenceModOnItself^ Sdi^speedModOnItself^ Hdi^healthModOnItself^ U1/di^minDamageModOnItself^ U2/di^maxDamageModOnItself^;                 
+   
+      !!if&i^battle_isVisible^;                  [Show battle log and animation]
+
+        !!VR(battleLog:z):Ss^battleLogCastTextOnItself^;
+        !!MM:S(battleLog);                  
+      
+        !!if&i^castAnimationNumberOnItself^<>-1;         [se esiste il cast animation number]
+          !!SN:Ps^soundEffectNameOnItself^;              [play sound]
+          !!BM(stack):Vi^castAnimationNumberOnItself^;
+        !!el;                                       [altrimenti casta bloodlust e poi rimuovilo]
+          !!BM(stack):G43/?y30/?y31;
+ 
+          !!BM(stack):P?i^monsterPosition^;
+          !!BM(stack):C43/i^monsterPosition^/0/0/1; [cast Bloodlust]
+
+          !!BM(stack):N?n T?t;
+          !!if&n/t<>(NO_MON);                              [remove Bloodlust just casted]
+            !!BM(stack):Z?(stackToRemoveSpell:y);
+            !!SN:E4473392/(CALLCONV_THISCALL)/(stackToRemoveSpell)/43;
+          !!en;
+
+          !!BM(stack)&y30>0:M43/y30/1;                     [restore Bloodlust if it was present before] 
+          !!VRi^redrawBattleFieldOnNextBattleAction^:S(TRUE);
+        !!en;
+      !!en; 
+   !!en;  
+
+   !!VRi^BarbarianRage_%(stack)^:Si^duration^;     
+
+   !!VRi^castRageAfterBattleAction^:S-1;
+
+ !?FU(Apply_RageOnEnemy);
+
+ * exit if there are no modification to be done
+ !!FU&i^attackModOnEnemy^<>0/i^attackPercentOnEnemy^<>0/i^defenceModOnEnemy^<>0/i^defencePercentOnEnemy^<>0/i^speedModOnEnemy^<>0/i^healthModOnEnemy^<>0/i^minDamageModOnEnemy^<>0/i^maxDamageModOnEnemy^<>0:E;
+
+ !#VA(stack:x);
+
+ !!BM(stack):N?(num:y);
+
+ !!if&(num)>0;
+
+    !!BM(stack):A?y1;
+    !!VRy1:Sy1 +i^attackModOnEnemy^;
+    !!VRy1&y1<0:S0;
+    !!BM(stack):Adi^attackModOnEnemy^;
+
+    !!BM(stack):D?y1;
+    !!VRy1:Sy1 +i^defenceModOnEnemy^;
+    !!VRy1&y1<0:S0;
+    !!BM(stack):Ddi^defenceModOnEnemy^;
+
+    !!BM(stack):S?y1;
+    !!VRy1:Sy1 +i^speedModOnEnemy^;
+    !!VRy1&y1<1:S1;
+    !!BM(stack):Sdi^speedModOnEnemy^;
+
+    !!BM(stack):H?y1;
+    !!VRy1:Sy1 +i^healthModOnEnemy^;
+    !!VRy1&y1<1:S1;
+    !!BM(stack):Hdi^healthModOnEnemy^;
+
+    !!BM(stack):U1/?y1;
+    !!VRy1:Sy1 +i^minDamageModOnEnemy^;
+    !!VRy1&y1<1:S1;
+    !!BM(stack):U1/di^minDamageModOnEnemy^;
+ 
+    !!BM(stack):U2/?y1;
+    !!VRy1:Sy1 +i^maxDamageModOnEnemy^;
+    !!VRy1&y1<1:S1;
+    !!BM(stack):U2/di^maxDamageModOnEnemy^;                 
+
+    !!if&i^attackPercentOnEnemy^<>0/(stack)>-1;
+
+       !!BM(stack):A?(monsterAttack:y);     get primary target attack in (monsterAttack)
+
+       !!VRe1:S(monsterAttack);
+
+       !!VRe1::100 *i^attackPercentOnEnemy^;                        [calculate defence reduction]
+
+       !!VRy2:Se1 *1;
+       !!VRy2&y2<0:S0;                                                            [do not go below zero]
+
+       !!BM(stack):Ay2;         [subtract value for the shot]
+       !*BM(stack)/i^defenceReductionEnabled^=1:D?y3;
+       !*VRy2:*-1;
+       !*VRz2:S^The attack ignored %(random)% of target defence: %Y2 of %(attackedMonsterDefence)^;
+       !*MM&(attackedstack)>-1/i^defenceReductionEnabled^=1/y2<>(attackedMonsterDefence):Sz2;
+       !*BM(stack)&(stack)>-1:D?(monsterDefence);     get primary target attack in (monsterDefence)
+    !!en;
+
+    !!if&i^defencePercentOnEnemy^<>0/(stack)>-1;
+
+       !*VR(battleLog:z):S^Triggerato OnAfterBattleAction - castRageAfterBattleAction = %i(castRageAfterBattleAction)^;
+
+       !!VR(battleLog:z):S^Triggerato defencePercentOnEnemy^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog);  
+
+       !!BM(stack):A?(monsterDefence:y);     get primary target defence in (monsterAttack)
+
+       !!VRe1:S(monsterDefence);
+
+       !!VR(battleLog):S^before modification e1 = %e1^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog);  
+
+       !!VRe1::100 *i^defencePercentOnEnemy^;                        [calculate defence reduction]
+       !!VR(battleLog:z):S^after modification e1 = %e1^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog);  
+
+       !!VRy2:Se1 *1;
+       !!VRy2&y2<0:S0;                                                            [do not go below zero]
+
+       !!VR(battleLog):S^y2 = %y2^;
+       !!MM&i^logRWE^=(TRUE):S(battleLog);  
+
+    
+       !!BM(stack):Dy2;         [subtract value for the shot]
+       !*BM(stack)/i^defenceReductionEnabled^=1:D?y3;
+       !*VRy2:*-1;
+       !*VRz2:S^The attack ignored %(random)% of target defence: %Y2 of %(attackedMonsterDefence)^;
+       !*MM&(attackedstack)>-1/i^defenceReductionEnabled^=1/y2<>(attackedMonsterDefence):Sz2;
+       !*BM(stack)&(stack)>-1:D?(monsterDefence);     get primary target defence in (monsterDefence)
+    !!en;
+ 
+    !!if&i^battle_isVisible^;                  [Show battle log and animation]
+       
+       !!VR(battleLog:z):Ss^battleLogCastTextOnEnemy^;
+       !!MM:S(battleLog);                  
+      
+       !!if&i^castAnimationNumberOnEnemy^<>-1;         [se esiste il cast animation number]
+          !!SN:Ps^soundEffectNameOnEnemy^;              [play sound]
+          !!BM(stack):Vi^castAnimationNumberOnEnemy^;
+       !!el;                                       [altrimenti casta bloodlust e poi rimuovilo]
+          !!BM(stack):G43/?y30/?y31;
+ 
+          !!BM(stack):P?i^monsterPosition^;
+          !!BM(stack):C43/i^monsterPosition^/0/0/1; [cast Bloodlust]
+
+          !!BM(stack):N?n T?t;
+          !!if&n/t<>(NO_MON);                              [remove Bloodlust just casted]
+            !!BM(stack):Z?(stackToRemoveSpell:y);
+            !!SN:E4473392/(CALLCONV_THISCALL)/(stackToRemoveSpell)/43;
+          !!en;
+
+          !!BM(stack)&y30>0:M43/y30/1;                     [restore Bloodlust if it was present before] 
+          !!VRi^redrawBattleFieldOnNextBattleAction^:S(TRUE);
+       !!en;
+    !!en; 
+ !!en;
+  
+ !!VRi^castRageOnEnemyAfterBattleAction_castingStack^:S-1;
+ !!VRi^castRageOnEnemyAfterBattleAction_targetStack^:S-1;
+
+ !?FU(Remove_RageOnItself);
+ 
+ !#VA(stack:x);
+
+ !!BM(stack):T?(monsterType:y) N?(num:y);
+
+ !!FU(SelectAndSetupMonsterRage):P(monsterType)/(num)/(TRUE);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VR(battleLog:z):S^%(monsterName) ha esaurito la sua rage^;
+ !!MM:S(battleLog);                  
+
+      !*VRy2:Si^defenceModOnItself^;
+      !*BM(stack):D?y1;
+      !*VR(battleLog:z):S^Rimuovo la rage: Difesa del mostro = %y1. Tolgo %y2^;
+      !*MM&i^logRWE^=(TRUE):S(battleLog);                  
+
+ !!BM(stack)&i^duration^>0:Ad-i^attackModOnItself^ Dd-i^defenceModOnItself^ Sd-i^speedModOnItself^ Hd-i^healthModOnItself^ U1/d-i^minDamageModOnItself^ U2/d-i^maxDamageModOnItself^;                 
+ ; Function to check if the targeted monster is eligible for rage
+
+!?FU(SelectAndSetupMonsterRage);
+ !#VA(monsterType:x) (num:x) (forceRageSetupWithoutRandomRoll:x);
+
+ !!VRi^activationAction1^:S-1;
+ !!VRi^activationAction2^:S-1;
+ !!VRi^activationAction3^:S-1;
+ !!VRi^attackModOnItself^:S0;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S0;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S0;                                                     
+
+ ; Sound and animation on itself
+ !!VRs^soundEffectNameOnItself^:S^BERSERK^;
+ !!VRi^castAnimationNumberOnItself^:S-1;      
+ !!VRs^battleLogCastTextOnItself^:S^^;
+ 
+ ; Modificators on itself
+ !!VRi^attackModOnItself^:S0;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S0;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^durationOnItself^:S0;                                                     
+ 
+ ; Activation trigger for effect on itself
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S0;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S0;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S0;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+
+ ; Sound and animation on enemy 
+ !!VRs^soundEffectNameOnEnemy^:S^^;
+ !!VRi^castAnimationNumberOnEnemy^:S-1;      
+ !!VRs^battleLogCastTextOnEnemy^:S^^;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S0;
+ !!VRi^OnRetaliateToEnemy^:S0;
+ !!VRi^OnBeingAttackedToEnemy^:S0;     [not implemented]
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;   [not implemented]
+
+ !!VR(random:y):R0/0/99;
+ !!VR(random)&(forceRageSetupWithoutRandomRoll)=(TRUE):S0;
+ !*VR(random):S0;        Random Roll sempre 0
+
+CASTLE:
+ !!FU(DefensiveFormation_Settings)&(monsterType)=(MON_HALBERDIER)/(random)<20:P(monsterType)/(num);
+ !!FU(DefensiveFormation_Settings)&(monsterType)=197/(random)<20:P(monsterType)/(num); Imperial Soldier
+ !!FU(CripplingShoot_Settings)&(monsterType)=(MON_MARKSMAN)/(random)<20:P(monsterType)/(num);
+ !!FU(IncapacitatingShoot_Settings)&(monsterType)=198/(random)<20:P(monsterType)/(num); Crossbowman
+ !!FU(WallofShieldsFormation_Settings)&(monsterType)=200/(random)<30:P(monsterType)/(num); Preator
+ 
+RAMPART:
+ !!FU(CripplingAttack_Settings)&(monsterType)=203/(random)<20:P(monsterType)/(num); Centaur Warlord
+ !!FU(DefensiveFormation_Settings)&(monsterType)=(MON_BATTLE_DWARF)/(random)<20:P(monsterType)/(num);
+ !!FU(DestroyArmor_Settings)&(monsterType)=(MON_BATTLE_DWARF)/(random)<20:P(monsterType)/(num);
+ !!FU(DestroyArmor_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Berserker Dwarf
+ !!FU(BerserkerRage_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Berserker Dwarf
+ !!FU(MightoftheNature_Settings)&(monsterType)=207/(random)<20:P(monsterType)/(num); Force of Nature
+ !!FU(DragonDefence_Settings)&(monsterType)=(MON_GOLD_DRAGON)/(random)<20:P(monsterType)/(num);
+ !!FU(UltimateDefence_Settings)&(monsterType)=(MON_DIAMOND_DRAGON)/(random)<30:P(monsterType)/(num);
+ 
+INFERNO:
+ !!FU(InfernalFury_Settings)&(monsterType)=217/(random)<10:P(monsterType)/(num); Astral Cerberus now Call Bane of Souls
+ !!FU(InfernalFury_Settings)&(monsterType)=(MON_DEMON)/(random)<20:P(monsterType)/(num);
+ !!FU(InfernalFury_Settings)&(monsterType)=(MON_HORNED_DEMON)/(random)<30:P(monsterType)/(num);
+ !!FU(InfernalFury_Settings)&(monsterType)=218/(random)<50:P(monsterType)/(num); Infernal Slayer
+ !!FU(InfernalFury_Settings)&(monsterType)=219/(random)<20:P(monsterType)/(num); Pit Master
+ !!FU(WrathofHell_Settings)&(monsterType)=220/(random)<20:P(monsterType)/(num); Efreet Raja
+ !!FU(InfernalFury_Settings)&(monsterType)=(MON_HELL_STEED)/(random)<20:P(monsterType)/(num);
+ !!FU(DiabolicFury_Settings)&(monsterType)=(MON_DEVIL)/(random)<20:P(monsterType)/(num);
+ !!FU(DiabolicFury_Settings)&(monsterType)=(MON_ARCH_DEVIL)/(random)<20:P(monsterType)/(num);
+ !!FU(StrongDiabolicFury_Settings)&(monsterType)=153/(random)<30:P(monsterType)/(num); Hell Baron
+
+NECROPOLIS:
+ !!FU(DefensiveFormation_Settings)&(monsterType)=221/(random)<20:P(monsterType)/(num); Skeleton Soldier
+ !!FU(ThirstforBlood_Settings)&(monsterType)=224/(random)<20:P(monsterType)/(num); Nosferatu
+
+DUNGEON:
+ !!FU(WrathOftheUnderworld_Settings)&(monsterType)=231/(random)<20:P(monsterType)/(num); Black Dragon Guard
+
+STRONGHOLD:
+ !!FU(BarbarianRage_Settings)&(monsterType)=(MON_HOBGOBLIN)/(random)<10:P(monsterType)/(num);
+ !!FU(BarbarianRage_Settings)&(monsterType)=233/(random)<20:P(monsterType)/(num); Barbarians of the Wildlands
+ !!FU(DestroyArmor_Settings)&(monsterType)=233/(random)<20:P(monsterType)/(num); Barbarians of the Wildlands
+ !!FU(BarbarianRage_Settings)&(monsterType)=(MON_WOLF_RAIDER)/(random)<20:P(monsterType)/(num);
+ !!FU(BarbarianRage_Settings)&(monsterType)=234/(random)<20:P(monsterType)/(num); Men Hunter
+ !!FU(StrongBarbarianRage_Settings)&(monsterType)=(MON_ORC_CHIEFTAIN)/(random)<20:P(monsterType)/(num);
+ !!FU(StrongBarbarianRage_Settings)&(monsterType)=(MON_TROLL)/(random)<30:P(monsterType)/(num);
+ !!FU(BerserkerRage_Settings)&(monsterType)=235/(random)<30:P(monsterType)/(num); Orc Berserker
+ !!FU(WrathOfVengeance_Settings)&(monsterType)=(MON_OGRE)/(random)<20:P(monsterType)/(num);
+ !!FU(WrathOfVengeance_Settings)&(monsterType)=(MON_OGRE_MAGE)/(random)<20:P(monsterType)/(num);
+ !!FU(WrathOfVengeance_Settings)&(monsterType)=236/(random)<20:P(monsterType)/(num); Ogre Battle Shaman
+ !!FU(WrathOfVengeance_Settings)&(monsterType)=(MON_BOAR)/(random)<20:P(monsterType)/(num);
+ !!FU(SmashingArmor_Settings)&(monsterType)=(MON_CYCLOPS)/(random)<20:P(monsterType)/(num);
+ !!FU(SmashingArmor_Settings)&(monsterType)=(MON_CYCLOPS_KING)/(random)<20:P(monsterType)/(num);
+ !!FU(SmashingArmor_Settings)&(monsterType)=238/(random)<20:P(monsterType)/(num); Cyclops Blood Eye
+ !!FU(WrathOftheCyclops_Settings)&(monsterType)=(MON_CYCLOPS_KING)/(random)<20:P(monsterType)/(num);
+ !!FU(WrathOftheCyclops_Settings)&(monsterType)=238/(random)<20:P(monsterType)/(num); Cyclops Blood Eye
+ !!FU(BehemothRage_Settings)&(monsterType)=(MON_BEHEMOTH)/(random)<20:P(monsterType)/(num);
+ !!FU(BehemothRage_Settings)&(monsterType)=(MON_ANCIENT_BEHEMOTH)/(random)<30:P(monsterType)/(num);
+ !!FU(MonstrousRage_Settings)&(monsterType)=156/(random)<40:P(monsterType)/(num);
+
+FORTRESS:
+ !!FU(WrathoftheGnolls_Settings)&(monsterType)=(MON_GNOLL_MARAUDER)/(random)<20:P(monsterType)/(num);
+ !!FU(WrathoftheGnolls_Settings)&(monsterType)=239/(random)<20:P(monsterType)/(num); Gnoll Battle Shaman
+ !!FU(MightoftheCatoblepas_Settings)&(monsterType)=244/(random)<30:P(monsterType)/(num); Catoblepas
+
+ !?FU(DefensiveFormation_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S-1;
+ !!VRi^defenceModOnItself^:S3; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^SHIELD^;
+ !!VRi^castAnimationNumberOnItself^:S27;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) is in DEFENSIVE FORMATION (-1atk +3def)!{~}^;
+
+ !?FU(WallofShieldsFormation_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+!!VRi^attackModOnItself^:S-1;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S6;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^SHIELD^;
+ !!VRi^castAnimationNumberOnItself^:S27;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) is in WALL OF SHIELDS FORMATION (-1atk +6def)!{~}^;
+
+ !?FU(MightoftheNature_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S4;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-2;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^speedModOnItself^:S1;
+ !!VRi^minDamageModOnItself^:S1;
+ !!VRi^maxDamageModOnItself^:S1;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(TRUE);
+  
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) is FURIOUS (+4atk -2def +1spe +1dmg)!{~}^;
+
+ !?FU(DragonDefence_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S0;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S4;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^SHIELD^;
+ !!VRi^castAnimationNumberOnItself^:S27;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) is in DRAGON DEFENCE (+4def)!{~}^;
+
+ !?FU(UltimateDefence_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S0;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S8;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^SHIELD^;
+ !!VRi^castAnimationNumberOnItself^:S27;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) is in ULTIMATE DEFENCE (+8def)!{~}^;
+
+ !?FU(InfernalFury_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S2;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(TRUE);
+
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}%(monsterName) is FURIOUS (+2atk -1def)!{~}^;  
+
+  !?FU(WrathofHell_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S1;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^healthModOnItself^:S20;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) enters in WRATH OF HELL (+1atk +1def +20hp)!{~}^;
+
+ !?FU(DiabolicFury_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S3;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S0;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(TRUE);
+
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}%(monsterName) is FURIOUS (+3atk)!{~}^;  
+
+ !?FU(StrongDiabolicFury_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S5;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S0;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(TRUE);
+
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}%(monsterName) is FURIOUS (+5atk)!{~}^;  
+
+ !?FU(ThirstforBlood_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S3;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-2;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S3;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^DEATHRIP^;
+ !!VRi^castAnimationNumberOnItself^:S08;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}%(monsterName) enters in THIRST FOR BLOOD (+3atk -2def +3spe)!{~}^; 
+
+ !?FU(WrathOftheUnderworld_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S4;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S2;
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) enters in WRATH OF THE UNDERWORLD (+4atk -1def +2spe)!{~}^;
+
+ !?FU(BarbarianRage_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S2;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S1;
+ !!VRi^healthModOnItself^:S1;
+ !!VRi^minDamageModOnItself^:S1;
+ !!VRi^maxDamageModOnItself^:S1;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}The %(monsterName) enters in RAGE (+2atk -1def +1spe +1hp +1dmg)!{~}^; 
+
+ !?FU(StrongBarbarianRage_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+ 
+ !!VRi^attackModOnItself^:S3;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S1;
+ !!VRi^healthModOnItself^:S2;
+ !!VRi^minDamageModOnItself^:S1;
+ !!VRi^maxDamageModOnItself^:S1;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}The %(monsterName) enters in STRONG RAGE (+3atk -1def +1spe +2hp +1dmg)!{~}^;
+
+ !?FU(BerserkerRage_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+ 
+ !!VRi^attackModOnItself^:S4;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-2;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S3;
+ !!VRi^healthModOnItself^:S5;
+ !!VRi^minDamageModOnItself^:S1;
+ !!VRi^maxDamageModOnItself^:S1;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}The %(monsterName) enters in BERSERKER RAGE (+4atk -2def +3spe +5hp +1dmg)!{~}^;
+
+ !?FU(WrathOfVengeance_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+ 
+ !!VRi^attackModOnItself^:S2;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S10;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}The %(monsterName) enters in WRATH OF VENGEANCE (+2atk -1def +10hp)!{~}^;
+
+ !?FU(WrathOftheCyclops_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S3;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-1;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S20;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}The %(monsterName) enters in WRATH OF THE CYCLOPS (+3atk -1def +20hp)!{~}^;
+
+ !?FU(BehemothRage_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+ 
+ !!VRi^attackModOnItself^:S5;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-2;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S20;
+ !!VRi^speedModOnItself^:S1;
+ !!VRi^minDamageModOnItself^:S5;
+ !!VRi^maxDamageModOnItself^:S5;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+  
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}The %(monsterName) enters in a BEHEMOTH RAGE (+5atk -2def +1spe +20hp +5dmg)!{~}^;
+
+ !?FU(MonstrousRage_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S5;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S-2;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S40;
+ !!VRi^speedModOnItself^:S2;
+ !!VRi^minDamageModOnItself^:S5;
+ !!VRi^maxDamageModOnItself^:S5;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+  
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S1;
+ !!VRi^OnRetaliateToItself^:S1;
+ !!VRi^OnBeingAttackedToItself^:S0;
+ !!VRi^OnBeingRetaliatedToItself^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ff1100}The %(monsterName) enters in a MONSTROUS RAGE (+5atk -2def +2spe +40hp +5dmg)!{~}^;
+
+ !?FU(MightoftheCatoblepas_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S0;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S4;     [Contiene la diminuzione della difesa]; 
+ !!VRi^healthModOnItself^:S0;
+ !!VRi^speedModOnItself^:S0;
+ !!VRi^minDamageModOnItself^:S0;
+ !!VRi^maxDamageModOnItself^:S0;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(TRUE);
+  
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^SHIELD^;
+ !!VRi^castAnimationNumberOnItself^:S27;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}The %(monsterName) is HARDEN THE SCALES (+4def)!{~}^;
+
+ !?FU(WrathoftheGnolls_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ !!VRi^attackModOnItself^:S1;     [Contiene l'aumento dell'attacco]
+ !!VRi^defenceModOnItself^:S0;     [Contiene la diminuzione della difesa]; 
+ !!VRi^speedModOnItself^:S2;
+ !!VRi^healthModOnItself^:S1;
+ !!VRi^minDamageModOnItself^:S1;
+ !!VRi^maxDamageModOnItself^:S1;
+ !!VRi^duration^:S99;        [1 = finisce alla fine del round corrente]                                             
+ !!VRi^stackable^:S(FALSE);
+ 
+ ; Activation trigger
+ !!VRi^OnAttackToItself^:S0;
+ !!VRi^OnRetaliateToItself^:S0;
+ !!VRi^OnBeingAttackedToItself^:S1;
+ !!VRi^OnBeingRetaliatedToItself^:S1;
+
+ ; Animation
+ !!VRs^soundEffectNameOnItself^:S^FRENZY^;
+ !!VRi^castAnimationNumberOnItself^:S17;      
+ !!VRs^battleLogCastTextOnItself^:S^{~ffeb3b}%(monsterName) enters in WRATH OF THE GNOLLS (+1atk +2spe +1dmg)!{~}^;
+
+ !?FU(CripplingShoot_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S-1;
+ !!VRi^activationAction3^:S-1; 
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S-4;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S-4;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S-1;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S(TRUE);
+ !!VRi^OnRetaliateToEnemy^:S0;
+ !!VRi^OnBeingAttackedToEnemy^:S0;
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnEnemy^:S^DWRFDFND^; Dwarf Defend sound effect
+ !!VRi^castAnimationNumberOnEnemy^:S14; Disprupting Ray Explosion Animation
+ !!VRs^battleLogCastTextOnEnemy^:S^{~d2bb2d}The %(monsterName) has CRIPPLED the enemy (-4atk -4def -1spe)!{~}^;
+
+ !?FU(IncapacitatingShoot_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S-1;
+ !!VRi^activationAction3^:S-1; 
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S-4;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S-4;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S-2;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S(TRUE);
+ !!VRi^OnRetaliateToEnemy^:S0;
+ !!VRi^OnBeingAttackedToEnemy^:S0;
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnEnemy^:S^DWRFDFND^; Dwarf Defend sound effect
+ !!VRi^castAnimationNumberOnEnemy^:S14; Disprupting Ray Explosion Animation  
+ !!VRs^battleLogCastTextOnEnemy^:S^{~d2bb2d}The %(monsterName) has INCAPACITATED the enemy (-4atk -4def -2spe)!{~}^;
+
+ !?FU(CripplingAttack_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction2^:S-1;
+ !!VRi^activationAction3^:S-1; 
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S-4;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S-4;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S-1;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S(TRUE);
+ !!VRi^OnRetaliateToEnemy^:S(TRUE);
+ !!VRi^OnBeingAttackedToEnemy^:S0;
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnEnemy^:S^DWRFDFND^; Dwarf Defend sound effect
+ !!VRi^castAnimationNumberOnEnemy^:S14; Disprupting Ray Explosion Animation  
+ !!VRs^battleLogCastTextOnEnemy^:S^{~d2bb2d}The %(monsterName) has CRIPPLED the enemy (-4atk -4def -1spe)!{~}^;
+
+ !?FU(DestroyArmor_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S0;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S-2;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S0;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S(TRUE);
+ !!VRi^OnRetaliateToEnemy^:S(TRUE);
+ !!VRi^OnBeingAttackedToEnemy^:S0;
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnEnemy^:S^SLAYER^;
+ !!VRi^castAnimationNumberOnEnemy^:S28;   
+ !!VRs^battleLogCastTextOnEnemy^:S^{~d2bb2d}The %(monsterName) has DESTROYED enemy armor (-2def)!{~}^;
+
+ !?FU(SmashingArmor_Settings);
+ !#VA(monsterType:x) (num:x);
+
+ !!SN&(num)=1:H^monname^/(monsterType)/0/?(monsterName:z);   [fetching monster name]
+ !!SN        :H^monname^/(monsterType)/1/?(monsterName);    
+ 
+ !!VRi^activationAction1^:S(BATTLE_ACTION_SHOOT);
+ !!VRi^activationAction2^:S(BATTLE_ACTION_WALK_AND_ATTACK);
+ !!VRi^activationAction3^:S-1; 
+
+ ; Modificators on enemy
+ !!VRi^attackModOnEnemy^:S0;    
+ !!VRi^attackPercentOnEnemy^:S0;    
+ !!VRi^defenceModOnEnemy^:S-6;   
+ !!VRi^defencePercentOnEnemy^:S0;     
+ !!VRi^speedModOnEnemy^:S0;
+ !!VRi^healthModOnEnemy^:S0;
+ !!VRi^minDamageModOnEnemy^:S0;
+ !!VRi^maxDamageModOnEnemy^:S0;
+ 
+ ; Activation trigger for effect on Enemy
+ !!VRi^OnAttackToEnemy^:S(TRUE);
+ !!VRi^OnRetaliateToEnemy^:S(TRUE);
+ !!VRi^OnBeingAttackedToEnemy^:S0;
+ !!VRi^OnBeingRetaliatedToEnemy^:S0;
+
+ ; Animation
+ !!VRs^soundEffectNameOnEnemy^:S^SLAYER^;
+ !!VRi^castAnimationNumberOnEnemy^:S28;   
+ !!VRs^battleLogCastTextOnEnemy^:S^{~d2bb2d}The %(monsterName) has SMASHED enemy armor (-6def)!{~}^;
