@@ -1,6 +1,9 @@
 THIRD UPGRADE MOD(TUM) ENCHANTED 2.0
           STABLE VERSION
 -
+*This Mod is incompatible with TUM Full (Third Upgrade Mod), so disable it before starting the game.  
+*Now TUM Lite and TUM Lite Enchanted are merged in a single mod called TUM ENCHANTED. Please delete or disable TUM Lite and TUM Lite Enchanted before running this.  
+
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
