@@ -3,13 +3,15 @@ Now TUM ENCHANTED is downloadable via Mod Browser :)
 
 BUG FIXES:
 - (Regression) Fixed clicking on small portraits on Town Screen doesn't show TUM creatures
-- Unupgraded Level 1 creature growth on Fort is now correctly reported (Thanks to Trebuchet)
+- Fixed being able to build a Shipyard even when town is not near the sea.
 
-IMPROVEMENTS:
+TOWN SCREEN IMPROVEMENTS:
+- Unupgraded Level 1 creature growth on Fort is now correctly reported (Thanks to Trebuchet)
 - TUM Upgraded creature are now displayed on Fort screen (Thanks to Trebuchet)
+- TUM Upgraded creature are now displayed on right click on small portrait in Town Screen (Thanks to Trebuchet)
 
 BALANCE:
-- Removed ignoring Hypnotize HP cast requirements.
+- Restored Hypnotize HP on target cast requirements.
 
 KNOWN ISSUES
 - (WOG Bug) TUM Upgraded Liches and Vampires cannot be resurrected by Commander.
