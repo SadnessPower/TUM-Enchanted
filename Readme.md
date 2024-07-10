@@ -1,16 +1,6 @@
 THIRD UPGRADE MOD(TUM) ENCHANTED 2.0
+          STABLE VERSION
 -
-
------------------------------------------------------------------------------------------------------------------------
-CREDITS
------------------------------------------------------------------------------------------------------------------------
-Diozia: Author and Designer  
-Maiko: TUM Lite Creator    
-Archer30: ERM author and scripting  
-SadnessPower: Bugfix and scripting  
-Majaczek: Plugins (Amethyst, New Towns, etc.)  
-FirePaladin and FanofHeroes: Graphics  
-
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
@@ -24,6 +14,24 @@ MAIN FEATURES
 - Neutral Towns are well defended and challenging  
 - Towns produce more golds  
 ..and many more!  
+  
+-----------------------------------------------------------------------------------------------------------------------
+FEEDBACK
+-----------------------------------------------------------------------------------------------------------------------
+For general feedback, balance suggestions and bug report you can contact us in the following discord channel:
+https://discord.com/channels/665742159307341827/1232146926078787644
+
+-----------------------------------------------------------------------------------------------------------------------
+CREDITS
+-----------------------------------------------------------------------------------------------------------------------
+Diozia - Balance Designer  
+SadnessPower - Bugfix and Scripting  
+
+Special thanks to:  
+Maiko - TUM Lite Creator    
+Archer30 - ERM author and scripting  
+Majaczek - Plugins (Amethyst, New Towns, etc.)  
+FirePaladin and FanofHeroes - Graphics  
 
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -41,38 +49,42 @@ NON-LIVING: No Morale. Mind Spells Immunity. Death Stare Immunity. Fearless.
 HATES: +25% damage.  
 STRONGLY HATES: +50% damage.  
 RAISE: Summon X creatures from a fallen ally stack such as Pit Lord.  
-
+  
 
 
 *****************************************************************
-CASTLE
+**CASTLE**
 *****************************************************************
 BLESSED SHOOTER: Precision + Bless.  
 SHIELD OF THE EMPIRE: Counterstrike + Shield.  
 BLESS OF FAITH: Prayer + Bless.  
 GLORY OF THE KNIGHT: Shield + Bless + Mirth.  
-
+  
+  
 *****************************************************************
-RAMPART
+**RAMPART**
 *****************************************************************
 BATTLECRY OF THE WARLORD: Bloodlust + Stone Skin.  
-
+  
+  
 *****************************************************************
-TOWER
+**TOWER**
 *****************************************************************
 MAGICAL SHOOT: 80% Magic Arrow or 20% Ice Bolt.  
 POWERFUL MAGICAL SHOOT: 70% Magic Arrow or 20% Ice Bolt or 10% Lightning Bolt.  
 SUPREME MAGICAL SHOOT: 40% Magic Arrow or 25% Ice Bolt or 20% Lightning Bolt or 10% Fireball or 5% Meteor Shower.  
 PROTECTION OF THE MASTER: Air Shield + Stone Skin + Magic Mirror.  
 MAGICAL SHIELDS: Shield + Fire Shield.  
-
+  
+  
 *****************************************************************
-NECROPOLIS
+**NECROPOLIS**
 *****************************************************************
 FLESHEATER: After killing a living creature, the creature eats the enemy body and drains life like a vampire.  
-
+  
+  
 *****************************************************************
-DUNGEON
+**DUNGEON**
 *****************************************************************
 FUNGAL WAR POTION: Bloodlust + Stone Skin + Haste.  
 MADNESS OF THE HARPY: Forgetfullness + Misfortune.  
@@ -80,29 +92,33 @@ HEX SHOOT: 40% Misfortune and 30% Weakness and 30% Dispel Helpful Spells.
 POWERFUL HEX SHOOT: 40% Misfortune and 30% Weakness and 30% Dispel Helpful Spells and 30% Disrupting Ray and 20% Curse and 10% Slow.  
 BEHOLDER SHOOT: 40% Misfortune and 30% Weakness and 30% Dispel Helpful Spells and 30% Disrupting Ray and 20% Curse and 10% Slow and 10% Forgetfullness and 10% Poison and 5% Stone Gaze and 5% Fireball, and many more.  
 AGONY SHOOT: Petrification + Poison.  
-
+  
+  
 *****************************************************************
-STRONGHOLD
+**STRONGHOLD**
 *****************************************************************
 ELEMENTAL PROTECTION: Air Prot + Fire Prot + Earth Prot + Water Prot.  
 AIR ENCHANTMENT: Air Shield + Counterstrike.  
-
+  
+  
 *****************************************************************
-FORTRESS
+**FORTRESS**
 *****************************************************************
 STRONG HEALTH: Immune to Poison Effect.  
-
+  
+  
 *****************************************************************
-CONFLUX
+**CONFLUX**
 *****************************************************************
 ENCHANTMENT OF THE SPRITE: Each turn one of Bless, Stone Skin, Mirth or Fortune.
 ENCHANTMENT OF THE FAIRY: Each turn one of Bless, Stone Skin, Mirth, Fortune, Air Shield, Magic Mirror or Prayer.  
 FIRE POWER: Bloodlust + Slayer.  
 KILLER INSTINCT: Bless + Bloodlust + Slayer + Frenzy.  
 ENCHANTER PROTECTION: Air Shield + Fire Shield + Stone Skin + Magic Mirror.  
-
+  
+  
 *****************************************************************
-OTHERS
+**OTHERS**
 *****************************************************************
 CRIPPLING ATTACK/SHOOT: -1 Speed.  
 INCAPACITATING ATTACK/SHOOT: -2 Speed, -1 Attack Skill, -1 Defence Skill.  
@@ -114,17 +130,17 @@ CURSE OF THE SORCERESS: Expert Weakness + Expert Curse.
 SPEAR OF MAGIC: Magic Arrow + Dispel Beneficial Spells.  
 
 
-NEW CONDITION  
+*NEW CONDITION*    
    STUNNED: No movement and no Retaliation for 1 turn. It's work's only on non-Mind Immunity Creatures.  
 
 
-DAMAGE REDUCTION SKILL  
+*DAMAGE REDUCTION SKILL*  
    ETHEREAL: 15% to 30% of Physical damage is avoided.  
    PARRY: -50% Physical Damage.  
    SHIELD BLOCK: -100% Physical Damage and block Poison.  
 
 
-FURY, RAGE, WRATH AND MIGHT  
+*FURY, RAGE, WRATH AND MIGHT*  
    FURY: Activates only when attack or retaliate. Bonus are cumulative.  
    RAGE/THIRST: Activates when attack or retaliate. Bonus are not cumulative.  
    MIGHT: Activates only when be attacked. Bonus are cumulative.  
@@ -159,7 +175,7 @@ FURY, RAGE, WRATH AND MIGHT
    MIGHT OF THE CATOBLEPAS: +4 Defence Skill for each time be attacked.  
 
 
-NEW POISON/DISEASE  
+*NEW POISON/DISEASE*  
    Poison: Last 3 turns.  
    Disease: Last 4 turns.  
    Mind Disease: Last 5 turns.  
@@ -191,7 +207,7 @@ NEW POISON/DISEASE
    UTTER END: Poison + Sorrow + Disrupting Ray + Slow + Curse + Dispel.  
 
 
-DRAGON BREATH TYPES  
+*DRAGON BREATH TYPES*  
    GREEN DRAGON: Poison + Acid.        
    GOLD DRAGON: Petrifying.  
    DIAMOND DRAGON: Stunnning and/or Blinding.  
