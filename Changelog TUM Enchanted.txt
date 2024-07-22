@@ -1,3 +1,7 @@
+**********CHANGELOG TUM ENCHANTED 2.0.1**********
+- Fixed regression of crashing at the end of each month while generating new random artifacts for Artifact Merchant.
+!!! YOU CAN RESUME PLAYING USING YOUR OLD SAVEGAMES AFFECTED BY THIS BUG BY RELOADING THEM AND PRESS F12 !!!
+
 **********CHANGELOG TUM ENCHANTED 2.0**********
 Now TUM ENCHANTED is downloadable via Mod Browser :)
 
