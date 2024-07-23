@@ -13,15 +13,15 @@
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
-![](/Assets/attr_attack.webp) All dwelling can be upgraded a second time! AI will do that as well  
-![](/Assets/logo_homm3_sod.webp) Every faction has a theme and unique strategy  
-![](/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   
-![](/Assets/art_holy_grail.webp) Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
-![](/Assets//art_angel_wings.webp) Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
-![](/Assets/art_spellbinders_hat.webp) Factions without Mage Guild Level 5 have other bonus  
-![](/Assets/logo_homm3_era.webp) Over 100 new unique skills for creatures (see below for descriptions)  
-![](/Assets/attr_defence.webp) Neutral Towns are well defended and challenging  
-![](/Assets/art_endless_sack_of_gold.webp) Towns produce more golds  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/attr_attack.webp) All dwelling can be upgraded a second time! AI will do that as well  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_sod.webp) Every faction has a theme and unique strategy  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/art_holy_grail.webp) Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets//art_angel_wings.webp) Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/art_spellbinders_hat.webp) Factions without Mage Guild Level 5 have other bonus  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_era.webp) Over 100 new unique skills for creatures (see below for descriptions)  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/attr_defence.webp) Neutral Towns are well defended and challenging  
+![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/art_endless_sack_of_gold.webp) Towns produce more golds  
 ..and many more!  
   
 -----------------------------------------------------------------------------------------------------------------------
