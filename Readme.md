@@ -1,8 +1,12 @@
-THIRD UPGRADE MOD(TUM) ENCHANTED 2.0
-          STABLE VERSION
--
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.0.1
+
 *This Mod is incompatible with TUM Full (Third Upgrade Mod), so disable it before starting the game.  
 *Now TUM Lite and TUM Lite Enchanted are merged in a single mod called TUM ENCHANTED. Please delete or disable TUM Lite and TUM Lite Enchanted before running this.  
+
+## LATEST CHANGELOG
+
+__!!! FIXED A REGRESSION IN 2.0 CAUSING A CRASH AT END OF MONTH !!!  
+!!! YOU CAN RESUME YOUR 2.0 SAVEGAMES BY RELOADING THEM AND PRESS F12 !!!__
 
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
@@ -21,8 +25,11 @@ MAIN FEATURES
 -----------------------------------------------------------------------------------------------------------------------
 FEEDBACK
 -----------------------------------------------------------------------------------------------------------------------
-For general feedback, balance suggestions and bug report you can contact us in the following discord channel:
-https://discord.com/channels/665742159307341827/1232146926078787644
+For general feedback, balance suggestions and bug report you can join the HoMM 3.5 ERA Mods discord server:  
+[Discord Server](https://discord.gg/hCTMfVq6w5)  
+and contact us in the following channel:  
+[TUM Enchanted Channel](https://discord.com/channels/665742159307341827/1232146926078787644)  
+
 
 -----------------------------------------------------------------------------------------------------------------------
 CREDITS
