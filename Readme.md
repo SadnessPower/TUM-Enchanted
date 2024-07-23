@@ -13,15 +13,15 @@
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
-- All dwelling can be upgraded a second time! AI will do that as well  
-- Every faction has a theme and unique strategy  
-- Rebalanced nearly all units (low level units are now useful!)   
-- Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
-- Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
-- Factions without Mage Guild Level 5 have other bonus  
-- Over 100 new unique skills for creatures (see below for descriptions)  
-- Neutral Towns are well defended and challenging  
-- Towns produce more golds  
+![](/Assets/attr_attack.webp) All dwelling can be upgraded a second time! AI will do that as well  
+![](/Assets/logo_homm3_sod.webp) Every faction has a theme and unique strategy  
+![](/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   logo_homm3_sod
+![](/Assets/art_holy_grail.webp) Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
+![](/Assets//art_angel_wings.webp) Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
+![](/Assets/art_spellbinders_hat.webp) Factions without Mage Guild Level 5 have other bonus  
+![](/Assets/logo_homm3_era.webp) Over 100 new unique skills for creatures (see below for descriptions)  
+![](/Assets/attr_defence.webp) Neutral Towns are well defended and challenging  
+![](/Assets/art_endless_sack_of_gold.webp) Towns produce more golds  
 ..and many more!  
   
 -----------------------------------------------------------------------------------------------------------------------
