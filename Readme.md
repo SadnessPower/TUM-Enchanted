@@ -15,7 +15,7 @@ MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
 ![](/Assets/attr_attack.webp) All dwelling can be upgraded a second time! AI will do that as well  
 ![](/Assets/logo_homm3_sod.webp) Every faction has a theme and unique strategy  
-![](/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   logo_homm3_sod
+![](/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   
 ![](/Assets/art_holy_grail.webp) Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
 ![](/Assets//art_angel_wings.webp) Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
 ![](/Assets/art_spellbinders_hat.webp) Factions without Mage Guild Level 5 have other bonus  
@@ -36,14 +36,14 @@ and contact us in the following channel:
 -----------------------------------------------------------------------------------------------------------------------
 CREDITS
 -----------------------------------------------------------------------------------------------------------------------
-Diozia - Balance Designer  
-SadnessPower - Bugfix and Scripting  
+Diozia - *Balance Designer*  
+SadnessPower - *Bugfix and Scripting*  
 
 Special thanks to:  
-Maiko - TUM Lite Creator    
-Archer30 - ERM author and scripting  
-Majaczek - Plugins (Amethyst, New Towns, etc.)  
-FirePaladin and FanofHeroes - Graphics  
+Maiko - *TUM Lite Creator*    
+Archer30 - *ERM author and scripting*  
+Majaczek - *Plugins (Amethyst, New Towns, etc.)*  
+FirePaladin and FanofHeroes - *Graphics*  
 
 
 -----------------------------------------------------------------------------------------------------------------------
