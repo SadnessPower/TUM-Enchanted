@@ -42,7 +42,7 @@ SadnessPower - *Bugfix and Scripting*
 Special thanks to:  
 Maiko - *TUM Lite Creator*    
 Archer30 - *ERM author and scripting*  
-Majaczek - *Plugins (Amethyst, New Towns, etc.)*  
+Majaczek - *Plugins (Amethyst & New Towns)*  
 FirePaladin and FanofHeroes - *Graphics*  
 
 
