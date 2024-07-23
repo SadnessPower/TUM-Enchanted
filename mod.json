@@ -5,7 +5,7 @@
 	},
 	"description": {
 		"full": {
-			"en_US": "Readme.txt",
+			"en_US": "Readme.md",
 			"ru_RU": ""
 		},
 		"short": {
@@ -19,14 +19,14 @@
 		"file": "TUM Enchanted.ico",
 		"index": 0
 	},
-	"mod_version": "2.0",
+	"mod_version": "2.0.1",
 	"priority": 5,
 	"compatibility": {
 		"class": "default",
 		"entries": {}
 	},
 	"platform": "era",
-	"info_version": "2.0",
+	"info_version": "2.0.1",
 	"plugins": {},
 	"category": "gameplay"
 }
