@@ -1,3 +1,23 @@
+**********CHANGELOG TUM ENCHANTED 2.1************
+BUG FIXES:
+- Fixed Random Monster level 1 being of any level during map generation.
+- Fixed Autocast abilities able to trigger during Tactics phase.
+- Fixed broken Regeneration ability on Basilisk, Dendroid, Hydra, Green Dragon, Troll and Gorynych (Thanks to Yuji Sakai).
+- Fixed Wight / Wraith regeneration ability triggering even though it was removed and not present in the description text.
+- Fixed first turn of combat inability to trigger Autocast abilities if an hero has ACM Eagle Eye skill.
+- Added missing Choose Attack def for creatures with multiple type of attacks, required for playing without GEM Mod.
+- Fixed Slayer against level 7 TUM Creatures.
+
+IMPROVEMENTS:
+- New pdf file "Skill Overview" for a comprehensive list of all TUM Enchanted skill in the game.
+- Right clicking on a TUM Building in the building screen now shows the proper description (Thanks to Yuji Sakai).
+- Improved code for multiplayer network stability (even though multiplayer games other than Hot Seat are not yet supported).
+
+BALANCE:
+- Dracolich 20% Shield Block ability removed.
+- Rust Dragon "Powerful Acid Breath" (-9 defense skill) now work even on non-living and poison-resistant creatures.
+- Added new creature class: Legendary Dragon (Azure Dragon, Crystal Dragon, Feary Dragon and Rust Dragon). Grants immunity to Age and Death Stare.
+
 **********CHANGELOG TUM ENCHANTED 2.0.1**********
 - Fixed regression of crashing at the end of each month while generating new random artifacts for Artifact Merchant.
 !!! YOU CAN RESUME PLAYING USING YOUR OLD SAVEGAMES AFFECTED BY THIS BUG BY RELOADING THEM AND PRESS F12 !!!

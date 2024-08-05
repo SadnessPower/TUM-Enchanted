@@ -266,9 +266,12 @@ ZVSE2
 !!el|(type)=(MON_ROGUE);   
   !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/20/(TRUE)/71;
 
-!!el|(type)=(MON_RUST_DRAGON);   
-  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(TRUE)/20/(TRUE)/74;
-
+!!el|(type)=(MON_RUST_DRAGON);
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/100/(TRUE)/80; Acid
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/100/(TRUE)/80; Acid  
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/100/(TRUE)/80; Acid       
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(TRUE)/20/(TRUE)/74; Paralize
+  
 !!el|(type)=(MON_DRACOLICH);      
   !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/5/^^/(FALSE)/50/(TRUE)/(SPELL_SORROW);
 

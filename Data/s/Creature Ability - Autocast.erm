@@ -6,38 +6,38 @@ ZVSE2
 ; Creature Enchantments: Spell autocast at stack turn
 
 !?FU(OnAfterTacticsPhase);
-
 !!re i/0/41; loop all battle stacks
   !!VRi^autocastAlreadyDone_%i^:S-1;
 !!en;
 
 
-!?FU(OnAfterBattleAction);
-!!FU(Autocast):P;
+; Tactics Phase = battle_round<0 
+!?FU(OnBattleStackObtainsTurn)&i^tum_tacticsIsEnded^;
+!#VA(stackSide:x) (stackInd:x);
 
-!?FU(OnCombatRound)&i^battle_round^=0;
-!!FU(Autocast):P;
+!!VRi^currentStack^:S(stackSide) *(BATTLE_STACKS_PER_SIDE) +(stackInd);
 
-!?FU(Autocast);
+!!FU&i^autocastAlreadyDone_%i(currentStack)^=i^battle_round^:E;  [exit if already triggered for current stack in current turn]
 
-!!BG:N?(currentStack:y);                                         [get current stack #]
+!!VRi^autocastAlreadyDone_%i(currentStack)^:Si^battle_round^;    [autocast already tried for this combat round for current stack]
 
-!!FU&i^autocastAlreadyDone_%(currentStack)^=i^battle_round^:E;  [exit if already triggered for current stack in current turn]
+!!if&i^battle_isNetwork^=(FALSE);
+  !!VR(randomRoll1:y):S0T99;
+  !*VR(randomRoll1):S0;
+  !!VR(randomRoll2:y):S0T99; 
+  !!VR(randomRoll3:y):S0T99;
+  !!VR(randomRoll4:y):S0T99;
+!!el;
+  !!VR(randomRoll1:y):R0/0/99;
+  !!VR(randomRoll2:y):R0/0/99;
+  !!VR(randomRoll3:y):R0/0/99;
+  !!VR(randomRoll4:y):R0/0/99;
+!!en;
 
-!!VRi^autocastAlreadyDone_%(currentStack)^:Si^battle_round^;    [autocast already tried for this combat round for current stack]
-
-!!VR(randomRoll1:y):S0T99;
-!*VR(randomRoll1):S0;
-!!VR(randomRoll2:y):S0T99; 
-!!VR(randomRoll3:y):S0T99;
-!!VR(randomRoll4:y):S0T99;
-
-!!BM(currentStack):T?(monsterType:y) P?(monsterPosition:y);      [get monster type, position]
+!!BMi^currentStack^:T?(monsterType:y) P?(monsterPosition:y);      [get monster type, position]
  
 !!if&(randomRoll1)<10; 10% Autocast
-  !!FU(SetCheckResistenceForCreatureCast):P(FALSE);
   !!FU(SpellCast)&(monsterType)=212:P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastC^; Supreme Archmage Expert Clone
-  !!FU(SetCheckResistenceForCreatureCast):P(TRUE);
 !!en;
 
  !!if&(randomRoll1)<20; 20% Autocast
@@ -235,12 +235,11 @@ ZVSE2
 
 !!VR(power):F1/(INT_MAX);
 
-!!BG:N?(currentStack:y);                                [get current stack #]
 !!BU:E(pos)/?y2;                             [check for living stack]
 !!IF&y2=-1:V77/1;                         [if dead stack set flag 77 to true]
 
 !!if&(spell)=(SPELL_CLONE);               [avoid casting clone on cloned stack]
-   !!BM(currentStack):F?i;                [read flags] 
+   !!BMi^currentStack^:F?i;                [read flags] 
    !!VRi:&8388608;                        [get value of clone bit] 
    !!FU&i>0:E;                         
 !!en;
@@ -256,10 +255,11 @@ ZVSE2
 !!en;
 
 
+
 ; Battle tag
 !!if&i^battle_isVisible^/z(battleTag)<>^^;
   !!VR(battleTagStr:z):Sz(battleTag);
-  !!BM(currentStack):T?(atkType:y) N?(atkNum:y);
+  !!BMi^currentStack^:T?(atkType:y) N?(atkNum:y);
   !!VR(atkIsPlural:y):S(atkNum) -1 B;
   !!SN:H^monname^/(atkType)/(atkIsPlural)/?(atkMonName:z);
   !!SN:T^dio.autocast.%(atkType)%(battleTagStr)%(atkIsPlural)^/?(msg:z)/^mon^/(atkMonName);
@@ -272,8 +272,14 @@ ZVSE2
   !!UN:C5903270/1/?(patch2:y) C5903270/1/(OPCODE_NOP_1);
 !!en;
       
+; Disable DwarfResistence 
+!!FU(SetCheckResistenceForCreatureCast):P(FALSE);
+
 ; Cast the spell
-!!BM(currentStack):C(spell)/(pos)/(level)/(power)/1;               [have current stack cast spell]
+!!BMi^currentStack^:C(spell)/(pos)/(level)/(power)/1;               [have current stack cast spell]
+
+; Reenable DwarfResistence 
+!!FU(SetCheckResistenceForCreatureCast):P(TRUE);
 
 ; restore vanilla battle log
 !!if&i^battle_isVisible^;

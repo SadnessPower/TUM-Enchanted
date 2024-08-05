@@ -16,4 +16,10 @@ ZVSE2
 !?FU(tum_CheckIfMonCanHypnotize);
 !!VRx2:S(FALSE);
 
+; Disable Wight / Wraith regeneration ability
+!?FU(OnBattleStackRegeneration);
+!#VA(stackId:x) (finalValue:x) (stdValue:x);
+!!BM(stackId):T?(monType:y);
 
+; Wight / Wraith will never be able to regenerate
+!!VR(finalValue)|(monType)=(MON_WIGHT)/(monType)=(MON_WRAITH):S0;
