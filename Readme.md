@@ -18,7 +18,7 @@ BUG FIXES:
 - Fixed Slayer against level 7 TUM Creatures.
 
 IMPROVEMENTS:
-- New pdf file "Skill Overview" for a comprehensive list of all TUM Enchanted skill in the game.
+- New pdf file "Skill Overview" for a comprehensive list of all TUM Enchanted skills in the game.
 - Right clicking on a TUM Building in the building screen now shows the proper description (Thanks to Yuji Sakai).
 - Improved code for multiplayer network stability (even though multiplayer games other than Hot Seat are not yet supported).
 
