@@ -1,31 +1,43 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.2
 
 > [!NOTE]
 > - This Mod is incompatible with TUM Full (Third Upgrade Mod), so disable it before starting the game.  
-> - Now TUM Lite and TUM Lite Enchanted are merged in a single mod called TUM ENCHANTED. Please delete or disable TUM Lite and TUM Lite Enchanted before running this.  
-
-> [!IMPORTANT]
-> - The 2.0 version had a bug causing a crash at end of month. You can resume your 2.0 savegames by reloading them and pressing F12.
 
 ## LATEST CHANGELOG
-BUG FIXES:
-- Fixed Random Monster level 1 being of any level during map generation.
-- Fixed Autocast abilities able to trigger during Tactics phase.
-- Fixed broken Regeneration ability on Basilisk, Dendroid, Hydra, Green Dragon, Troll and Gorynych (Thanks to Yuji Sakai).
-- Fixed Wight / Wraith regeneration ability triggering even though it was removed and not present in the description text.
-- Fixed first turn of combat inability to trigger Autocast abilities if an hero has ACM Eagle Eye skill.
-- Added missing Choose Attack def for creatures with multiple type of attacks, required for playing without GEM Mod.
-- Fixed Slayer against level 7 TUM Creatures.
+AI BEHAVIOUR IMPROVEMENTS:
+- Now BALLISTA will never shot to an enemy stack with Blind, Paralyze or Petrification.
+- AI creatures will no more cast buff/debuff on stacks already having the same buff/debuff.
+- HYPNOTIZE casting value doubled (it will result in AI casting Hypnotize more often).
+- CLONE usage increased: If current stack is the strongest, its Clone value is doubled (it will result in AI casting Clone more often on current stack if it's the strongest).
 
-IMPROVEMENTS:
-- New pdf file "Skill Overview" for a comprehensive list of all TUM Enchanted skills in the game.
-- Right clicking on a TUM Building in the building screen now shows the proper description (Thanks to Yuji Sakai).
-- Improved code for multiplayer network stability (even though multiplayer games other than Hot Seat are not yet supported).
+GRAPHIC IMPROVEMENTS:
+- Almost all CREATURES and HEROES PORTRAITS are now in HIGH QUALITY RESOLUTION! (SPECIAL THANKS TO APHRA!).
+- All ARTIFACTS now are in high quality! (SPECIAL THANKS TO APHRA).
+- COMMANDERS now have new and unique skins (Thanks to Archer, Nikt and Kongsuni).
+- VANILLA CREATURE RESTYLING: 
+   - Pikeman, Sentry, Ghost Dragon, Orc and Orc Chieftain have new skin and portraits. Legionaries and Wraiths have better skin (Thanks to Aphra).
+- WOG CREATURES RESTYLING:
+   - Hell Baron, Dragon of the Abyss, Sacred Phoenix, Nightmare, Hell Steed have new skin and portraits. (Thanks to Nikt, Dalion, Aphra, Kongsuni).
+   - Preatorian, High Priest, Berserker Dwarf, Supreme Archmage, Assassin of the Six Blades, Pit Masters, Banshee, Lich, Wing of Madness, Beholder, Witch of the Underworld, Ogre Battle Mage, Acid Wyvern and CAtoblepas now have unique skin and portraits. (Thanks to Aphra, Toriko, Dalion, Archer, Kongsuni, Yuji).
+
+MINOR IMPROVEMENTS:
+- Improved randomness of random roll for chance-based creature abilities. It should be reflect more accurately the percentage declared now.
+- Changed DEATH KNIGHT walk and attack sounds.
+- Now creatures names in Map Editor reflect TUM Enchanted new names.
+- Updated list of incompatible WOG options (will be forced disabled) - for details see 80 - Disable wog options.erm).
+
+BUG FIXES:
+- UNIVERSAL CREATURE UPGRADES: Fixed being able to upgrade creatures to TUM level without the corresponding TUM building (thanks to Thorgeman for bug report).
+- Fixed switch attack button missing graphic and text when playing without GEM Mod.
+- Fixed landmines casted with LANDMINE spell exploding on own creatures.
+- Fixed VOID ELEMENTAL Clone spell Autocast sometimes casting an hostile clone.
 
 BALANCE:
-- Dracolich 20% Shield Block ability removed.
-- Rust Dragon "Powerful Acid Breath" (-9 defense skill) now work even on non-living and poison-resistant creatures.
-- Added new creature class: Legendary Dragon (Azure Dragon, Crystal Dragon, Feary Dragon and Rust Dragon). Grants immunity to Age and Death Stare.
+- MANTICORE now can paralyze only living creatures.
+- TORTURER now have 10 shoots, down from 16.
+- INFERNAL BATTLE MAGE defense skill is now 8, down from 9, and have 10 shoots, down from 20, but gain Flame Attack (Breath Attack type).
+- BERSERKER DWARF is now called SHIELD OF THE MOUNTAINS. Gain +4 defense skill but lose -4 attack skill. Berserker Rage is removed. 3 new skills are added: Wall of Shields Formation, 10% Shield Block and 60% Magic Resistance.
+
 
 
 

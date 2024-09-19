@@ -4,6 +4,17 @@ ZVSE2
 
 !?FU(TUMEnchanted_DisableWoGOptions);
 
+!!UN:P050/0; [Enhanced Monsters]
+!!UN:P046/0; [Berserker Flies]
+!!UN:P059/0; [Piercing Shoot]
+!!UN:P037/0; [Rebalanced Faction - Creatures]
+!!UN:P188/0; [Rampart Fearie Dragon]
+!!UN:P189/0; [Reduce Firebird/Phoenix Growth]
+
+!!UN:P821/0; [Non Neutral]
+!!UN:P789/0; [Critical Sorcery, for conflict with Amedit]
+!!UN:P777/0; [Enhanced Resistence, for conflict with Amedit]
+
 !!UN:P822/0; [Disable Sharpshooter and Wraith Block]
 !!UN:P997/0; [Disable Grand Manouver]
 !!UN:P995/0; [Disable Ranged Death Stare]

@@ -1,0 +1,25 @@
+{
+	"choose_attack_type": {
+		"name": "icmAltq.def",
+		"start_combat_name": "icm012q.def",
+		"hint": {
+			"cast": "Cast Spell",
+			"melee": "Melee",
+			"moove": "Move",
+			"no_return": "Attack and Stay",
+			"none": "Switch to alternate actions",
+			"return": "Attack and Return",
+			"shoot": "Ranged"
+		},
+		"rmc": {
+			"cast": "{Cast Spell}\n\nCurrent unit attack type - Casting Spell",
+			"melee": "{Melee}\n\nCurrent unit attack type - Melee",
+			"moove": "{Move}\n\nUnit will now move to the specified position, instead of raising the dead from it",
+			"no_return": "{Attack and Stay}\n\nUnit will remain close to the enemy after the attack",
+			"none": "{Alternate actions}\n\nThis button allows you to change the action mode during the turn of units that have multiple action modes.",
+			"return": "{Attack and Return}\n\nUnit will now be returning to its original position after the attack",
+			"shoot": "{Ranged}\n\nCurrent unit attack type - Ranged"
+		}
+	},
+}	
+

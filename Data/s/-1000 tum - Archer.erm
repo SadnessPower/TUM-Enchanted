@@ -272,8 +272,39 @@ H3Vector<H3CombatCreature*> dendroidBinds;
 !!HE(hero):A2/(ART_PENDANT_OF_REFLECTION)/?(has:y)/?(equipped:y);
 !!VR(artBonus)&(equipped)>0:S1;
 
-// Universal Upgrades
-!?FU(OnDetermineMonInfoDlgUpgrade_Quit)&i^tum_newTowns_on^<>(TRUE);
+// Universal Upgrades WITHOUT single TUM building for all TUM Upgrades
+!?FU(OnDetermineMonInfoDlgUpgrade_Quit)&i^tum_newTowns_on^;
+!#VA(monType:x) (upgType:x) (town:x) (hero:x);
+
+!!UN:P174/?(wogOption:y);
+!!FU&(wogOption)<>(TRUE):E;
+
+; Exit if there is an existing upgrade or is not in a town
+!!FU|(upgType)>(NO_MON)/(town)=(NO_TOWN):E;
+
+!!MA:L(monType)/?(level:y) O(monType)/?(townType:y);
+
+!!UN:T(townType)/(level)/0/?(basicMon:y);
+!!UN:T(townType)/(level)/1/?(upgMon:y);
+
+!*IF:M^monType = %(monType) - upgType = %(upgType) - town = %(town) - hero = %(hero) - level = %(level)
+- basicMon = %(basicMon) - upgMon = %(upgMon)^;
+
+!!FU&(monType)<>(basicMon)/(monType)<>(upgMon):E;
+
+!!VR(buildingConstant:y)&(monType)=(basicMon):S37;           [37-43 upgraded dwellings]
+!!VR(buildingConstant)&(monType)=(upgMon):S64;               [64-70 TUM upgraded dwellings]
+
+!!VR(buildingId:y):S(level) +(buildingConstant);        
+!!CA0/(town):B3/(buildingId);           [check if built into flag 1]
+
+!!if&1;
+  !!FU(GetUpgradedMonster):P(monType)/?(upgraded:y);
+  !!VR(upgType)&(upgraded)>(NO_MON):S(upgraded);
+!!en;
+
+// Universal Upgrades FOR single TUM building for all TUM Upgrades
+!?FU(OnDetermineMonInfoDlgUpgrade_Quit)&i^tum_newTowns_on^=(FALSE);
 !#VA(monType:x) (upgType:x) (town:x) (hero:x);
 
 !!UN:P174/?(wogOption:y);

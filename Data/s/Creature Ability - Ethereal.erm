@@ -31,7 +31,8 @@ ZVSE2
 
   !!if&(originalDamageAmount)>0/y-5=1/y-6=0;
 
-    !!VR(random:y):R0/0/15;
+    !!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T15;
+    !!VR(random)&i^battle_isNetwork^:R0/0/15;
 
     !!VR(random):+15;
     !!VR(damageReduction:y):S100 -(random:y);

@@ -436,7 +436,8 @@ ZVSE2
  !!VRi^OnBeingAttackedToEnemy^:S0;     [not implemented]
  !!VRi^OnBeingRetaliatedToEnemy^:S0;   [not implemented]
 
- !!VR(random:y):R0/0/99;
+ !!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+ !!VR(random)&i^battle_isNetwork^:R0/0/99;
  !!VR(random)&(forceRageSetupWithoutRandomRoll)=(TRUE):S0;
  !*VR(random):S0;        Random Roll sempre 0
 
@@ -451,8 +452,8 @@ RAMPART:
  !!FU(CripplingAttack_Settings)&(monsterType)=203/(random)<20:P(monsterType)/(num); Centaur Warlord
  !!FU(DefensiveFormation_Settings)&(monsterType)=(MON_BATTLE_DWARF)/(random)<20:P(monsterType)/(num);
  !!FU(DestroyArmor_Settings)&(monsterType)=(MON_BATTLE_DWARF)/(random)<20:P(monsterType)/(num);
- !!FU(DestroyArmor_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Berserker Dwarf
- !!FU(BerserkerRage_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Berserker Dwarf
+ !!FU(DestroyArmor_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Shield of the Mountain
+ !!FU(WallofShieldsFormation_Settings)&(monsterType)=204/(random)<20:P(monsterType)/(num); Shield of the Mountain
  !!FU(MightoftheNature_Settings)&(monsterType)=207/(random)<20:P(monsterType)/(num); Force of Nature
  !!FU(DragonDefence_Settings)&(monsterType)=(MON_GOLD_DRAGON)/(random)<20:P(monsterType)/(num);
  !!FU(UltimateDefence_Settings)&(monsterType)=(MON_DIAMOND_DRAGON)/(random)<30:P(monsterType)/(num);

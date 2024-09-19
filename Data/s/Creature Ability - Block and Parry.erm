@@ -67,7 +67,8 @@ ZVSE2
 !!FU(blopar_CheckMonBlockChance):P(mon)/?(chance:y);
 
 !!if&(chance)>0;
-  !!VR(random:y):R0/0/99;
+  !!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+  !!VR(random)&i^battle_isNetwork^:R0/0/99;
 
   !!if&(random)<(chance);
     !!VR(finalDmg):S0;                  [100% damage reduction]
@@ -99,7 +100,8 @@ ZVSE2
 !!FU(blopar_CheckMonParryChance):P(mon)/?(chance);
 
 !!if&(chance)>0;
-  !!VR(random:y):R0/0/99;
+  !!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+  !!VR(random)&i^battle_isNetwork^:R0/0/99;
 
   !!if&(random)<(chance);
     !!VR(finalDmg)::2;                  [50% damage]

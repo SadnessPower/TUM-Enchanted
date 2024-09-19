@@ -142,7 +142,7 @@ ZVSE2
 !!el|(type)=228; Wings of Madness
   !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/5/^a^/(TRUE)/100/(TRUE)/(SPELL_FORGETFULNESS)/(SPELL_MISFORTUNE);
 
-!!el|(type)=(MON_BEHOLDER);                      
+!!el|(type)=74;                      
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/100/(SPELL_MISFORTUNE)/3/?(result:y);
 
 !!el|(type)=(MON_EVIL_EYE);                      
@@ -334,12 +334,12 @@ ZVSE2
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/(SPELL_SORROW)/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/(SPELL_FORGETFULNESS)/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/71/3/?(result1:y); Poison
-  !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/(SPELL_BLIND)/5/?(result1:y);
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/5/^^/(TRUE)/100/(TRUE)/(SPELL_BLIND);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/(SPELL_EARTH_ELEMENTAL)/5/?(result1:y);
   !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/5/(TRUE)/(SPELL_FIRE_WALL); 
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/70/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/(SPELL_FIREBALL)/10/?(result1:y);
-  !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/3/(SPELL_HYPNOTIZE)/10/?(result1:y);
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/2/^^/(TRUE)/100/(TRUE)/(SPELL_HYPNOTIZE);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/3/75/10/?(result1:y); Age
 
 !!el|(type)=(MON_MEDUSA_QUEEN);
@@ -436,7 +436,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 !!FU&(random)>=(chance):E;
 
 ; Exit if the targeted stack cannot receive the spell
@@ -559,7 +560,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 
 ; Check what spell it is by the random number
 !!if&(random)<80;
@@ -608,7 +610,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 
 ; Check what spell it is by the random number
 !!if&(random)<70;
@@ -655,7 +658,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 
 ; Check what spell it is by the random number
 !!if&(random)<40;
@@ -708,7 +712,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 
 ; Check what spell it is by the random number
 !!if&(random)<10;
@@ -765,7 +770,8 @@ ZVSE2
 !!FU|(atkNum)<=0/(defNum)<=0:E;
 
 ; Exit if the random number is not favoured
-!!VR(random:y):R0/0/99;
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 !!FU&(random)>=(chance):E;
 
 !!VR(wasSpellCasted:y):S(FALSE);

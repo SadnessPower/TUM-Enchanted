@@ -37,7 +37,8 @@ ZVSE2
 !!VR(hasActed:y):S(monFlags) &(MON_FLAG_ACTED);
 !!FU&(hasActed)/(retals)=0:E;
 
-!!VR(random:y):R0/0/99;                 [случайное число (1..100)]
+!!VR(random:y)&i^battle_isNetwork^=(FALSE):S0T99;
+!!VR(random)&i^battle_isNetwork^:R0/0/99;
 !!FU&(random)>=(chance):E;              [выход, если оглушение не сработало]
 
 !!VR(monFlags):|(MON_FLAG_ACTED);       [+флаг отряд уже ходил в этом раунде]

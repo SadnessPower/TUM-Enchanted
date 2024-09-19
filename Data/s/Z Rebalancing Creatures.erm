@@ -15,6 +15,7 @@ ZVSE2
 !#MA:P0/15;                                                   Hp 
 !#MA:S0/4;                                                    Speed 
 !#MA:G0/10;                                                   Growth 
+!#MA:B0/0;                                                    Spell Points
 !#MA:F0/100;                                                  Fight value
 !#MA:I0/100;                                                  IA value
 !#MA:C0/6/80;                                                 Cost gold
@@ -31,6 +32,7 @@ ZVSE2
 !#MA:P1/15;                                                   Hp 
 !#MA:S1/5;                                                    Speed
 !#MA:G1/10;                                                   Growth
+!#MA:B1/0;                                                    Spell Points
 !#MA:F1/120;                                                  Fight value
 !#MA:I1/120;                                                  IA value 
 !#MA:C1/6/110;                                                Cost gold
@@ -66,6 +68,7 @@ ZVSE2
 !#MA:S2/4;                                                    Speed 
 !#MA:N2/10;                                                   Shoot 
 !#MA:G2/8;                                                    Growth 
+!#MA:B2/0;                                                    Spell Points
 !#MA:F2/125;                                                  Fight value 
 !#MA:I2/125;                                                  IA value 
 !#MA:C2/6/100;                                                Cost gold
@@ -242,7 +245,7 @@ ZVSE2
 !#MA:O9/0;                                                    Is a Castle Unit
 !#SN:H^monname^/9/2/^Ranged. {Will Spells Immunity.}^;
 
-***************************HIGH PREIST************************
+***************************HIGH PRIEST************************
 !#MA:A201/16;                                                 Att
 !#MA:D201/10;                                                 Def
 !#MA:M201/10;                                                 Min Dam
@@ -426,7 +429,7 @@ ZVSE2
 !#MA:G16/6;                                                   Growth
 !#MA:F16/170;                                                 Fight
 !#MA:I16/170;                                                 IA value
-!#MA:C16/6/100;                                               cost
+!#MA:C16/6/100;                                               Cost
 !#MA:L16/1;                                                   Is Level 2
 !#MA:O16/1;                                                   Is a Rampart Unit
 !#SN:H^monname^/16/2/^{20% Magic Resistance.} Hates Goblins and Orcs.^;
@@ -446,9 +449,9 @@ ZVSE2
 !#MA:O17/1;                                                   Is a Rampart Unit
 !#SN:H^monname^/17/2/^{40% Magic Resistance.} Hates Goblins and Orcs. {~d2bb2d}20% Destroy Armor Attack.{~} Two Retaliations. {~ffeb3b}20% Defensive Formation.{~}^;
 
-*************************BERSERKER DWARF***********************
-!#MA:A204/11;                                                 Att
-!#MA:D204/10;                                                 Def
+********************SHIELD OF THE MOUNTAINS********************
+!#MA:A204/7;                                                  Att
+!#MA:D204/14;                                                 Def
 !#MA:M204/2;                                                  Min Dam
 !#MA:E204/4;                                                  Max Dam
 !#MA:P204/30;                                                 Hp
@@ -460,7 +463,9 @@ ZVSE2
 !#MA:X204/d(MON_FLAG_ALIVE);                                  Add Living
 !#MA:L204/1;                                                  Is Level 2
 !#MA:O204/1;                                                  Is a Rampart Unit
-!#SN:H^monname^/204/2/^{40% Magic Resistance.} Hates Goblins and Orcs. {~d2bb2d}20% Destroy Armor Attack.{~} Unlimited Retaliations. Always Positive Morale. Fearless. {~ff1100}20% Berserker Rage.{~}^;
+!#SN:H^monname^/204/0/^Shield of the Mountains^;
+!#SN:H^monname^/204/1/^Shields of the Mountains^;
+!#SN:H^monname^/204/2/^{60% Magic Resistance.} Hates Goblins and Orcs. {~d2bb2d}20% Destroy Armor Attack.{~} {10% Shield Block.} Unlimited Retaliations. Always Positive Morale. Fearless. {~ffeb3b}30% Wall of Shields Formation.{~}^;
 
 ***************************ELF ARCHER******************************
 !#MA:A18/10;                                                  Att 
@@ -1220,7 +1225,7 @@ FORCED for erase "Fireball Attack".
 !#MA:E45/4;                                                   Max Dam
 !#MA:P45/13;                                                  Hp 
 !#MA:S45/6;                                                   Speed
-!#MA:N45/16;                                                  Shoot
+!#MA:N45/10;                                                  Shoot
 !#MA:G45/10;                                                  Growth
 !#MA:B45/0;                                                   Spell Points
 !#MA:F45/245;                                                 Fight value 
@@ -1236,18 +1241,19 @@ FORCED for erase "Fireball Attack".
 
 ***********************INFERNAL BATTLEMAGE*********************
 !#MA:A216/12;                                                  Att 
-!#MA:D216/9;                                                   Def 
+!#MA:D216/8;                                                   Def 
 !#MA:M216/3;                                                   Min Dam 
 !#MA:E216/4;                                                   Max Dam
 !#MA:P216/13;                                                  Hp 
 !#MA:S216/10;                                                  Speed
-!#MA:N216/20;                                                  Shoot
+!#MA:N216/10;                                                  Shoot
 !#MA:G216/10;                                                  Growth
 !#MA:B216/0;                                                   Spell Points
 !#MA:F216/410;                                                 Fight value 
 !#MA:I216/410;                                                 IA value 
 !#MA:C216/6/210;                                               Cost 
 !#MA:X216/d(MON_FLAG_ALIVE);                                   Add Alive
+!#MA:X216/d(MON_FLAG_WIDE_ATTACK);                             Add Wide Attack
 !#MA:X216/d(MON_FLAG_SHOOTER);                                 Add Shooter
 !#MA:X216/d(MON_FLAG_FLYER);                                   Add Fly
 !#MA:X216/d(MON_FLAG_NO_MELEE_PENALTY);                        Add No Melee Penalty
@@ -1256,7 +1262,7 @@ FORCED for erase "Fireball Attack".
 !#MA:O216/3;                                                   Is a Inferno Unit
 !#SN:H^monname^/216/0/^Infernal Battlemage^;
 !#SN:H^monname^/216/1/^Infernal Battlemages^;
-!#SN:H^monname^/216/2/^Ranged. Ranged Retaliation. {~f536bc}30% Powerful Fireball Strike.{~} Fly. No Melee Penalty. {Fire Affinity.} {~33CCCC}20% Fire Shield.{~}^;
+!#SN:H^monname^/216/2/^Ranged. Ranged Retaliation. {~f536bc}30% Powerful Fireball Strike.{~} Fly. No Melee Penalty. Flame Attack. {Fire Affinity.} {~33CCCC}20% Fire Shield.{~}^;
 
 ***************************HELL HOUND**************************
 !#MA:A46/10;                                                   Att 
@@ -2220,6 +2226,7 @@ FORCED for modify "Stone Gaze". Now require a Living Creature and last 4 turns.
 !#SN:H^monname^/80/2/^Fly. {~3faa11}20% Poisonous Attack. 20% Paralyzing Attack.{~}^;
 
 **************************MANTICORE************************
+FORCED for erase "Parylizing Attack".
 !#MA:A81/17;                                                Att 
 !#MA:D81/15;                                                Def 
 !#MA:M81/14;                                                Min Dam 
@@ -2230,6 +2237,9 @@ FORCED for modify "Stone Gaze". Now require a Living Creature and last 4 turns.
 !#MA:F81/2180;                                              Fight value 
 !#MA:I81/2180;                                              IA value 
 !#MA:C81/6/1170;                                            Cost 
+!#MA:X81/d(MON_FLAG_ALIVE);                                 Add Alive
+!#MA:X81/d(MON_FLAG_WIDE);                                  Add Wide
+!#MA:X81/d(MON_FLAG_FLYER);                                 Add Fly
 !#MA:L81/5;                                                 Is Level 6
 !#MA:O81/5;                                                 Is a Dungeon Unit
 !#SN:H^monname^/81/0/^Manticore^;

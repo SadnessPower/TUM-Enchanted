@@ -8,8 +8,38 @@ ZVSE2
 !?FU(OnAfterTacticsPhase);
 !!re i/0/41; loop all battle stacks
   !!VRi^autocastAlreadyDone_%i^:S-1;
+  !!VRi^autocastCloneAlreadyDone_%i^:S-1;
 !!en;
 
+; Special treatment for clone spell, to avoid the following bug: When cast with OnBattleStackObtainsTurn trigger, the clone could be hostile to player
+!?FU(OnCombatRound)&i^battle_round^=0;
+!!FU(AutocastClone):P;
+
+!?FU(OnAfterBattleAction)&i^tum_tacticsIsEnded^;     
+!!FU(AutocastClone):P;
+
+!?FU(AutocastClone);
+!!BG:N?i^currentStack^;                                         [get current stack #]
+!!FU&i^autocastCloneAlreadyDone_%i(currentStack)^=i^battle_round^:E;  [exit if already triggered for current stack in current turn]
+
+!!VRi^autocastCloneAlreadyDone_%i(currentStack)^:Si^battle_round^;    [autocast already tried for this combat round for current stack]
+
+!!if&i^battle_isNetwork^=(FALSE);
+  !!VR(randomRoll1:y):S0T99;
+  !*VR(randomRoll1):S0;
+!!el;
+  !!VR(randomRoll1:y):R0/0/99;
+!!en;
+
+!!BMi^currentStack^:T?(monsterType:y) P?(monsterPosition:y);    [get monster type, position]
+
+!!if&(randomRoll1)<10; 10% Autocast
+  !!FU(SpellCast)&(monsterType)=212:P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastC^; Supreme Archmage Expert Clone
+!!en;
+
+!!if&(randomRoll1)<20; 20% Autocast
+  !!FU(SpellCast)&(monsterType)=250:P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastA^; Lords of the Elements Expert Clone
+!!en;
 
 ; Tactics Phase = battle_round<0 
 !?FU(OnBattleStackObtainsTurn)&i^tum_tacticsIsEnded^;
@@ -36,9 +66,6 @@ ZVSE2
 
 !!BMi^currentStack^:T?(monsterType:y) P?(monsterPosition:y);      [get monster type, position]
  
-!!if&(randomRoll1)<10; 10% Autocast
-  !!FU(SpellCast)&(monsterType)=212:P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastC^; Supreme Archmage Expert Clone
-!!en;
 
  !!if&(randomRoll1)<20; 20% Autocast
     !!FU(SpellCast)&(monsterType)=198:P(SPELL_BLESS)/(monsterPosition)/2/3/^AutocastA^; Crossbowman Advanced Bless 
@@ -73,14 +100,7 @@ ZVSE2
     !!FU(SpellCast)&(monsterType)=246:P(SPELL_HASTE)/(monsterPosition)/2/3/^AutocastA^; Hurricane Elemental Advanced Haste
     !!FU(SpellCast)&(monsterType)=247:P(SPELL_BLESS)/(monsterPosition)/2/3/^AutocastA^; Life Elemental Advanced Bless
     !!FU(SpellCast)&(monsterType)=248:P(SPELL_SLAYER)/(monsterPosition)/3/3/^AutocastA^; Plasma Elemental Expert Slayer
-    !!FU(SpellCast)&(monsterType)=249:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Meteor Elemental Advanced Shield
-        
-    !!if&(monsterType)=250; Lords of the Elements
-      !!FU(SetCheckResistenceForCreatureCast):P(FALSE);
-      !!FU(SpellCast):P(SPELL_CLONE)/(monsterPosition)/3/3/^AutocastA^; Cast Expert Clone
-      !!FU(SetCheckResistenceForCreatureCast):P(TRUE);
-    !!en;
-
+    !!FU(SpellCast)&(monsterType)=249:P(SPELL_SHIELD)/(monsterPosition)/2/3/^AutocastA^; Meteor Elemental Advanced Shield      
     !!FU(SpellCast)&(monsterType)=(MON_PHOENIX):P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Phoenix Advanced Boodlust
     !!FU(SpellCast)&(monsterType)=(MON_PHOENIX):P(SPELL_SLAYER)/(monsterPosition)/3/3/^^; Phoenix Expert Slayer
     !!FU(SpellCast)&(monsterType)=158:P(SPELL_BLOODLUST)/(monsterPosition)/2/3/^AutocastA^; Sacred Phoenix Advanced Bloodlust
@@ -235,11 +255,11 @@ ZVSE2
 
 !!VR(power):F1/(INT_MAX);
 
-!!BU:E(pos)/?y2;                             [check for living stack]
+!!BU:E(pos)/?y2;                          [check for living stack]
 !!IF&y2=-1:V77/1;                         [if dead stack set flag 77 to true]
 
 !!if&(spell)=(SPELL_CLONE);               [avoid casting clone on cloned stack]
-   !!BMi^currentStack^:F?i;                [read flags] 
+   !!BMi^currentStack^:F?i;               [read flags] 
    !!VRi:&8388608;                        [get value of clone bit] 
    !!FU&i>0:E;                         
 !!en;
