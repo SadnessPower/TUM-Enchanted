@@ -81,4 +81,4 @@ Maiko - *TUM Lite Creator*
 NEW SKILLS
 -----------------------------------------------------------------------------------------------------------------------
 
-[Comprehensive Skill List]https://github.com/SadnessPower/TUM-Enchanted/blob/84857b018696bc23325dba1aedc1bd02d11a3746/Skills%20Overview.pdf
+[Comprehensive Skill List](https://github.com/SadnessPower/TUM-Enchanted/blob/84857b018696bc23325dba1aedc1bd02d11a3746/Skills%20Overview.pdf)
