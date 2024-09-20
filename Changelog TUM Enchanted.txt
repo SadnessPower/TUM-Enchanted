@@ -17,7 +17,7 @@ GRAPHIC IMPROVEMENTS:
 
 MINOR IMPROVEMENTS:
 - UNIVERSAL CREATURE UPGRADES: Now this option is fully compatible with TUM Enchanted.
-- Improved randomness of random roll for chance-based creature abilities. It should be reflect more accurately the percentage declared now.
+- Improved randomness of random roll for chance-based creature abilities. It should reflect more accurately the percentage declared now.
 - Changed DEATH KNIGHT walk and attack sounds.
 - Now creatures names in Map Editor reflect TUM Enchanted new names.
 - Updated list of incompatible WOG options (will be forced disabled) - for details see 80 - Disable wog options.erm).
