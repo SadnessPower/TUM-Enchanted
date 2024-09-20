@@ -72,10 +72,10 @@ Diozia - *Balance Designer*
 SadnessPower - *Bugfix and Scripting*  
 
 Special thanks to:  
-Maiko - *TUM Lite Creator*    
-Archer30 - *ERM author and scripting*  
-Majaczek - *Plugins (Amethyst & New Towns)*  
 FirePaladin, FanofHeroes, Aphra, Toriko and Максэ1379 - *Graphics*  
+Majaczek - *Plugins (Amethyst & New Towns)*  
+Archer30 - *ERM author and scripting*  
+Maiko - *TUM Lite Creator*    
 
 -----------------------------------------------------------------------------------------------------------------------
 NEW SKILLS
