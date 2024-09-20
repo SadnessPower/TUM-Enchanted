@@ -75,11 +75,10 @@ Special thanks to:
 Maiko - *TUM Lite Creator*    
 Archer30 - *ERM author and scripting*  
 Majaczek - *Plugins (Amethyst & New Towns)*  
-FirePaladin and FanofHeroes - *Graphics*  
-
+FirePaladin, FanofHeroes, Aphra, Toriko and Максэ1379 - *Graphics*  
 
 -----------------------------------------------------------------------------------------------------------------------
 NEW SKILLS
 -----------------------------------------------------------------------------------------------------------------------
 
-Refer to "Skills Overview.pdf"
+[Comprehensive Skill List]https://github.com/SadnessPower/TUM-Enchanted/blob/84857b018696bc23325dba1aedc1bd02d11a3746/Skills%20Overview.pdf
