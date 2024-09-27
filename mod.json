@@ -19,14 +19,14 @@
 		"file": "TUM Enchanted.ico",
 		"index": 0
 	},
-	"mod_version": "2.2",
+	"mod_version": "2.2.1",
 	"priority": 5,
 	"compatibility": {
 		"class": "default",
 		"entries": {}
 	},
 	"platform": "era",
-	"info_version": "2.2",
+	"info_version": "2.2.1",
 	"plugins": {},
 	"category": "gameplay"
 }

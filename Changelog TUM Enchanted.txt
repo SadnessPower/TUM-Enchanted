@@ -1,3 +1,6 @@
+**********CHANGELOG TUM ENCHANTED 2.2.1************
+- Fixed a bug causing sometimes in a siege attack to have Citadel defense even though Castle was built
+
 **********CHANGELOG TUM ENCHANTED 2.2************
 AI BEHAVIOUR IMPROVEMENTS:
 - Now BALLISTA will never shot to an enemy stack with Blind, Paralyze or Petrification.
