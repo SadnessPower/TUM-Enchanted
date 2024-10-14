@@ -1,8 +1,5 @@
 # THIRD UPGRADE MOD(TUM) ENCHANTED 2.2.1
 
-> [!NOTE]
-> - This Mod is incompatible with TUM Full (Third Upgrade Mod), so disable it before starting the game.  
-
 ## LATEST CHANGELOG
 - Fixed a bug causing sometimes in a siege attack to have Citadel defense even though Castle was built
 
