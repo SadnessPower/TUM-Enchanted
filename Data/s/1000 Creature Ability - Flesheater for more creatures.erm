@@ -6,7 +6,7 @@ ZVSE2
 ; Adding Flasheater to more creatures
 
 !?FU(OnGameEnter);
-!!UN:P762/1; [Force enabling Zombie-Fleasheater ERA Script because it is used by TUM Enchanted]
+!!UN:P762/1; [Force enabling Zombie-Flesheater ERA Script because it is used by TUM Enchanted]
 
 
 ; Function to check if the targeted monster is eligible for flesh eating

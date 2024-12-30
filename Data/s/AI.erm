@@ -1,0 +1,197 @@
+ZVSE
+ERMS_ScriptDate=24.8(August).2004
+_WARNING_#1=IMPORTANT! This file is not in a plain text format. NEVER use any editor except ERM_S for making any kind of changes!
+ERMS_PoweredBy=ERM Scripter v. 2004.6.29.918
+
+** Setting kart And changes V mechanics AI
+
+
+
+
+*Configuring the behavior of shooting towers
+!?BG0; Trigger
+!!BA:S?y2; Get siege battle type
+!!FU&y2<2:E; Exit if not a city siege
+!!BG:N?y1;
+!!BMy1:T?y2;
+!!FU15050&y2=149:P; If it is the tower's turn, we call the function that handles its behavior
+
+!?FU15050;
+!!BA:H1/?h; Let's find out the hero-defender
+!!BA:O?y1/?k; Defender color
+!!OW:Ik/?j; Checking AI status
+!!VRl:S0;
+!!HEh&h>-1:S20/?l; Checking the artillery
+!!BA:Q?o; Checking out the quick battle
+!!FU&j=0/l>0/o=0:E; Exit if it is a human and he can control the towers himself
+!!COh&h>-1:E?y2;
+!!if&y2=1:; If commanders are allowed
+!!COh&h>-1:T?y3; Get the commander type
+!!COh&h>-1:D?y4; Get the commander type
+!!FU&y2=6/y3=0:E; Exit if barbarian (and alive)
+!!en:;
+!!VRv9:S-1; Stack number
+!!VRv10:S-10; His "danger"
+
+!!DO15051/0/19/1:P35/20;Determining the best target
+!!VRv6772&v6772=0:S1; Marking the move of the central tower
+!!FU&v9=-1:E; If the target is not selected, the AI does it itself at its own discretion
+!!BMv9:P?v2; Target position
+!!BG:Dv2;
+!!BG:A7; Shot
+
+!?FU15051; Target selection function
+!!BMx16:T?v5; Get the creature type
+!!FU&v5<0:E; Exit if no creature
+
+!!BMx16:F?i; Save stack flags in i
+!!VRy80:Si &64;
+!!FU&y80>0:E; Exit if this is a combat vehicle
+
+!!BMx16:G62/?y11/d0;
+!!FU&y11>0:E; Exit if creature is blinded
+!!BMx16:G70/?y12/d0;
+!!FU&y12>0:E; Exit if creature is petrified
+!!BMx16:G74/?y13/d0;
+!!FU&y13>0:E; Exit if creature is paralyzed
+
+!!VRy80:Si &2097152;
+!!FU&y80>0:E; Exit if creature dies
+
+!!BMx16:N?v3;
+!!MA:Pv5/?v6; Get health
+!!VRy1:Sv3 *v6;
+!!BMx16:L?v4;
+!!VRy1:-v4;
+
+!!VRy2:S0; Danger counter
+
+!!BMx16:P?v4;
+!!FU&v4>186:E; Exit if error
+!!VRy3:Sv4 +1 %17;
+!!VRy2&y3>12:+3; If the creature is in the walls
+!!if&y3<13:;
+!!VRy2&v4=63:+3; If the creature is in the walls
+!!VRy2&v4=79:+3; If the creature is in the walls
+!!VRy2&v4=97:+3; If the creature is in the walls
+!!VRy2&v4=113:+3; If the creature is in the walls
+!!VRy2&v4=131:+3; If the creature is in the walls
+!!en:;
+
+!!VRy4:Si &2;
+!!VRy2&y4>0/y3<13/1:+2; If the creature can fly
+
+!!VRy4:Si &65536;
+!!VRy2&y4>0:+1; If a creature cannot be dealt change
+
+!!BMx16:U3/?v7;
+!!VRy4:Si &4;
+!!VRy2&v7>0/y4>0:+2; If there are projectiles (creature can shoot)
+
+!!VRy2&v6772<>0/y1<x1/y1>x2:+1;
+
+!!VRy2&v6>150:-2; If the creature is hard to kill
+!!VRy2&v6>450:-1; If the creature is hard to kill
+
+!!UN:C6919200/4/?y10; Battle Manager
+!!UN:Cy10/21692/4/?y11; Get the number of stacks the attacker has
+!!if&y11>4:; If more than four
+!!BU:E120/?y12; Let's find out if the Catapult is alive
+!!VRy11&y12>-1:-1; We don't consider it a stack
+!!BU:E154/?y13; Let's find out if the Tent is alive
+!!VRy11&y13>-1:-1; We don't consider it a stack
+!!BU:E52/?y14; Let's find out if Ballista is alive
+!!VRy11&y14>-1:-1; We don't consider it a stack
+!!BU:E18/?y15; Let's find out if the Cart is alive
+!!VRy11&y15>-1:-1; We don't consider it a stack
+
+!!if&v6<x1:; If the number of stacks is still greater than four
+!!VRy2&v6772<>0/y1<x2/y11>4:-5; If the target is too weak
+!!VRy2&v6772=0/y1<x1:-5; Decreasing priority
+!!en:;
+!!en:;
+
+!!VRv9&y2>v10:Sx16;
+!!BMx16&y2=v10:U1/?y14; Additional damage comparison
+!!BMv9&y2=v10:U1/?y15;
+!!VRv9&y2=v10/y15<y14:Sx16;
+!!VRv10&y2>v10:Sy2;
+*!IF:M^%V10 %Y2 %V7 Type - %V5 MHelth - %V6 CHelth - %Y1 Position - %Y3 St.n - %X16^; Debug information
+
+!?BG0; Cancel unnecessary creature protection
+!!BG:A?y50; Action type
+!!FU&y50=1:E; Magic doesn't count
+!!BG:N?y51; Calculate the number of actions in a round
+!!BMy51:T?y52; Creature type
+!!FU&y52=149:E; Towers don't count
+!!FU&y52=145:E; Catapult doesn't count
+!!VRv6773:+1; Increase the indicator
+!!BA:S?y53; Get Siege Battle Type
+!!FU&y53<2:E; Exit if not city siege
+!!FU15052&y52=2:Py50; If walking, call the function
+!!FU&v6773>1:E; Exit if this is not the first creature
+!!FU&y52<>3:E; Exit if not protected
+!!BMy51:I?y61;
+!!FU&y61=0:E; Exit if this is an attacker
+!!BA:O?y99/?y54; Defender color
+!!OW:Iy54/?y55; Checking AI status
+!!BA:Q?y56; Testing out quick battle
+!!FU&y55=0/y56=0:E; Exit if it's a human
+!!BG:A8; We are waiting
+
+!?FU15052; Ban on leaving the city
+!!VRy50:Sx1;
+!!BMy50:I?y61;
+!!FU&y61=0:E; Exit if this is an attacker
+!!BA:P?v2/?v3/?v4; In v2 v3 v4 coordinates on the map
+!!VRv3:-1; Move up one step to get the city position instead of the hero
+!!BA:O?y99/?y54; Defender color
+!!OW:Iy54/?y55; Checking AI status
+!!BA:Q?y56; Testing out quick battle
+!!FU&y55=0/y56=0:E; Exit if it's a human
+!!OBv2/v3/v4:U?v5; In v5 get object subtype (city type)
+!!OBv2/v3/v4:T?v6; Just in case, check for object type
+!!FU&v6=98/v5=2:E; Exit if Tower
+!!BG:D?y30; Get the final position
+!!VRy66:S8;
+
+!!BMy50:F?y67 G60/?y68/?y69;
+!!FU&y68>0:E;
+!!VRy67:&1;
+**IF:M^%Y67^;
+**VRy67:&33554432;
+**VRy66&y67>0:S3;
+**IF:M^%Y67^;
+**BMy50&y67=0:Fd33554432;
+**BMy50:F?y67;
+**IF:M^%Y67^;
+
+!!FU&v997<0:E; Exit if tactical phase
+
+!!BG&y30=182:Ay66; We are waiting
+!!BG&y30=130:Ay66; We are waiting
+!!BG&y30=78:Ay66; We are waiting
+!!BG&y30=29:Ay66; We are waiting
+
+!!BG&y30=181:Ay66; We are waiting
+!!BG&y30=129:Ay66; We are waiting
+!!BG&y30=146:Ay66; We are waiting
+!!BG&y30=11:Ay66; We are waiting
+!!BG&y30=28:Ay66; We are waiting
+!!BG&y30=77:Ay66; We are waiting
+!!BG&y30=61:Ay66; We are waiting
+
+!!FU&y67=0:E; Exit if the creature is unicellular
+!!BG&y30=183:Ay66; We are waiting
+!!BG&y30=131:Ay66; We are waiting
+!!BG&y30=79:Ay66; We are waiting
+!!BG&y30=30:Ay66; We are waiting
+
+!?BR;
+!!VRv6772:S0; Central Tower Status Update
+!!VRv6773:S0;Updating action counter
+
+
+** end
+
+**********************************************************************************

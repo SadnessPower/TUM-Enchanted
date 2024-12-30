@@ -1,0 +1,55 @@
+BATTLE AI IMPROVEMENTS 
+(apply to AUTO/QUICK COMBAT and for AI controlled players)
+
+- Ballista will never shot to an enemy stacks with Blind, Paralyze or Petrification.
+  If enemy has only stacks with the above debuff, Ballista will pass turn without shooting (Defend).
+
+- Against neutral, AI will no more rush his stacks forward to attack the enemy, instead will defend his shooters or wait for enemy to come, letting the shooters do their job.
+  No more Phoenixes/Dragon Flies/Wyverns rushing inside the enemy line only to be crushed!
+  
+  Trigger condition details: 
+  - Only VS neutral stack 
+  - AI has shooters and enemy hasn't
+  - Each enemy stack cannot reach any of AI stacks in the next movement turn
+  
+  AI will starts attacking only when enemy could reach him in next turn.
+  
+  This behaviour is not applied to neutral stacks except during a siege.
+
+
+- Now AI will never decide to gather his army near shooters to defend them if enemy can cast one on the following spells: Chain Lightning, Frost Ring, Fireball, Inferno, Meteor Shower or Berserk (with Expert skill only)
+
+  This behaviour is not applied to neutral stacks except during a siege.
+
+
+- AI creatures will no more cast buff/debuff on stacks already having the same buff/debuff.
+
+- When defending against a siege, AI will evaluate more often to stay inside the castle to better defend himself (thanks to Raistlin).
+
+- AI will not try anymore to chase enemy high speed stacks which are put near his slower stacks as a distraction (thanks to Ben80).
+
+- Arrow Towers target logic is now much more complex, and smarter (thanks to Raistlin).
+
+-----------------
+SPELLS
+- HYPNOTIZE casting value doubled (it will result in AI casting or dispelling Hypnotize more often).
+
+- CLONE usage increased: If current stack is the strongest, its Clone value is doubled (it will result in AI casting Clone more often on current stack if it's the strongest).
+
+- CURE: Fixed Expert Cure not removing Hypnotize
+
+-----------------
+OTHERS
+- Increased AI thinking radius to 128000 (this value will be set each turn because it can be overwritten)..
+
+- Removed global AI max hero limit according to difficulty level (Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21).
+
+- Fixed bug (probably from original game) bug in which where an Hero visit a town of the following types: Tower, Inferno, Dungeon and Stronghold under certain conditions AI will always try to build special building 23 
+(Wall of Knowledge, Order of Fire, Academy of Battle Scholars, Hall of Valhalla) even though it is already built, spending resources and town building turn. This will cause slowdowns in Town Building 
+and even completely stopping making building in that town if the hero is stuck in the town or it is continuosly visiting it. (Thanks to TheInvisible1966 for testing and creating conditions to reproduce that)
+
+
+
+
+
+

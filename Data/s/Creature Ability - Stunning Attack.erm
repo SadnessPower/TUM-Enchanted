@@ -6,7 +6,7 @@ ZVSE2
 ; Stun abilities for creatures
 
 
-// Function to get the chance of stunning attack
+; Function to get the chance of stunning attack
 !?FU(stun_GetMonStunChance);
 !#VA(mon:x) (result:x);
 
@@ -16,7 +16,7 @@ ZVSE2
 !!VR(result)&(mon)=(MON_GNOLL_MARAUDER):S20; 
 !!VR(result)&(mon)=239:S20; Gnoll Battle Shaman
 
-!?FU(ES_OnAfterMelee)&i^shieldBlockTriggered^<>(TRUE);
+!?FU(tum_OnAfterMelee)&i^shieldBlockTriggered^=(FALSE);
 !#VA(atkStack:x) (defStack:x);
 
 ; Exit if it is a retaliation
@@ -47,7 +47,8 @@ ZVSE2
 ; Show msg in the battle log and animation
 !!if&i^battle_isVisible^;
   !!SN:P^FORGET^;                       Sound
-  !!BM(defStack):V42;                   Animation
+  !!FU(ES_PlayCustomAnimationOnStack):P(defStack)/^stun^; Animation
+  *!BM(defStack):V^stun^;                Animation
   
   !!VR(isPlural:y):S(defNum) -1 B;
   !!SN:H^monname^/(type)/(isPlural)/?(monName:z);

@@ -5,6 +5,8 @@ ZVSE2
 
 ; Constants for Third Upgrade Mod.
 
+!#VRi^tum_lite_on^:S(TRUE);
+!#VRi^tum_enchanted_on^:S(TRUE);
 
 ; ===============  MONSTERS  ===============
 !#DC(MON_RUBY_CRYSTAL_DRAGON)      = 133;

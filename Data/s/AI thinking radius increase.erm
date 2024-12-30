@@ -1,0 +1,16 @@
+ZVSE2
+
+; Increasing the computer's "thinking" radius
+!#UN:J4/128000; 
+
+!?PI;
+!!UN:J4/128000;
+
+!?FU(OnGameEnter);
+!!UN:J4/128000;
+
+!?FU(OnAfterLoadGame);
+!!UN:J4/128000;
+
+!?FU(OnEveryDay)&i^timerIsAi^=1;
+!!UN:J4/128000;
