@@ -1,7 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.2.1
-
-> [!NOTE]
-> - This Mod is incompatible with TUM Full (Third Upgrade Mod), so disable it before starting the game.  
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.3
 
 ## LATEST CHANGELOG
 - Fixed a bug causing sometimes in a siege attack to have Citadel defense even though Castle was built
@@ -12,6 +9,7 @@ MAIN FEATURES
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/attr_attack.webp) All dwelling can be upgraded a second time! AI will do that as well  
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_sod.webp) Every faction has a theme and unique strategy  
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_wog.webp) Rebalanced nearly all units (low level units are now useful!)   
+![]([https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/logo_homm3_wog.webp] Combat AI has been improved (you can Quick Combat most of the time!)
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/art_holy_grail.webp) Buildings dependencies and costs are changed (Cyclops Cave do not cost 1 kidney anymore)  
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets//art_angel_wings.webp) Now hero movements points are based on the fastest stack (yes, now you can carry zombies with you)  
 ![](https://raw.githubusercontent.com/SadnessPower/TUM-Enchanted/main/Assets/art_spellbinders_hat.webp) Factions without Mage Guild Level 5 have other bonus  
