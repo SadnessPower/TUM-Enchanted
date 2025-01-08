@@ -7,23 +7,22 @@ ZVSE2
 !?FU(OnAfterErmInstructions);
 !!UN:P228/?i^buildTwice^;                       [Check if Build Twice a Day option is enabled]
 
-!!FU(BuildPerTurnSetup):P;
-
-
-!?FU(OnEveryDay)&i^timerDay^>1&i^timerOnce^=1; [Fix TUM building twice not activating on first turn by enabling wog option for first turn then disabling it afterwards]
-
 !!UN:P228/0;                                    [Disable wog option behaviour]
 
+!!FU(BuildPerTurnSetup):P(TRUE);
 
 !?FU(OnAfterLoadGame);
 
-!!FU(BuildPerTurnSetup):P;
+!!FU(BuildPerTurnSetup):P(FALSE);
 
 
 !?FU(BuildPerTurnSetup);
 
+!#VA(update:x);
+
 !!SN:L^new_towns.era^/?(file:y);
-!!SN:A(file)/^set_buildings_daily^/?(address:y);
+!!SN&(update)=(FALSE):A(file)/^set_buildings_daily^/?(address:y);
+!!SN&(update)=(TRUE):A(file)/^set_buildings_daily_and_update^/?(address:y);
 
 !!VR(buildingPerTurn:y)&i^buildTwice^=(FALSE):S1;
 !!VR(buildingPerTurn)&i^buildTwice^=(TRUE):S2;

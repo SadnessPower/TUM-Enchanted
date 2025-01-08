@@ -32,11 +32,19 @@ BATTLE AI IMPROVEMENTS
 
 -----------------
 SPELLS
-- HYPNOTIZE casting value doubled (it will result in AI casting or dispelling Hypnotize more often).
+- ANTIMAGIC: 
+   - Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. This caused AI casting Antimagic for removing a debuff and actually not removing it. Now he will consider only spells he can successfully remove.
+
+   - Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen. 
+     Originally, AI were only evaluating casting Antimagic for damage reduction from spells. Now, when casting Antimagic for removing a spell, the Antimagic score will get a +33% bonus for protecting that creature from being targeted again in the future.
 
 - CLONE usage increased: If current stack is the strongest, its Clone value is doubled (it will result in AI casting Clone more often on current stack if it's the strongest).
 
 - CURE: Fixed Expert Cure not removing Hypnotize
+
+- DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.
+
+- HYPNOTIZE casting value doubled (it will result in AI casting or dispelling Hypnotize more often).
 
 -----------------
 OTHERS
@@ -44,9 +52,11 @@ OTHERS
 
 - Removed global AI max hero limit according to difficulty level (Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21).
 
-- Fixed bug (probably from original game) bug in which where an Hero visit a town of the following types: Tower, Inferno, Dungeon and Stronghold under certain conditions AI will always try to build special building 23 
+- Fixed a bug that prevents AI to build all buildings (even special ones) in their towns.
+
+- Fixed bug (probably from original game) in which where an Hero visit a town of the following types: Tower, Inferno, Dungeon and Stronghold under certain conditions AI will always try to build special building 23 
 (Wall of Knowledge, Order of Fire, Academy of Battle Scholars, Hall of Valhalla) even though it is already built, spending resources and town building turn. This will cause slowdowns in Town Building 
-and even completely stopping making building in that town if the hero is stuck in the town or it is continuosly visiting it. (Thanks to TheInvisible1966 for testing and creating conditions to reproduce that)
+and even completely stopping making building in that town if the hero is stuck in the town or it is continuously visiting it. (Thanks to TheInvisible1966 for testing and creating conditions to reproduce that)
 
 
 

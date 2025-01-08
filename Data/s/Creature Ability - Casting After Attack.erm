@@ -334,12 +334,12 @@ ZVSE2
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/(SPELL_SORROW)/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/(SPELL_FORGETFULNESS)/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/10/71/3/?(result1:y); Poison
-  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/5/^^/(TRUE)/100/(TRUE)/(SPELL_BLIND);
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/5/^^/(TRUE)/5/(TRUE)/(SPELL_BLIND);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/(SPELL_EARTH_ELEMENTAL)/5/?(result1:y);
   !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/3/^^/(FALSE)/5/(TRUE)/(SPELL_FIRE_WALL); 
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/70/3/?(result1:y);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/5/(SPELL_FIREBALL)/10/?(result1:y);
-  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/2/^^/(TRUE)/100/(TRUE)/(SPELL_HYPNOTIZE);
+  !!FU(casts_CastSpecialPoison):P(atkStack)/(defStack)/2/^^/(TRUE)/3/(TRUE)/(SPELL_HYPNOTIZE);
   !!FU(casts_CastSpellAfterAttack):P(atkStack)/(defStack)/3/75/10/?(result1:y); Age
 
 !!el|(type)=(MON_MEDUSA_QUEEN);
