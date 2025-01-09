@@ -1,3 +1,7 @@
+**********CHANGELOG TUM ENCHANTED 2.4.2************
+Disabled the following improvement:
+- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen. 
+
 **********CHANGELOG TUM ENCHANTED 2.4.1************
 - Fixed crash on generating random map.
 

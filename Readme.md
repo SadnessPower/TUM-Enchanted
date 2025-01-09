@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.4.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.4.2
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 > - HD Hero Portraits and Artifacts have been removed.  
@@ -6,6 +6,11 @@
 
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
+
+## CHANGELOG 2.4.2  
+Disabled the following improvement:  
+- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
+
 ## CHANGELOG 2.4.1  
 - Fixed crash on generating random map.
 
