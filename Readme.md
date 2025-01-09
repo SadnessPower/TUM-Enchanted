@@ -8,12 +8,12 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 ## LATEST CHANGELOG  
 
-**BATTLE AI IMPROVEMENTS:**  
+**BATTLE AI IMPROVEMENTS**  
 - ANTIMAGIC: Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. Now he will consider only spells he can successfully remove.  
 - ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
 - DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.  
 
-**BUG FIXES:**  
+**BUG FIXES**  
 - Fixed Map drawing error.  
 - Fixed a bug which in rare circumstances allowed AI buying TUM creatures in town without reducing available creatures.  
 - Fixed a bug which prevented AI from casting Teleport.  
@@ -21,7 +21,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Fixed crash when mouse over-ing a creature for Astral Spirit cast.  
 - Reworked building twice a turn mechanic for TUM, now it works also in turn 1 for TUM Buildings and when toggling the WOG options and starting/loading a game.  
 
-**TOWN SCREEN COSMETIC IMPROVEMENTS** (thanks to Trebuchet):
+**TOWN SCREEN COSMETIC IMPROVEMENTS** (thanks to Trebuchet)
 - Fixed building names in Fort.  
 - Rewrote left clicking on bottom left creatures in town, now it works smoothly as the original one.  
 - Right clicking on dwellings in town screen and on bottom left creatures now shows TUM upgraded portraits if the corresponding building is built.  
