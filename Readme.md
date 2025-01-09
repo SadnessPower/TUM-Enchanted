@@ -7,14 +7,17 @@
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
-## CHANGELOG 2.4.2  
+## LATEST CHANGELOGS 
+2.4.2:  
+  
 Disabled the following improvement:  
 - ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
 
-## CHANGELOG 2.4.1  
+2.4.1:
 - Fixed crash on generating random map.
 
-## CHANGELOG 2.4  
+2.4.0:  
+  
 **BATTLE AI IMPROVEMENTS**  
 - ANTIMAGIC: Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. Now he will consider only spells he can successfully remove.  
 - ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
