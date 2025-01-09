@@ -1,3 +1,6 @@
+**********CHANGELOG TUM ENCHANTED 2.4.1************
+- Fixed crash on generating random map.
+
 **********CHANGELOG TUM ENCHANTED 2.4************
 BATTLE AI IMPROVEMENTS
 - ANTIMAGIC: Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. Now he will consider only spells he can successfully remove.
