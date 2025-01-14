@@ -35,6 +35,8 @@ SPELLS
 - ANTIMAGIC: 
    - Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. This caused AI casting Antimagic for removing a debuff and actually not removing it. Now he will consider only spells he can successfully remove.
 
+   - Fixed AI evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).
+   
    - Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen. 
      Originally, AI were only evaluating casting Antimagic for damage reduction from spells. Now, when casting Antimagic for removing a spell, the Antimagic score will get a +33% bonus for protecting that creature from being targeted again in the future.
 
