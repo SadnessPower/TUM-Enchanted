@@ -6,13 +6,13 @@ BATTLE AI IMPROVEMENTS
 BUG FIXES
 - Fixed rare bug when left clicking on bottom left creatures in town (Thanks to Trebuchet).
 
-BALANCE:
+BALANCE
 - The following creature skills cannot reduce enemy speed lower than 3:
   - Crippling Attack (Centaur Warlord)
   - Crippling Shoot (Marksman)
   - Incapacitating Shoot (Crossbowman)
 
-GRAPHICS:
+GRAPHICS
 - Fix wrong Imperial Griffin Attack sound attack.
 - Pit Master, Darkness Dragon, Lord of the Swamp and Hell Baron now have new defs and portraits.
  Portraits and graphics inconsistencies are now fixed.
