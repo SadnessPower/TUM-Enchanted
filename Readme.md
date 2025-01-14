@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.4.2
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 > - HD Hero Portraits and Artifacts have been removed.  
@@ -8,6 +8,25 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
+2.5  
+**BATTLE AI IMPROVEMENTS**  
+- ANTIMAGIC: Fixed AI AntiMagic evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).  
+- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
+  
+**BUG FIXES**  
+- Fixed rare bug when left clicking on bottom left creatures in town (Thanks to Trebuchet).  
+  
+**BALANCE**  
+- The following creature skills cannot reduce enemy speed lower than 3:  
+  - Crippling Attack (Centaur Warlord)  
+  - Crippling Shoot (Marksman)  
+  - Incapacitating Shoot (Crossbowman)  
+  
+**GRAPHICS**  
+- Fix wrong Imperial Griffin Attack sound attack.  
+- Pit Master, Darkness Dragon, Lord of the Swamp and Hell Baron now have new defs and portraits.  
+ Portraits and graphics inconsistencies are now fixed.  
+  
 2.4.2:  
   
 Disabled the following improvement:  
