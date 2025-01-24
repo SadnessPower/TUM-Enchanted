@@ -12,7 +12,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 Fixed the following regressions:  
 - Left click on Castle icon will now propose TUM creatures if present.  
 - Left click on small portraits in town screen now shows TUM creatures if present.  
-- WOG Option "Building twice per turn" now works correctly on first turn for all players.   
+- WoG Option "Allow Building Twice per Day in Towns" now works correctly on first turn for all players.   
   
 2.5  
 **BATTLE AI IMPROVEMENTS**  
