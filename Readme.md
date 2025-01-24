@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.1
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 > - HD Hero Portraits and Artifacts have been removed.  
@@ -8,6 +8,12 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
+2.5.1  
+Fixed the following regressions:  
+- Left click on Castle icon will now propose TUM creatures if present.  
+- Left click on small portraits in town screen now shows TUM creatures if present.  
+- WOG Option "Building twice per turn" now works correctly on first turn for all players.   
+  
 2.5  
 **BATTLE AI IMPROVEMENTS**  
 - ANTIMAGIC: Fixed AI AntiMagic evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).  
