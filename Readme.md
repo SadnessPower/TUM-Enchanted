@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.2
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 > - HD Hero Portraits and Artifacts have been removed.  
@@ -8,6 +8,17 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
+2.5.2  
+**IMPROVEMENTS**  
+- Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).  
+- Creature skills which put debuff on enemy stack now have those hard limits:  
+  - Attack and Defense: No lower than 0.  
+  - Min-Max Damage: No lower than 1.  
+  - Speed: No lower than 3.  
+  
+**BUG FIXES**  
+- Fixed WoG Option "Allow Building Twice per Day in Towns" not working after loading a game.  
+
 2.5.1  
 Fixed the following regressions:  
 - Left click on Castle icon will now propose TUM creatures if present.  
