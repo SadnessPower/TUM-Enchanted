@@ -41,35 +41,7 @@ Fixed the following regressions:
 - Fix wrong Imperial Griffin Attack sound attack.  
 - Pit Master, Darkness Dragon, Lord of the Swamp and Hell Baron now have new defs and portraits.  
  Portraits and graphics inconsistencies are now fixed.  
-  
-2.4.2:  
-  
-Disabled the following improvement:  
-- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
 
-2.4.1:
-- Fixed crash on generating random map.
-
-2.4.0:  
-  
-**BATTLE AI IMPROVEMENTS**  
-- ANTIMAGIC: Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. Now he will consider only spells he can successfully remove.  
-- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
-- DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.  
-
-**BUG FIXES**  
-- Fixed Map drawing error.  
-- Fixed a bug which in rare circumstances allowed AI buying TUM creatures in town without reducing available creatures.  
-- Fixed a bug which prevented AI from casting Teleport.  
-- Fixed Beholder attack always casting Blind and Hypnotize.  
-- Fixed crash when mouse over-ing a creature for Astral Spirit cast.  
-- Reworked building twice a turn mechanic for TUM, now it works also in turn 1 for TUM Buildings and when toggling the WOG options and starting/loading a game.  
-
-**TOWN SCREEN COSMETIC IMPROVEMENTS** (thanks to Trebuchet)
-- Fixed building names in Fort.  
-- Rewrote left clicking on bottom left creatures in town, now it works smoothly as the original one.  
-- Right clicking on dwellings in town screen and on bottom left creatures now shows TUM upgraded portraits if the corresponding building is built.  
-- Added Kingdom Overview display  
 
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
