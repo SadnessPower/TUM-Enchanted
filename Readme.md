@@ -6,7 +6,7 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
-2.5.2  
+2.5.2:  
 **IMPROVEMENTS**  
 - Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).  
 - Creature skills which put debuff on enemy stack now have those hard limits:  
@@ -17,13 +17,13 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 **BUG FIXES**  
 - Fixed WoG Option "Allow Building Twice per Day in Towns" not working after loading a game.  
 
-2.5.1  
+2.5.1:  
 Fixed the following regressions:  
 - Left click on Castle icon will now propose TUM creatures if present.  
 - Left click on small portraits in town screen now shows TUM creatures if present.  
 - WoG Option "Allow Building Twice per Day in Towns" now works correctly on first turn for all players.   
   
-2.5  
+2.5:  
 **BATTLE AI IMPROVEMENTS**  
 - ANTIMAGIC: Fixed AI AntiMagic evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).  
 - ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
