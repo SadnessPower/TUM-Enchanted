@@ -1,8 +1,6 @@
 # THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.2
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
-> - HD Hero Portraits and Artifacts have been removed.  
->   They will be released in a separate mod called "TUM Enchanted Graphic Pack".  
 
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
