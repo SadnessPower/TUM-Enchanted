@@ -11,11 +11,6 @@ ZVSE2
 
 !!FU(BuildPerTurnSetup):P(TRUE);
 
-!?FU(OnAfterLoadGame);
-
-!!FU(BuildPerTurnSetup):P(FALSE);
-
-
 !?FU(BuildPerTurnSetup);
 
 !#VA(update:x);
@@ -28,4 +23,5 @@ ZVSE2
 !!VR(buildingPerTurn)&i^buildTwice^=(TRUE):S2;
 
 !!SN:E(address)/1/(buildingPerTurn);
+
 

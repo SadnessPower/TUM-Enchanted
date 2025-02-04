@@ -251,32 +251,32 @@ ZVSE2
     !!BM(stack):A?y1;
     !!VRy1:Sy1 +i^attackModOnEnemy^;
     !!VRy1&y1<0:S0;
-    !!BM(stack):Adi^attackModOnEnemy^;
+    !!BM(stack):Ay1;
 
     !!BM(stack):D?y1;
     !!VRy1:Sy1 +i^defenceModOnEnemy^;
     !!VRy1&y1<0:S0;
-    !!BM(stack):Ddi^defenceModOnEnemy^;
+    !!BM(stack):Dy1;
 
     !!BM(stack):S?y1;
     !!VRy1:Sy1 +i^speedModOnEnemy^;
-    !!VRy1&y1<1:S1;
-    !!BM(stack):Sdi^speedModOnEnemy^;
+    !!VRy1&y1<3:S3;
+    !!BM(stack):Sy1;
 
     !!BM(stack):H?y1;
     !!VRy1:Sy1 +i^healthModOnEnemy^;
     !!VRy1&y1<1:S1;
-    !!BM(stack):Hdi^healthModOnEnemy^;
+    !!BM(stack):Hy1;
 
     !!BM(stack):U1/?y1;
     !!VRy1:Sy1 +i^minDamageModOnEnemy^;
     !!VRy1&y1<1:S1;
-    !!BM(stack):U1/di^minDamageModOnEnemy^;
+    !!BM(stack):U1/y1;
  
     !!BM(stack):U2/?y1;
     !!VRy1:Sy1 +i^maxDamageModOnEnemy^;
     !!VRy1&y1<1:S1;
-    !!BM(stack):U2/di^maxDamageModOnEnemy^;                 
+    !!BM(stack):U2/y1;
 
     !!if&i^attackPercentOnEnemy^<>0/(stack)>-1;
 
