@@ -1,20 +1,29 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.2
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
-> - HD Hero Portraits and Artifacts have been removed.  
->   They will be released in a separate mod called "TUM Enchanted Graphic Pack".  
 
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
-2.5.1  
+2.5.2:  
+**IMPROVEMENTS**  
+- Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).  
+- Creature skills which put debuff on enemy stack now have those hard limits:  
+  - Attack and Defense: No lower than 0.  
+  - Min-Max Damage: No lower than 1.  
+  - Speed: No lower than 3.  
+  
+**BUG FIXES**  
+- Fixed WoG Option "Allow Building Twice per Day in Towns" not working after loading a game.  
+
+2.5.1:  
 Fixed the following regressions:  
 - Left click on Castle icon will now propose TUM creatures if present.  
 - Left click on small portraits in town screen now shows TUM creatures if present.  
 - WoG Option "Allow Building Twice per Day in Towns" now works correctly on first turn for all players.   
   
-2.5  
+2.5:  
 **BATTLE AI IMPROVEMENTS**  
 - ANTIMAGIC: Fixed AI AntiMagic evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).  
 - ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
@@ -32,35 +41,7 @@ Fixed the following regressions:
 - Fix wrong Imperial Griffin Attack sound attack.  
 - Pit Master, Darkness Dragon, Lord of the Swamp and Hell Baron now have new defs and portraits.  
  Portraits and graphics inconsistencies are now fixed.  
-  
-2.4.2:  
-  
-Disabled the following improvement:  
-- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
 
-2.4.1:
-- Fixed crash on generating random map.
-
-2.4.0:  
-  
-**BATTLE AI IMPROVEMENTS**  
-- ANTIMAGIC: Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. Now he will consider only spells he can successfully remove.  
-- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
-- DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.  
-
-**BUG FIXES**  
-- Fixed Map drawing error.  
-- Fixed a bug which in rare circumstances allowed AI buying TUM creatures in town without reducing available creatures.  
-- Fixed a bug which prevented AI from casting Teleport.  
-- Fixed Beholder attack always casting Blind and Hypnotize.  
-- Fixed crash when mouse over-ing a creature for Astral Spirit cast.  
-- Reworked building twice a turn mechanic for TUM, now it works also in turn 1 for TUM Buildings and when toggling the WOG options and starting/loading a game.  
-
-**TOWN SCREEN COSMETIC IMPROVEMENTS** (thanks to Trebuchet)
-- Fixed building names in Fort.  
-- Rewrote left clicking on bottom left creatures in town, now it works smoothly as the original one.  
-- Right clicking on dwellings in town screen and on bottom left creatures now shows TUM upgraded portraits if the corresponding building is built.  
-- Added Kingdom Overview display  
 
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
