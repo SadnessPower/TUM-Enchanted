@@ -1,3 +1,8 @@
+**********CHANGELOG TUM ENCHANTED 2.5.3************
+BUG FIXES
+- Fixed regression causing left click on Capitol shows dialog for upgrading to a building not present in TUM Enchanted.
+- Fixed typo in WoG Option "Allow Building Twice per Day in Towns" causing it mistakenly disabling after start of each week.
+
 **********CHANGELOG TUM ENCHANTED 2.5.2************
 IMPROVEMENTS
 - Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).

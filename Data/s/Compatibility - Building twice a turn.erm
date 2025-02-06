@@ -4,7 +4,7 @@ ZVSE2
 ; Engine:   ERM 2.0+
 ; Requires: ERA 3.4+, Era Erm Framework, WoG Scripts (80 base)
 
-!?FU(OnEveryDay)&i^timerWeekDay^=1/i^timerOnce^=1;
+!?FU(OnEveryDay)&i^timerDay^=1/i^timerOnce^=1;
 !!UN:P228/?i^buildTwice^;                       [Check if Build Twice a Day option is enabled]
 
 !!UN:P228/0;                                    [Disable wog option behaviour]
