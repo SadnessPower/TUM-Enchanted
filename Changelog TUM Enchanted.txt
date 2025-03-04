@@ -1,3 +1,12 @@
+**********CHANGELOG TUM ENCHANTED 2.6************
+MULTIPLAYER OVER NETWORK (TCP/IP) HAS BEEN FIXED! 
+Now you can enjoy playing TUM Enchanted with your friends far away!
+
+BUG FIXES
+- Soul Eater Animate Dead ability cast requirement now matches skill description (levels 1-5), instead of target stack HP <= 50.
+- Fixed a conflict with ACM rarely causing a crash when calculating heroes' specialty bonuses.
+- Fixed Faerie Dragon spell mistakenly making 1/5 of the supposed damage (thanks to JackSlater).
+
 **********CHANGELOG TUM ENCHANTED 2.5.3************
 BUG FIXES
 - Fixed regression causing left click on Capitol shows dialog for upgrading to a building not present in TUM Enchanted.
@@ -94,7 +103,7 @@ As a result of this, the following bugs were fixed:
 - Fixed bug (probably from original game) which prevented AI to make some special buildings, and also wasting resources and town building turn. For details: AI Improvements.txt
 
 OTHERS
-- Removed global AI max hero limit according to difficulty level (Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21).
+- Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.
 - Fixed Expert CURE not removing Hypnotize spell.
 - Added "Remove theoretical battle AI vs AI" plugin. Now AI will play all battles like a human player.
 - Increased AI thinking radius to 128000.

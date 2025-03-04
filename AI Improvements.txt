@@ -52,7 +52,7 @@ SPELLS
 OTHERS
 - Increased AI thinking radius to 128000 (this value will be set each turn because it can be overwritten)..
 
-- Removed global AI max hero limit according to difficulty level (Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21).
+- Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.
 
 - Fixed a bug that prevents AI to build all buildings (even special ones) in their towns.
 
