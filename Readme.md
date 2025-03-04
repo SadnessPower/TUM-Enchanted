@@ -1,53 +1,20 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.3
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.6
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
-## LATEST CHANGELOGS 
-2.5.3:  
-**BUG FIXES**  
-- Fixed regression causing left click on Capitol shows dialog for upgrading to a building not present in TUM Enchanted.  
-- Fixed typo in WoG Option "Allow Building Twice per Day in Towns" causing it mistakenly disabling after start of each week.  
-  
-2.5.2:  
-**IMPROVEMENTS**  
-- Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).  
-- Creature skills which put debuff on enemy stack now have those hard limits:  
-  - Attack and Defense: No lower than 0.  
-  - Min-Max Damage: No lower than 1.  
-  - Speed: No lower than 3.  
-  
-**BUG FIXES**  
-- Fixed WoG Option "Allow Building Twice per Day in Towns" not working after loading a game.  
+## LATEST CHANGELOG 
+**MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
+Now you can enjoy playing TUM Enchanted with your friends far away!  
 
-2.5.1:  
-Fixed the following regressions:  
-- Left click on Castle icon will now propose TUM creatures if present.  
-- Left click on small portraits in town screen now shows TUM creatures if present.  
-- WoG Option "Allow Building Twice per Day in Towns" now works correctly on first turn for all players.   
-  
-2.5:  
-**BATTLE AI IMPROVEMENTS**  
-- ANTIMAGIC: Fixed AI AntiMagic evaluation erroneously considering dispelling all spells instead of only bad ones (good spells are not removed by Antimagic).  
-- ANTIMAGIC: Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen.   
-  
 **BUG FIXES**  
-- Fixed rare bug when left clicking on bottom left creatures in town (Thanks to Trebuchet).  
-  
-**BALANCE**  
-- The following creature skills cannot reduce enemy speed lower than 3:  
-  - Crippling Attack (Centaur Warlord)  
-  - Crippling Shoot (Marksman)  
-  - Incapacitating Shoot (Crossbowman)  
-  
-**GRAPHICS**  
-- Fix wrong Imperial Griffin Attack sound attack.  
-- Pit Master, Darkness Dragon, Lord of the Swamp and Hell Baron now have new defs and portraits.  
- Portraits and graphics inconsistencies are now fixed.  
-
-
+- Soul Eater Animate Dead ability cast requirement now matches skill description (levels 1-5), instead of target stack HP <= 50.  
+- Fixed a conflict with ACM rarely causing a crash when calculating heroes' specialty bonuses.  
+- Fixed Faerie Dragon spell mistakenly making 1/5 of the supposed damage (thanks to JackSlater).  
+ 
+ 
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
 ------------------------------------------------------------------------------------------------------------------------ 
