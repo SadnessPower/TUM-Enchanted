@@ -23,7 +23,7 @@ ZVSE2
 !!en;
 
 ; Check if there are two human players in different teams
-!!if&(isNetworkGame);
+!!if&(isNetworkGame)/(isNetworkGame)=(FALSE);  ; Broken Multiplayer support message disabled
   !!FU(NewIntArray):P?(humanTeams:y);
 
   ; Loop through all the players and see how many human teams in total

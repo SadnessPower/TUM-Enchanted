@@ -1,5 +1,5 @@
 **********CHANGELOG TUM ENCHANTED 2.6************
-MULTIPLAYER OVER NETWORK (TCP/IP) HAS BEEN FIXED! 
+MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED! 
 Now you can enjoy playing TUM Enchanted with your friends far away!
 
 BUG FIXES
