@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.2
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.5.3
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
@@ -6,6 +6,11 @@ Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI 
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 ## LATEST CHANGELOGS 
+2.5.3:  
+**BUG FIXES**  
+- Fixed regression causing left click on Capitol shows dialog for upgrading to a building not present in TUM Enchanted.  
+- Fixed typo in WoG Option "Allow Building Twice per Day in Towns" causing it mistakenly disabling after start of each week.  
+  
 2.5.2:  
 **IMPROVEMENTS**  
 - Now all objects will be generated on random maps! (Previously some objects were never generated, like Emerald Tower, Battle Academy and many others).  
