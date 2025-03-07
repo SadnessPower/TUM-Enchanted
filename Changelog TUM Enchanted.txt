@@ -1,3 +1,6 @@
+**********CHANGELOG TUM ENCHANTED 2.6.1************
+Upgraded mod in order to work with latest assembly modifications.
+
 **********CHANGELOG TUM ENCHANTED 2.6************
 MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED! 
 Now you can enjoy playing TUM Enchanted with your friends far away!
