@@ -5,9 +5,10 @@
 Now TUM Enchanted will feature AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
-## LATEST CHANGELOG 
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
+
+## LATEST CHANGELOG 
 
 **BUG FIXES**  
 - Fixed crash on Commander turn.
