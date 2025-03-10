@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.6.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.6.2
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
@@ -10,6 +10,8 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 Now you can enjoy playing TUM Enchanted with your friends far away!  
 
 **BUG FIXES**  
+- Fixed crash on Commander turn.
+- Removed confirmation dialog when clicking Auto Combat.
 - Soul Eater Animate Dead ability cast requirement now matches skill description (levels 1-5), instead of target stack HP <= 50.  
 - Fixed a conflict with ACM rarely causing a crash when calculating heroes' specialty bonuses.  
 - Fixed Faerie Dragon spell mistakenly making 1/5 of the supposed damage (thanks to JackSlater).  
