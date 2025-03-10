@@ -19,7 +19,7 @@
 		"file": "TUM Enchanted.ico",
 		"index": 0
 	},
-	"mod_version": "2.6.1",
+	"mod_version": "2.6.2",
 	"priority": 5,
 	"compatibility": {
 		"class": "default",

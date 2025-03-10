@@ -1,3 +1,7 @@
+**********CHANGELOG TUM ENCHANTED 2.6.2************
+- Fixed crash on Commander turn.
+- Removed confirmation dialog when clicking Auto Combat.
+
 **********CHANGELOG TUM ENCHANTED 2.6.1************
 Upgraded mod in order to work with latest assembly modifications.
 
