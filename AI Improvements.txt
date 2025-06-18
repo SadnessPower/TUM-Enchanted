@@ -1,3 +1,20 @@
+ADVENTURE AI IMPROVEMENTS
+
+- Now AI will go straight capturing towns he think he can beat if they are reachable in current turn, no matter what. No more distraction along the way, no more ignoring capturable towns!
+
+- AI will capture enemy towns even if there are stronger enemy heroes nearby, if he can safely run afterwards without being caught.
+
+- AI heroes now have +2 scouting radius to match human players' one. Vanilla AI scouting radius doesn't let AI seeing enemy towns which a human player could.
+
+- Now AI will always use max search distance set by UN:J4. WOG implemention for that trigger was incomplete, leading to rarely using max search distance.
+
+- Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left (this occured a lot when entering monoliths, but not only that).
+
+- Now AI will not pass turn with full movement points when he cannot find a path for escaping a danger zone (stronger enemy hero). In this case, danger zone will be gradually reduced and path calculation will be retried until a path is found.
+
+- (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)
+
+-----------------
 BATTLE AI IMPROVEMENTS 
 (apply to AUTO/QUICK COMBAT and for AI controlled players)
 
@@ -32,6 +49,7 @@ BATTLE AI IMPROVEMENTS
 
 -----------------
 SPELLS
+
 - ANTIMAGIC: 
    - Fixed AI evaluating using Antimagic for removing spells he cannot remove due to having too low Earth Magic level. This caused AI casting Antimagic for removing a debuff and actually not removing it. Now he will consider only spells he can successfully remove.
 
@@ -46,10 +64,13 @@ SPELLS
 
 - DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.
 
-- HYPNOTIZE casting value doubled (it will result in AI casting or dispelling Hypnotize more often).
+- HYPNOTIZE casting value now adds the Blind value to the Hypnotize value, since the creature will not be able to be controlled as well.  
+It will result in AI casting or dispelling Hypnotize more often. 
 
+- Soul Eater Animate Dead ability cast requirement adjusted to match skill description (levels 1-5), instead of target stack HP.
 -----------------
-OTHERS
+GLOBAL
+
 - Increased AI thinking radius to 128000 (this value will be set each turn because it can be overwritten)..
 
 - Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.

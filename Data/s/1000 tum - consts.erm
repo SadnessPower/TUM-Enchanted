@@ -34,6 +34,7 @@ ZVSE2
 
 ; Tower
 !#DC(MON_GRANDMASTER_GREMLIN)      = 209;
+!#DC(MON_SABOTEUR)                 = 209;
 !#DC(MON_MARBLE_GARGOYLE)          = 210;
 !#DC(MON_STEEL_GOLEM)              = 211;
 !#DC(MON_SUPREME_ARCH_MAGE)        = 212;

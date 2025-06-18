@@ -1,0 +1,28 @@
+ZVSE2
+
+!?FU(gem_ShowMapItem);
+!!VRx3&x3=0:S500;
+*!VRx2:+100;
+!!UN:Ux1/x2/?n;
+!!IF:L^type %x1, suptype %x2 = %n^;
+
+!!FU&x4:E;
+!!re i/1/n;(end_value);
+  !!UN:Ux1/x2/i/2;
+  !!OB2:U?s;
+  !!IF:L^type = %x1, subtype = %s^;
+  !!UN:Lv2/v3/v4/x3;
+!!en;
+
+
+!?FU(OnKeyPressed_AdvMap)&x1=(KEY_Q);
+!!re i/197/250;(end_value);
+  !!FU(gem_ShowMapItem):P54/i/300;
+
+!!en;
+
+!?FU(OnKeyPressed_AdvMap)&x1=(KEY_Z);
+!!re i/65/65;(end_value);
+  !!FU(gem_ShowMapItem):P63/i/300;
+
+!!en;

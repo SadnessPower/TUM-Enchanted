@@ -1028,7 +1028,7 @@ FORCED for erase "Spells 1-4 Immunity" and "+1 Gem Daily" (confirm 100%).
 !#MA:O213/2;                                                    Is a Tower Unit
 !#SN:H^monname^/213/0/^Battlemage of the City of Ice and Steel^;
 !#SN:H^monname^/213/1/^Battlemages of the City of Ice and Steel^;
-!#SN:H^monname^/213/2/^Fly. Strongly Hates Efreeti. {~99CCFF}Cast 3 Random Buff Spells.{~} Double Attack. {30% Parry.} {~33CCCC}Ice and Steal Enchantment{~}^;
+!#SN:H^monname^/213/2/^Fly. Strongly Hates Efreeti. {~99CCFF}Cast 3 Random Buff Spells.{~} Double Attack. {30% Parry.} {~33CCCC}Ice and Steel Enchantment{~}^;
 
 ***************************NAGA*********************************
 !#MA:A38/16;                                                   Zealot Att 12 to 12
