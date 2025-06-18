@@ -17,7 +17,7 @@ This will cause AI to make smarter choices and to be more aggressive without che
 **IMPROVEMENTS**  
 - Now TUM Enchanted is compatible with WoG Graphics Fix!  
 - WOG Option support for "Capitol can be built in every town".  
-- If both TUM Enchanted and Third Upgrade Mod are both enabled, a pop-up message will be shown upon game start warning about incompatibity.  
+- If both TUM Enchanted and Third Upgrade Mod are both enabled, a pop-up message will be shown upon game start warning about incompatibity (thanks to Yuji Sakai).  
 - Enabled again Soul Eater Animate Dead fix for cast requirement to match skill description (levels 1-5), instead of target stack HP.  
   
 **AI IMPROVEMENTS**  
