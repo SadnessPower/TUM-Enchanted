@@ -1,18 +1,17 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.1
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
-
+  
+**TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS!**  
+This will cause AI to make *smarter* choices and to be more aggressive without cheating! And is also *faster*!  
+Cheats are not welcomed, the AI behaviour will be smarter.  
+For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 > [!NOTE]  
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
-TUM Enchanted gives you new AI Improvements! Cheats are not welcomed, the AI behaviour will be smarter.  
-For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
-
 
 ## LATEST CHANGELOG  
-TUM ENCHANTED NOW FEATURES **ADVENTURE AI IMPROVEMENTS**!  
-This will cause AI to make smarter choices and to be more aggressive without cheating!  
   
 **IMPROVEMENTS**  
 - Now TUM Enchanted is compatible with WoG Graphics Fix!  
