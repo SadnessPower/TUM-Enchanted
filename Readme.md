@@ -11,8 +11,21 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
 
-## LATEST CHANGELOG  
+## LATEST CHANGELOGS  
+2.7.1  
+**GENERAL**  
+- Added mod incompatibility for the new Mod Manager.  
   
+**AI IMPROVEMENTS**  
+*ADVENTURE AI*  
+- AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!  
+- Implemented separate thinking radius for heroes in explore mode and normal mode.  
+  
+*BATTLE AI* 
+- DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!  
+- Implemented AI code for correctly evaluating removing Blind and Hypnotize.  
+  
+2.7
 **IMPROVEMENTS**  
 - Now TUM Enchanted is compatible with WoG Graphics Fix!  
 - WOG Option support for "Capitol can be built in every town".  
@@ -20,7 +33,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Enabled again Soul Eater Animate Dead fix for cast requirement to match skill description (levels 1-5), instead of target stack HP.  
   
 **AI IMPROVEMENTS**  
-*ADVENTURE AI  
+*ADVENTURE AI*  
 - Now AI will go straight capturing towns he think he can beat if they are reachable in current turn, no matter what. No more distraction along the way, no more ignoring capturable towns!  
 - AI will capture enemy towns even if there are stronger enemy heroes nearby, if he can safely run afterwards without being caught.  
 - AI heroes now have +2 scouting radius to match human players' one. Vanilla AI scouting radius doesn't let AI seeing enemy towns which a human player could.  
@@ -29,7 +42,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Now AI will not pass turn with full movement points when he cannot find a path for escaping a stronger enemy hero. Instead (this is experimental) will run instead, and if he cannot, will act normally.  
 - (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)  
   
-*COMBAT AI  
+*COMBAT AI*  
 - HYPNOTIZE casting value reworked. It will result in AI casting or dispelling Hypnotize more often (see AI Improvements.txt for more details).   
   
 **BUG FIXES**  
