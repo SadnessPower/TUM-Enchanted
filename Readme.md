@@ -4,7 +4,6 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
   
 **TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS!**  
 This will cause AI to make *smarter* choices and to be more aggressive without cheating! And is also *faster*!  
-Cheats are not welcomed, the AI behaviour will be smarter.  
 For a complete and detailed list of all AI improvements refer to [AI Improvements.txt](https://github.com/SadnessPower/TUM-Enchanted/blob/main/AI%20Improvements.txt)    
 
 > [!NOTE]  
@@ -12,11 +11,12 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
-2.7.1  
+  
 **GENERAL**  
 - Added mod incompatibility for the new Mod Manager.  
   
 **AI IMPROVEMENTS**  
+  
 *ADVENTURE AI*  
 - AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!  
 - Implemented separate thinking radius for heroes in explore mode and normal mode.  
@@ -25,7 +25,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!  
 - Implemented AI code for correctly evaluating removing Blind and Hypnotize.  
   
-2.7
+<-------- 2.7 -------->  
 **IMPROVEMENTS**  
 - Now TUM Enchanted is compatible with WoG Graphics Fix!  
 - WOG Option support for "Capitol can be built in every town".  
@@ -33,6 +33,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Enabled again Soul Eater Animate Dead fix for cast requirement to match skill description (levels 1-5), instead of target stack HP.  
   
 **AI IMPROVEMENTS**  
+  
 *ADVENTURE AI*  
 - Now AI will go straight capturing towns he think he can beat if they are reachable in current turn, no matter what. No more distraction along the way, no more ignoring capturable towns!  
 - AI will capture enemy towns even if there are stronger enemy heroes nearby, if he can safely run afterwards without being caught.  
