@@ -15,13 +15,11 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 **GENERAL**  
 - Added mod incompatibility for the new Mod Manager.  
   
-**AI IMPROVEMENTS**  
-  
-*ADVENTURE AI*  
+**ADVENTURE AI**  
 - AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!  
 - Implemented separate thinking radius for heroes in explore mode and normal mode.  
   
-*BATTLE AI* 
+**BATTLE AI** 
 - DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!  
 - Implemented AI code for correctly evaluating removing Blind and Hypnotize.  
   
