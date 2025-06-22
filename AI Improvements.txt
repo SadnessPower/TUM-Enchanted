@@ -1,3 +1,16 @@
+GENERAL
+
+- AI is faster now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality.
+
+- Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.
+
+- Fixed a bug that prevents AI to build all buildings (even special ones) in their towns.
+
+- Fixed bug (probably from original game) in which where an Hero visit a town of the following types: Tower, Inferno, Dungeon and Stronghold under certain conditions AI will always try to build special building 23 
+(Wall of Knowledge, Order of Fire, Academy of Battle Scholars, Hall of Valhalla) even though it is already built, spending resources and town building turn. This will cause slowdowns in Town Building 
+and even completely stopping making building in that town if the hero is stuck in the town or it is continuously visiting it. (Thanks to TheInvisible1966 for testing and creating conditions to reproduce that)
+
+-------------------------
 ADVENTURE AI IMPROVEMENTS
 
 - Now AI will go straight capturing towns he think he can beat if they are reachable in current turn, no matter what. No more distraction along the way, no more ignoring capturable towns!
@@ -6,7 +19,9 @@ ADVENTURE AI IMPROVEMENTS
 
 - AI heroes now have +2 scouting radius to match human players' one. Vanilla AI scouting radius doesn't let AI seeing enemy towns which a human player could.
 
-- Now AI will always use max search distance set by UN:J4. WOG implemention for that trigger was incomplete, leading to rarely using max search distance.
+- Increased AI thinking radius to 128000 for heroes which are not in explore mode. 
+
+- Now AI will always use max thinking radius distance set by UN:J4. WOG implemention for that trigger was incomplete, leading to rarely using max thinking radius.
 
 - Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left (this occured a lot when entering monoliths, but not only that).
 
@@ -14,7 +29,7 @@ ADVENTURE AI IMPROVEMENTS
 
 - (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)
 
------------------
+-------------------------
 BATTLE AI IMPROVEMENTS 
 (apply to AUTO/QUICK COMBAT and for AI controlled players)
 
@@ -47,6 +62,7 @@ BATTLE AI IMPROVEMENTS
 
 - Arrow Towers target logic is now much more complex, and smarter (thanks to Raistlin).
 
+- Soul Eater Animate Dead ability cast requirement adjusted to match skill description (levels 1-5), instead of target stack HP.
 -----------------
 SPELLS
 
@@ -64,23 +80,11 @@ SPELLS
 
 - DISPEL/CURE/ANTIMAGIC: Now AI will evaluate using those spells for removing BLIND/STONE/PARALYZE.
 
+- DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often.
+
 - HYPNOTIZE casting value now adds the Blind value to the Hypnotize value, since the creature will not be able to be controlled as well.  
 It will result in AI casting or dispelling Hypnotize more often. 
-
-- Soul Eater Animate Dead ability cast requirement adjusted to match skill description (levels 1-5), instead of target stack HP.
 -----------------
-GLOBAL
-
-- Increased AI thinking radius to 128000 (this value will be set each turn because it can be overwritten)..
-
-- Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.
-
-- Fixed a bug that prevents AI to build all buildings (even special ones) in their towns.
-
-- Fixed bug (probably from original game) in which where an Hero visit a town of the following types: Tower, Inferno, Dungeon and Stronghold under certain conditions AI will always try to build special building 23 
-(Wall of Knowledge, Order of Fire, Academy of Battle Scholars, Hall of Valhalla) even though it is already built, spending resources and town building turn. This will cause slowdowns in Town Building 
-and even completely stopping making building in that town if the hero is stuck in the town or it is continuously visiting it. (Thanks to TheInvisible1966 for testing and creating conditions to reproduce that)
-
 
 
 

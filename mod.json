@@ -1,32 +1,44 @@
 {
-	"caption": {
-		"en_US": "TUM Enchanted",
-		"ru_RU": ""
-	},
-	"description": {
-		"full": {
-			"en_US": "Readme.md",
-			"ru_RU": ""
-		},
-		"short": {
-			"en_US": "",
-			"ru_RU": ""
-		}
-	},
-	"author": "Diozia, SadnessPower",
-	"homepage": "",
-	"icon": {
-		"file": "TUM Enchanted.ico",
-		"index": 0
-	},
-	"mod_version": "2.7",
-	"priority": 6,
-	"compatibility": {
-		"class": "default",
-		"entries": {}
-	},
-	"platform": "era",
-	"info_version": "2.7",
-	"plugins": {},
-	"category": "gameplay"
+    "caption": {
+        "en_US": "TUM Enchanted",
+        "ru_RU": ""
+    },
+    "description": {
+        "full": {
+            "en_US": "Readme.md",
+            "ru_RU": ""
+        },
+        "short": {
+            "en_US": "",
+            "ru_RU": ""
+        }
+    },
+    "author": "Diozia, SadnessPower",
+    "homepage": "",
+    "icon": {
+        "file": "TUM Enchanted.ico",
+        "index": 0
+    },
+    "mod_version": "2.7.1",
+    "priority": 6,
+    "compatibility": 
+	{
+        "incompatible": 
+		[
+            "Third Upgrade Mod",
+            "Land Of New Towns",
+            "ERA+",
+            "Fastest Creature Movement"
+        ],
+        "load_after": 
+		[
+  		    "WoG Graphic Fix",
+            "WoG Graphic Fix Lite",
+            "HD Editionfixai (ENG-RU)"
+        ]
+    },
+    "platform": "era",
+    "info_version": "2.7.1",
+    "plugins": {},
+    "category": "gameplay"
 }

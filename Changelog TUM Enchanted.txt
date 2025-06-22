@@ -2,8 +2,22 @@ MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!
 Now you can enjoy playing TUM Enchanted with your friends far away!
 
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
-This will cause AI to make smarter choices and to be more aggressive without cheating!
+This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
+**********CHANGELOG TUM ENCHANTED 2.7.1************
+GENERAL
+- Added mod incompatibility for the new Mod Manager.
+
+AI IMPROVEMENTS
+*ADVENTURE AI
+- AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!
+- Implemented separate thinking radius for heroes in explore mode and normal mode.
+
+*BATTLE AI
+- DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!
+- Implemented AI code for correctly evaluating removing Blind and Hypnotize.
+
+**********CHANGELOG TUM ENCHANTED 2.7************
 IMPROVEMENTS
 - Now TUM Enchanted is compatible with WoG Graphics Fix!
 - WOG Option support for "Capitol can be built in every town".
