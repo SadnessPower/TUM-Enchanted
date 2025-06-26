@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.2
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -11,6 +11,17 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
+**GENERAL**  
+- Configurable max AI Heroes for difficulty level (see Lang/AI.json).
+  
+**ADVENTURE AI**  
+- Treasure Chest choice: Now AI will always choose XP for the strongest hero until level 10, then gold (see AI Improvements.txt for other cases).
+  
+**BATTLE AI** 
+- PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
+- SUMMON FIRE/EARTH/AIR/WATER: No more suboptimal summoning of elementals with ACM! If ACM is enabled, AI will evaluate it by using ACM summoning calculation.
+
+<-------- 2.7.1 -------->   
   
 **GENERAL**  
 - Added mod incompatibility for the new Mod Manager.  
@@ -24,6 +35,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Implemented AI code for correctly evaluating removing Blind and Hypnotize.  
   
 <-------- 2.7 -------->  
+  
 **IMPROVEMENTS**  
 - Now TUM Enchanted is compatible with WoG Graphics Fix!  
 - WOG Option support for "Capitol can be built in every town".  
@@ -41,7 +53,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 - Now AI will not pass turn with full movement points when he cannot find a path for escaping a stronger enemy hero. Instead (this is experimental) will run instead, and if he cannot, will act normally.  
 - (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)  
   
-*COMBAT AI*  
+*BATTLE AI*  
 - HYPNOTIZE casting value reworked. It will result in AI casting or dispelling Hypnotize more often (see AI Improvements.txt for more details).   
   
 **BUG FIXES**  
