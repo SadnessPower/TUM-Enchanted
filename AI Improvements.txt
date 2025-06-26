@@ -2,6 +2,8 @@ GENERAL
 
 - AI is faster now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality.
 
+- Configurable max AI Heroes for difficulty level (see Lang/AI.json).
+
 - Removed global AI max hero limit according to difficulty level. Previously, AI will not hire new heroes if there are globally the following numbers of heroes: Easy=9, Normal=12, Hard=15, Expert=18, Impossible=21.
 
 - Fixed a bug that prevents AI to build all buildings (even special ones) in their towns.
@@ -28,6 +30,14 @@ ADVENTURE AI IMPROVEMENTS
 - Now AI will not pass turn with full movement points when he cannot find a path for escaping a danger zone (stronger enemy hero). In this case, danger zone will be gradually reduced and path calculation will be retried until a path is found.
 
 - (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)
+
+- Treasure Chest choice - New logic has been implemented:
+Heroes are sorted by level (1st is the highest), then strength
+
+1st: XP until level 10, then gold
+2nd/3nd: XP until level 10 if 1st has already reached lvl 10, gold otherwise
+4-5-6-7-8th: XP until level 10 if 2nd & 3rd have already reached lvl 10, gold otherwise
+
 
 -------------------------
 BATTLE AI IMPROVEMENTS 
@@ -84,6 +94,11 @@ SPELLS
 
 - HYPNOTIZE casting value now adds the Blind value to the Hypnotize value, since the creature will not be able to be controlled as well.  
 It will result in AI casting or dispelling Hypnotize more often. 
+
+- PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
+
+- SUMMON FIRE/EARTH/AIR/WATER: If ACM is enabled, AI will evaluate it by using ACM summoning calculation
+
 -----------------
 
 

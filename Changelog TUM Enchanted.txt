@@ -4,16 +4,25 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
+GENERAL
+- Configurable max AI Heroes for difficulty level (see Lang/AI.json).
+
+ADVENTURE AI
+- Treasure Chest choice: Now AI will always choose XP for the strongest hero until level 10, then gold (see AI Improvements.txt for other cases).
+
+COMBAT AI
+- PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
+- SUMMON FIRE/EARTH/AIR/WATER: No more suboptimal summoning of elementals with ACM! If ACM is enabled, AI will evaluate it by using ACM summoning calculation.
+
 **********CHANGELOG TUM ENCHANTED 2.7.1************
 GENERAL
 - Added mod incompatibility for the new Mod Manager.
 
-AI IMPROVEMENTS
-*ADVENTURE AI
+ADVENTURE AI
 - AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!
 - Implemented separate thinking radius for heroes in explore mode and normal mode.
 
-*BATTLE AI
+COMBAT AI
 - DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!
 - Implemented AI code for correctly evaluating removing Blind and Hypnotize.
 

@@ -19,7 +19,7 @@
         "file": "TUM Enchanted.ico",
         "index": 0
     },
-    "mod_version": "2.7.1",
+    "mod_version": "2.7.2",
     "priority": 6,
     "compatibility": 
 	{
@@ -38,7 +38,7 @@
         ]
     },
     "platform": "era",
-    "info_version": "2.7.1",
+    "info_version": "2.7.2",
     "plugins": {},
     "category": "gameplay"
 }
