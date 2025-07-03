@@ -34,11 +34,12 @@
 		[
   		    "WoG Graphic Fix",
             "WoG Graphic Fix Lite",
-            "HD Editionfixai (ENG-RU)"
+            "HD Editionfixai (ENG-RU)",
+			"HD Edition Remaster by community"
         ]
     },
     "platform": "era",
-    "info_version": "2.7.2",
+    "info_version": "2.7.3",
     "plugins": {},
     "category": "gameplay"
 }

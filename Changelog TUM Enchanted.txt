@@ -4,13 +4,23 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
+LATEST CHANGELOG:
+
+BUG FIXES
+- Fixed regression which caused TUM Buildings to be already built at game start.
+- Fixed clicking on Horde Skeleton building mistakenly proposing Liches instead of Skeletons (thanks to Wyvern).
+
 GENERAL
-- Configurable max AI Heroes for difficulty level (see Lang/AI.json).
+- Added new name of HD Remastered edition to load_after list.
+
+**********CHANGELOG TUM ENCHANTED 2.7.2************
+GENERAL
+- Configurable max AI heroes for difficulty level (see Lang/AI.json).
 
 ADVENTURE AI
 - Treasure Chest choice: Now AI will always choose XP for the strongest hero until level 10, then gold (see AI Improvements.txt for other cases).
 
-COMBAT AI
+BATTLE AI
 - PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
 - SUMMON FIRE/EARTH/AIR/WATER: No more suboptimal summoning of elementals with ACM! If ACM is enabled, AI will evaluate it by using ACM summoning calculation.
 
@@ -22,7 +32,7 @@ ADVENTURE AI
 - AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!
 - Implemented separate thinking radius for heroes in explore mode and normal mode.
 
-COMBAT AI
+BATTLE AI
 - DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!
 - Implemented AI code for correctly evaluating removing Blind and Hypnotize.
 
@@ -43,7 +53,7 @@ AI IMPROVEMENTS
 - Now AI will not pass turn with full movement points when he cannot find a path for escaping a stronger enemy hero. Instead (this is experimental) will run instead, and if he cannot, will act normally.
 - (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)
 
-*COMBAT AI
+*BATTLE AI
 - HYPNOTIZE casting value reworked. It will result in AI casting or dispelling Hypnotize more often (see AI Improvements.txt for more details). 
 
 BUG FIXES
