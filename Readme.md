@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.3
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.4
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -11,6 +11,14 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
+**IMPROVEMENTS**  
+- Fixed crash for incompatibility between "JS - Main module" mod and Amethyst. Now they are compatible.  
+  
+**AI IMPROVEMENTS**   
+- Improved the following fix by handling more cases: "Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left". (Thanks to Demoix for the careful and detailed report).  
+  
+<-------- 2.7.3 -------->   
+  
 **BUG FIXES**  
 - Fixed regression which caused TUM Buildings to be already built at game start.  
 - Fixed clicking on Horde Skeleton building mistakenly proposing Liches instead of Skeletons (thanks to Wyvern).  
