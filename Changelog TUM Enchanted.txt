@@ -4,8 +4,15 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
-LATEST CHANGELOG:
+**********CHANGELOG TUM ENCHANTED 2.7.4************
+IMPROVEMENTS
+- Fixed crash for incompatibility between "JS - Main module" mod and Amethyst. Now they are compatible.
 
+AI IMPROVEMENTS
+- Improved the following fix by handling more cases: "Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left".
+  (Thanks to Demoix for the careful and detailed report).
+
+**********CHANGELOG TUM ENCHANTED 2.7.3************
 BUG FIXES
 - Fixed regression which caused TUM Buildings to be already built at game start.
 - Fixed clicking on Horde Skeleton building mistakenly proposing Liches instead of Skeletons (thanks to Wyvern).
