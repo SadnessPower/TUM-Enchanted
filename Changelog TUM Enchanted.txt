@@ -5,7 +5,7 @@ TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS!
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
 **********CHANGELOG TUM ENCHANTED 2.7.4************
-IMPROVEMENTS
+BUG FIXES
 - Fixed crash for incompatibility between "JS - Main module" mod and Amethyst. Now they are compatible.
 
 AI IMPROVEMENTS
