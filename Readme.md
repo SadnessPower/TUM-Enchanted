@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.2
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.3
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -11,6 +11,15 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
+**BUG FIXES**  
+- Fixed regression which caused TUM Buildings to be already built at game start.  
+- Fixed clicking on Horde Skeleton building mistakenly proposing Liches instead of Skeletons (thanks to Wyvern).  
+
+**GENERAL**
+- Added new name of HD Remastered edition to load_after list.  
+  
+<-------- 2.7.2 -------->   
+
 **GENERAL**  
 - Configurable max AI Heroes for difficulty level (see Lang/AI.json).
   
