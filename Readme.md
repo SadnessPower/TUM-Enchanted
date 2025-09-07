@@ -11,7 +11,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
-**IMPROVEMENTS**  
+**BUG FIXES**  
 - Fixed crash for incompatibility between "JS - Main module" mod and Amethyst. Now they are compatible.  
   
 **AI IMPROVEMENTS**   
