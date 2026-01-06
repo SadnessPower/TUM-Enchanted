@@ -1,0 +1,13 @@
+{
+    "jsMod": {
+        "settings": {
+            "hotaTownBuildings": {
+                "value": false
+            },
+            "hotaVaultOfAshes": {
+                "incompatibleWith": "Neutral Town",
+                "value": false
+            }
+        }
+    }
+}
