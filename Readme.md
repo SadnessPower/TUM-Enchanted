@@ -11,8 +11,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## LATEST CHANGELOGS  
-- JS main module compatibility: Now incompatible options (hotaTownBuildings and hotaVaultOfAshes) are automatically disabled, letting TUM Enchanted to be run along with JS main module mod.  
-
+- JS main module compatibility: Now JS incompatible options (hotaTownBuildings and hotaVaultOfAshes) are automatically disabled, allowing the mod to be run along with TUM Enchanted.
   
 <-------- 2.7.4 -------->  
   
