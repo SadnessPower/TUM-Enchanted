@@ -4,6 +4,29 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
+**********CHANGELOG TUM ENCHANTED 2.8************
+BALANCE
+The Resource Silo for Castle now produces 1100 gold, up from 1000.
+
+AI IMPROVEMENTS
+- CLONE: Now AI will consider the presence of an enemy stack of the same type which can cause his Clone not to play immediately after cast.
+- HYPNOTIZE: Implemented unique logic for Hypnotized creatures under AI control which will now attack friendly stack with maximum sum of damage dealt + damage received.
+- AI is now aware of TUM-E Resource Silo additional resource production. This will lead to build Building Upgrade for some Level 7 creatures more quickly.
+
+IMPROVEMENTS
+- Added compatibility with GEM and the yellow mark symbol (shown when all building are built) to consider also TUM buildings (thanks to Yuji and Daemon).
+
+BUG FIXES
+- Fixed crash during combat in AI turn when evaluating Teleport spell.
+- Fixed Saboteur's Repair Construct spell unable to be casted on some valid targets (thanks to Yuji Sakai). Known issue: Repair Construct animation is not shown. Will be fixed later.
+- Fixed Pit Masters/Antichrist ability resurrecting a wrong amount of creatures.
+- Fixed rare bug causing a siege to start with walls completely destroyed.
+- Fixed Plasma Elemental having Affinity to Air instead of Affinity to Earth.
+
+GENERAL
+- Instantanim.dll from "JS - Main Module" Mod is now disabled since it doesn't work well with new creatures (>197).
+- Added "remove theoretical battle ai vs ai" plugin since ACM now disables it. Playing without it causes the AI to lose the smarter combat behaviour implemented in TUM-E when playing against neutral or AI, as well as causing lots of bugs (no necromancy, no true combat, hero loses all artifacts when defeating another hero, and many more).
+
 **********CHANGELOG TUM ENCHANTED 2.7.4.1************
 - JS main module compatibility: Now JS incompatible options (hotaTownBuildings and hotaVaultOfAshes) are automatically disabled, allowing the mod to be run along with TUM Enchanted.
 
