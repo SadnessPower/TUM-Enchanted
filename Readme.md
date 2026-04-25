@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.7.4.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.8
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -10,80 +10,30 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
 
-## LATEST CHANGELOGS  
-- JS main module compatibility: Now JS incompatible options (hotaTownBuildings and hotaVaultOfAshes) are automatically disabled, allowing the mod to be run along with TUM Enchanted.
+## CHANGELOG  
   
-<-------- 2.7.4 -------->  
-  
-**BUG FIXES**  
-- Fixed crash for incompatibility between "JS - Main module" mod and Amethyst. Now they are compatible.  
-  
-**AI IMPROVEMENTS**   
-- Improved the following fix by handling more cases: "Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left". (Thanks to Demoix for the careful and detailed report).  
-  
-<-------- 2.7.3 -------->   
-  
-**BUG FIXES**  
-- Fixed regression which caused TUM Buildings to be already built at game start.  
-- Fixed clicking on Horde Skeleton building mistakenly proposing Liches instead of Skeletons (thanks to Wyvern).  
-
-**GENERAL**
-- Added new name of HD Remastered edition to load_after list.  
-  
-<-------- 2.7.2 -------->   
-
-**GENERAL**  
-- Configurable max AI Heroes for difficulty level (see Lang/AI.json).
-  
-**ADVENTURE AI**  
-- Treasure Chest choice: Now AI will always choose XP for the strongest hero until level 10, then gold (see AI Improvements.txt for other cases).
-  
-**BATTLE AI** 
-- PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
-- SUMMON FIRE/EARTH/AIR/WATER: No more suboptimal summoning of elementals with ACM! If ACM is enabled, AI will evaluate it by using ACM summoning calculation.
-
-<-------- 2.7.1 -------->   
-  
-**GENERAL**  
-- Added mod incompatibility for the new Mod Manager.  
-  
-**ADVENTURE AI**  
-- AI is smarter and FASTER now! Implemented an optimization mechanism which speeds up AI turn while maintaining the same quality!  
-- Implemented separate thinking radius for heroes in explore mode and normal mode.  
-  
-**BATTLE AI** 
-- DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often!  
-- Implemented AI code for correctly evaluating removing Blind and Hypnotize.  
-  
-<-------- 2.7 -------->  
-  
-**IMPROVEMENTS**  
-- Now TUM Enchanted is compatible with WoG Graphics Fix!  
-- WOG Option support for "Capitol can be built in every town".  
-- If both TUM Enchanted and Third Upgrade Mod are both enabled, a pop-up message will be shown upon game start warning about incompatibity (thanks to Yuji Sakai).  
-- Enabled again Soul Eater Animate Dead fix for cast requirement to match skill description (levels 1-5), instead of target stack HP.  
+**BALANCE**  
+- The Resource Silo for Castle now produces 1100 gold, up from 1000.  
   
 **AI IMPROVEMENTS**  
+- CLONE: Now AI will consider the presence of an enemy stack of the same type which can cause his Clone not to play immediately after cast.  
+- HYPNOTIZE: Implemented unique logic for Hypnotized creatures under AI control which will now attack friendly stack with maximum sum of damage dealt + damage received.  
+- AI is now aware of TUM-E Resource Silo additional resource production. This will lead to build Building Upgrade for some Level 7 creatures more quickly.  
   
-*ADVENTURE AI*  
-- Now AI will go straight capturing towns he think he can beat if they are reachable in current turn, no matter what. No more distraction along the way, no more ignoring capturable towns!  
-- AI will capture enemy towns even if there are stronger enemy heroes nearby, if he can safely run afterwards without being caught.  
-- AI heroes now have +2 scouting radius to match human players' one. Vanilla AI scouting radius doesn't let AI seeing enemy towns which a human player could.  
-- Now AI will always use max search distance set by UN:J4. WOG implemention for that trigger was incomplete, leading to rarely using max search distance.  
-- Fixed vanilla AI behaviour sometimes leading to pass turn on heroes which still have movement points left (this occured a lot when entering monoliths, but not only that).  
-- Now AI will not pass turn with full movement points when he cannot find a path for escaping a stronger enemy hero. Instead (this is experimental) will run instead, and if he cannot, will act normally.  
-- (Experimental) Now AI will defend his towns taking in consideration also adventure spells which can be cast by enemy (Fly, Dimension Door, Town Portal, Water Walk, etc)  
-  
-*BATTLE AI*  
-- HYPNOTIZE casting value reworked. It will result in AI casting or dispelling Hypnotize more often (see AI Improvements.txt for more details).   
+**IMPROVEMENTS**  
+- Added compatibility with GEM and the yellow mark symbol (shown when all building are built) to consider also TUM buildings (thanks to Yuji and Daemon).  
   
 **BUG FIXES**  
-- Increased mod priority to fix drawing errors and wrong graphic when HD Remastered Edition Mod is enabled.  
-- Fixed unupgraded creatures cannot be hired from towns sometimes when you have the corresponding TUM upgrade building built.  
-- Fixed left click on small portraits in town shows wrong creatures to be hired.  
-- Fixed Conflux dwelling didn't require a Fort to be built (thanks to Mmmihkel for reporting).  
-- Fixed pop-up message in town upon granting +1 primary skill didn't show the picture of the granted skill.  
- 
+- Fixed crash during combat in AI turn when evaluating Teleport spell.  
+- Fixed Saboteur's Repair Construct spell unable to be casted on some valid targets (thanks to Yuji Sakai). Known issue: Repair Construct animation is not shown. Will be fixed later.  
+- Fixed Pit Masters/Antichrist ability resurrecting a wrong amount of creatures.  
+- Fixed rare bug causing a siege to start with walls completely destroyed.  
+- Fixed Plasma Elemental having Affinity to Air instead of Affinity to Earth.  
+  
+**GENERAL**  
+- Instantanim.dll from "JS - Main Module" Mod is now disabled since it doesn't work well with new creatures (>197).  
+- Added "remove theoretical battle ai vs ai" plugin since ACM now disables it. Playing without it causes the AI to lose the smarter combat behaviour implemented in TUM-E when playing against neutral or AI, as   well as causing lots of bugs (no necromancy, no true combat, hero loses all artifacts when defeating another hero, and many more).  
+   
  
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
