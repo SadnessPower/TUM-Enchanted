@@ -6,7 +6,7 @@ This will cause AI to make smarter choices and to be more aggressive without che
 
 **********CHANGELOG TUM ENCHANTED 2.8************
 BALANCE
-The Resource Silo for Castle now produces 1100 gold, up from 1000.
+- The Resource Silo for Castle now produces 1100 gold, up from 1000.
 
 AI IMPROVEMENTS
 - CLONE: Now AI will consider the presence of an enemy stack of the same type which can cause his Clone not to play immediately after cast.
