@@ -4,7 +4,10 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
-**********CHANGELOG TUM ENCHANTED 2.8************
+**********CHANGELOG TUM ENCHANTED 2.8.1************
+- Fixed Jebus Cross map crash at game start.
+
+**********CHANGELOG TUM ENCHANTED 2.8************ 17854 20260425
 BALANCE
 - The Resource Silo for Castle now produces 1100 gold, up from 1000.
 
