@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.8
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.8.1
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -10,8 +10,10 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 > - For bug reports you can post on the TUM Enchanted Discord Channel (see Section "Feedback") or write an email to [SadnessPower](mailto:fallenstar268@icqmail.com)
 
 
-## CHANGELOG  
+## Latest CHANGELOG  
+- Fixed Jebus Cross map crash at game start.  
   
+<----------- 2.8 ----------->  
 **BALANCE**  
 - The Resource Silo for Castle now produces 1100 gold, up from 1000.  
   
