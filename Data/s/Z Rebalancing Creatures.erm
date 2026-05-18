@@ -3367,7 +3367,7 @@ FORCED for Elemental Res-Vulnerability
 !#MA:M249/4;                                                Min Dam 
 !#MA:E249/10;                                               Max Dam
 !#MA:P249/50;                                               Hp 
-!#MA:S249/4;                                                Speed
+!#MA:S249/5;                                                Speed
 !#MA:G249/5;                                                Growth
 !#MA:B249/1;                                                Spell Points
 !#MA:F249/1000;                                             Fight value 

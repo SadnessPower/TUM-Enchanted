@@ -8,6 +8,7 @@ This will cause AI to make smarter choices and to be more aggressive without che
 BUG FIXES
 - Fixed Stables on Castle town not giving any movement bonus (thanks to Yuji Sakai).
 - Fixed rare combat crash, thanks to bug report via Issue Wizard - please continue to report bugs, attaching savegame.
+- Fixed Meteor Elemental having less speed than his previous upgrade.
 
 IMPROVEMENTS
 - Mana Vortex now asks for doubling hero spell points upon entering the town (thanks to Yuji Sakai).
