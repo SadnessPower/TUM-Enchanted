@@ -84,7 +84,7 @@ SPELLS
    - Now AI will evaluate casting Antimagic to remove debuff instead of Dispel/Cure for protecting the stack from future casting of mind spells he has already seen. 
      Originally, AI were only evaluating casting Antimagic for damage reduction from spells. Now, when casting Antimagic for removing a spell, the Antimagic score will get a +33% bonus for protecting that creature from being targeted again in the future.
 
-- CLONE usage increased: If current stack is the strongest, its Clone value is doubled (it will result in AI casting Clone more often on current stack if it's the strongest).
+- CLONE usage increased: If current stack is the strongest and enemy doesn't have a stack of the same type which didn't move yet and isn't incapacitated or hypnotized, its Clone value is doubled (it will result in AI casting Clone more often on current stack if it's the strongest).
 
 - CURE: Fixed Expert Cure not removing Hypnotize
 
@@ -92,8 +92,11 @@ SPELLS
 
 - DISPEL: Fixed vanilla bug which prevented AI to calculate benefits for dispelling friendly units. Now AI will use dispel more often.
 
-- HYPNOTIZE casting value now adds the Blind value to the Hypnotize value, since the creature will not be able to be controlled as well.  
-It will result in AI casting or dispelling Hypnotize more often. 
+- HYPNOTIZE: 
+    - Casting value now adds the Blind value to the Hypnotize value, since the creature will not be able to be controlled as well.  
+      It will result in AI casting or dispelling Hypnotize more often. 
+
+    - Hypnotized creatures under AI control will now attack friendly stack with maximum sum of damage dealt + damage received.
 
 - PROTECTION FROM FIRE/EARTH/AIR/WATER: Score is now divided by the number of useful spells enemy hero can cast. This will result in AI casting this spell much rarely.
 
