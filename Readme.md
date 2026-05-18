@@ -13,7 +13,7 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 ## Latest CHANGELOG  
 **BUG FIXES**  
 - Fixed Stables on Castle town not giving any movement bonus (thanks to Yuji Sakai).  
-- Fixed rare combat crash, thanks to bug report via Issue Wizard - please continue to report it, attaching savegame.  
+- Fixed rare combat crash, thanks to bug report via Issue Wizard - please continue to report bugs, attaching savegame.  
   
 **IMPROVEMENTS**  
 - Mana Vortex now asks for doubling hero spell points upon entering the town (thanks to Yuji Sakai).  
