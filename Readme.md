@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.8.1
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.8.2
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -11,9 +11,20 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## Latest CHANGELOG  
+**BUG FIXES**  
+- Fixed Stables on Castle town not giving any movement bonus (thanks to Yuji Sakai).  
+- Fixed rare combat crash, thanks to bug report via Issue Wizard - please continue to report bugs, attaching savegame.  
+  
+**IMPROVEMENTS**  
+- Mana Vortex now asks for doubling hero spell points upon entering the town (thanks to Yuji Sakai).  
+  
+<---------- 2.8.1 ---------->  
+  
+**BUG FIXES**
 - Fixed Jebus Cross map crash at game start.  
   
 <----------- 2.8 ----------->  
+  
 **BALANCE**  
 - The Resource Silo for Castle now produces 1100 gold, up from 1000.  
   
