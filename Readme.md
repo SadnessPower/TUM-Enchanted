@@ -11,7 +11,6 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 
 ## Latest CHANGELOG  
-<---------- 2.9 ---------->  
 **IMPROVEMENTS**  
 - TUM Enchanted is now compatible with JS generation fixes and JS new terrain mods.  
 
