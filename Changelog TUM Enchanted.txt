@@ -4,6 +4,18 @@ Now you can enjoy playing TUM Enchanted with your friends far away!
 TUM ENCHANTED NOW FEATURES ADVENTURE AI IMPROVEMENTS! 
 This will cause AI to make smarter choices and to be more aggressive without cheating! And is also faster!
 
+**********CHANGELOG TUM ENCHANTED 2.10***********
+IMPROVEMENTS
+- Now incompatible WOG Options are read-only in the WOG Option menu (thanks to Pathere).
+- The new_towns.era plugin has been updated to the latest version - this will bring many improvements (too long to list them all) and more stability
+
+BUG FIXES
+- Fixed crash on right click on some town icons on the town list in the adventure map.
+- Fixed required building list showing all required buildings, not only the direct dependencies (thanks to Azure_Dragon for reporting and testing it). 
+- Fixed crash when building some Conflux TUM buildings.
+- Fixed WOG golden arrow tower being mistakenly disabled.
+- Fixed rare non-blocking ERM errors when restarting a map.
+
 **********CHANGELOG TUM ENCHANTED 2.9***********
 IMPROVEMENTS
 - TUM Enchanted is now compatible with JS generation fixes and JS new terrain mods.

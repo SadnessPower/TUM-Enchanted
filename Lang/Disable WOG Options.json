@@ -1,0 +1,95 @@
+{
+    "wnd": {
+        "dlg_wog_options": {
+            "locks": {
+                "0": {
+                    "value": 1
+                },
+                "37": {
+                    "value": 0
+                },
+                "50": {
+                    "value": 0
+                },
+                "67": {
+                    "value": 0
+                },
+                "173": {
+                    "value": 0
+                },
+                "188": {
+                    "value": 0
+                },
+                "281": {
+                    "value": 0
+                },
+                "740": {
+                    "value": 0
+                },
+                "820": {
+                    "value": 0
+                },
+                "46": {
+                    "value": 0
+                },
+                "59": {
+                    "value": 0
+                },
+                "189": {
+                    "value": 0
+                },
+                "821": {
+                    "value": 0
+                },
+                "789": {
+                    "value": 0,
+                    "reason": "Conflicts with AmeEdit."
+                },
+                "777": {
+                    "value": 0,
+                    "reason": "Conflicts with AmeEdit."
+                },
+                "822": {
+                    "value": 0
+                },
+                "997": {
+                    "value": 0
+                },
+                "995": {
+                    "value": 0
+                },
+                "996": {
+                    "value": 0
+                },
+                "758": {
+                    "value": 0
+                },
+                "750": {
+                    "value": 0
+                },
+                "759": {
+                    "value": 0
+                },
+                "753": {
+                    "value": 0
+                },
+                "761": {
+                    "value": 0
+                },
+                "741": {
+                    "value": 0
+                },
+                "752": {
+                    "value": 0
+                },
+                "350": {
+                    "value": 0
+                },
+                "762": {
+                    "value": 0,
+                    "reason": "Temporarily disabled to avoid the Zombie name change. It will be activated on GameEnter."
+                }
+            }
+        }
+    }
+}
