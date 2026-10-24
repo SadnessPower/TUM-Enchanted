@@ -1,4 +1,4 @@
-# THIRD UPGRADE MOD(TUM) ENCHANTED 2.9
+# THIRD UPGRADE MOD(TUM) ENCHANTED 2.10
 **MULTIPLAYER OVER NETWORK (TCP/IP) IS SUPPORTED!**  
 Now you can enjoy playing TUM Enchanted with your friends far away!  
   
@@ -12,13 +12,15 @@ For a complete and detailed list of all AI improvements refer to [AI Improvement
 
 ## Latest CHANGELOG  
 **IMPROVEMENTS**  
-- TUM Enchanted is now compatible with JS generation fixes and JS new terrain mods.  
-
+- Now incompatible WOG Options are read-only in the WOG Option menu (thanks to Pathere).  
+- The new_towns.era plugin has been updated to the latest version - this will bring many improvements (too long to list them all) and more stability.    
+  
 **BUG FIXES**  
-- Fixed Repair Construct spell not showing animation.  
-- Fixed Order of Fire and Wall of Knowledge building in town having their effects swapped (thanks to Yuji Sakai).  
-- Fixed A+Click upgrade, which was incorrectly substracting the square of the required cost.  
-
+- Fixed crash on right click on some town icons on the town list in the adventure map.  
+- Fixed required building list showing all required buildings, not only the direct dependencies (thanks to Azure_Dragon for reporting and testing it).   
+- Fixed crash when building some Conflux TUM buildings.  
+- Fixed WOG golden arrow tower being mistakenly disabled.  
+- Fixed rare non-blocking ERM errors when restarting a map.  
   
 -----------------------------------------------------------------------------------------------------------------------
 MAIN FEATURES
